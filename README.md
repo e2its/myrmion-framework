@@ -18,8 +18,7 @@ Framework para empresas que adoptan IA mediante productos comerciales. Modelado 
 
 Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Extiende el protocolo MCP con una capa de gobernanza culturalmente consciente, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
 
-📖 [Manifiesto de Myrmion Federation](./docs/federation/manifesto.md) *(en preparación)*
-
+📖 [Manifiesto de Myrmion Federation](./docs/federation/manifesto.md) 
 ## Por qué dos fases y no una
 
 Porque el problema cultural y el técnico tienen ritmos distintos. Modelar la cultura corporativa para que los asistentes la hereden es un ejercicio organizativo que cualquier empresa puede arrancar la próxima semana sin mover infraestructura. Federar agentes programáticos con gobernanza es un proyecto de plataforma que solo tiene sentido cuando la cultura ya está articulada. **Empiezas por la colonia y evolucionas a la falange cuando tu organización lo necesita.**
@@ -56,7 +55,7 @@ myrmion/
 
 1. Lee el [manifiesto paraguas](./docs/manifesto.md) para entender el ecosistema en conjunto.
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
-3. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el manifiesto de Myrmion Federation cuando esté disponible.
+3. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el manifiesto de Myrmion Federation (./docs/federation/manifesto.md).
 
 ## Cómo contribuir
 
