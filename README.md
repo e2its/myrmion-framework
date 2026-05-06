@@ -34,7 +34,7 @@ La Constitución Corporativa que articulas en Adoption es la misma que materiali
 | Myrmion Adoption — Manifiesto | ✅ v1.0 |
 | Myrmion Adoption — Plantillas | 🚧 En preparación |
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
-| Myrmion Federation — Manifiesto | 🚧 En preparación |
+| Myrmion Federation — Manifiesto | "✅ v1.0|
 | Myrmion Federation — Especificaciones técnicas | ⏳ Planeado |
 
 ## Estructura del repositorio
