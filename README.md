@@ -68,4 +68,4 @@ Este proyecto se distribuye bajo licencia [MIT](./LICENSE). Uso libre, comercial
 
 ## Autor
 
-[Jose Luis Sanchez del Coso — jose.e2its.com, www.e2its.com, www.linkedin.com/in/jlsdc]
+[Jose Luis Sanchez del Coso — http://jose.e2its.com, www.e2its.com, www.linkedin.com/in/jlsdc]
