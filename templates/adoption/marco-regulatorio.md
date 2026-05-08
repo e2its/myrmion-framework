@@ -1,12 +1,19 @@
-<p align="center">
-  <img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
-</p>
+<table>
+<tr>
+<td width="140" valign="top">
+<img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
+</td>
+<td valign="top">
 
 # Myrmion Adoption — Plantilla del Marco Regulatorio
 
 **Versión 1.0**
 
 *Plantilla para articular la Capa 1 del Marco de Modelado — el Marco Regulatorio — en una organización que adopta IA mediante productos comerciales.*
+
+</td>
+</tr>
+</table>
 
 ---
 

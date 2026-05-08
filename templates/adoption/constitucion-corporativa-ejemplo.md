@@ -1,6 +1,9 @@
-<p align="center">
-  <img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
-</p>
+<table>
+<tr>
+<td width="140" valign="top">
+<img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
+</td>
+<td valign="top">
 
 # Constitución Corporativa — Consultora Modelo S.L.
 
@@ -9,6 +12,10 @@
 *Este documento es un ejemplo completamente rellenado de la plantilla de Constitución Corporativa, basado en una organización ficticia. Sirve como referencia para entender el nivel de detalle, el tono y el tipo de articulación que la plantilla espera. **No debe copiarse literalmente** — cada organización tiene su propia identidad, sus propios valores y su propio carácter. La utilidad de este ejemplo es mostrar cómo se ve una Constitución bien articulada, no proporcionar contenido reutilizable.*
 
 *Consultora Modelo S.L. es una organización ficticia. Cualquier parecido con organizaciones reales es casualidad.*
+
+</td>
+</tr>
+</table>
 
 ---
 

@@ -1,6 +1,9 @@
-<p align="center">
-  <img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
-</p>
+<table>
+<tr>
+<td width="140" valign="top">
+<img src="../../assets/myrmion-logo.png" alt="Myrmion" width="120">
+</td>
+<td valign="top">
 
 # Marco Regulatorio — Consultora Modelo S.L.
 
@@ -9,6 +12,10 @@
 *Este documento es un ejemplo completamente rellenado de la plantilla del Marco Regulatorio, basado en la misma organización ficticia que articula su [Constitución Corporativa](./constitucion-corporativa-ejemplo.md). Sirve como referencia para entender el nivel de detalle, el nivel de articulación operativa y el tipo de obligaciones que la plantilla espera capturar. **No debe copiarse literalmente** — cada organización tiene sus propias jurisdicciones, sus propios sectores y sus propios compromisos contractuales. La utilidad de este ejemplo es mostrar cómo se ve un Marco Regulatorio bien articulado, no proporcionar contenido reutilizable.*
 
 *Consultora Modelo S.L. es una organización ficticia. Cualquier parecido con organizaciones reales es casualidad.*
+
+</td>
+</tr>
+</table>
 
 ---
 
