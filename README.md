@@ -1,6 +1,6 @@
 <table>
 <tr>
-<td width="140" valign="top">
+<td width="140" valign="middle">
 <img src="./assets/myrmion-logo.png" alt="Myrmion" width="120">
 </td>
 <td valign="top">
