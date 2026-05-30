@@ -1,6 +1,6 @@
 <table>
 <tr>
-<td width="140" valign="top">
+<td width="140" valign="middle">
 <img src="./assets/myrmion-logo.png" alt="Myrmion" width="120">
 </td>
 <td valign="top">
@@ -25,7 +25,7 @@ Las dos imágenes articulan el trayecto del ecosistema: **empiezas por la coloni
 
 ## El ecosistema
 
-Myrmion se compone de dos fases articuladas:
+Myrmion se compone de tres frameworks:
 
 ### Myrmion Adoption
 
@@ -33,17 +33,23 @@ Framework para empresas que adoptan IA mediante productos comerciales. Modelado 
 
 📖 [Manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md)
 
+### Myrmion AI Factory
+
+Framework de desarrollo de productos: un SDLC agéntico gobernado sobre Claude Code que construye software bajo gobernanza, seguridad y gates de calidad integrados. Es un framework **autónomo** — se adopta por sí solo, sin requerir Adoption ni Federation. Audiencia: equipos de ingeniería, tech leads, plataformas de desarrollo.
+
+📦 [Repositorio: e2its/myrmion-AI-factory](https://github.com/e2its/myrmion-AI-factory)
+
 ### Myrmion Federation
 
 Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Extiende el protocolo MCP con una capa de gobernanza culturalmente consciente, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
 
 📖 [Manifiesto de Myrmion Federation](./docs/federation/manifesto.md)
 
-## Por qué dos fases y no una
+## Cómo encajan los tres
 
-Porque el problema cultural y el técnico tienen ritmos distintos. Modelar la cultura corporativa para que los asistentes la hereden es un ejercicio organizativo que cualquier empresa puede arrancar la próxima semana sin mover infraestructura. Federar agentes programáticos con gobernanza es un proyecto de plataforma que solo tiene sentido cuando la cultura ya está articulada.
+**Adoption y Federation son complementarios.** Atacan el mismo problema — la cultura corporativa de IA — en dos grados de programaticidad. Modelar la cultura para que los asistentes la hereden es un ejercicio organizativo que cualquier empresa puede arrancar la próxima semana sin mover infraestructura (Adoption). Federar agentes programáticos con gobernanza es un proyecto de plataforma que solo tiene sentido cuando la cultura ya está articulada (Federation). La Constitución Corporativa que articulas en Adoption es la misma que materializas programáticamente en Federation; lo que cambia es el grado de programaticidad, no la cultura ni el método.
 
-La Constitución Corporativa que articulas en Adoption es la misma que materializas programáticamente en Federation. Lo que cambia es el grado de programaticidad, no la cultura ni el método.
+**Myrmion AI Factory es independiente de ese par.** No modela cultura corporativa ni federa agentes: construye productos de software con un SDLC gobernado. Se adopta por sí solo y resuelve un problema distinto — la disciplina de desarrollo — aunque comparta con el resto del ecosistema el principio de gobernanza explícita y auditable.
 
 ## Estado del proyecto
 
@@ -54,6 +60,7 @@ La Constitución Corporativa que articulas en Adoption es la misma que materiali
 | Myrmion Adoption — Plantillas (Capa 1, 2 y 3) | ✅ v1.0 |
 | Myrmion Adoption — Guía de protección de datos (PII/PHI + licenciamiento) | ✅ v1.0 |
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
+| Myrmion AI Factory — Framework (repositorio propio) | ✅ Activo |
 | Myrmion Federation — Manifiesto | ✅ v1.0 |
 | Myrmion Federation — Especificaciones técnicas | ⏳ Planeado |
 
@@ -84,6 +91,7 @@ myrmion/
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
 3. Si manejas datos personales, de salud o regulados (PII, RGPD, HIPAA, PCI-DSS…) o necesitas cumplimiento de proveedor (SOC 2, ISO 27001), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
 4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md).
+5. Si necesitas construir productos de software con un SDLC gobernado, usa [Myrmion AI Factory](https://github.com/e2its/myrmion-AI-factory) — es un framework independiente y se adopta por sí solo.
 
 ## Cómo contribuir
 
