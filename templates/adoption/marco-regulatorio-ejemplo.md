@@ -123,7 +123,7 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 **Obligaciones sectoriales heredadas más recurrentes:**
 
 - **Sector financiero (clientes bajo DORA, MiFID II, regulación bancaria nacional):** restricciones de subcontratación, requisitos de localización geográfica de procesamiento, obligaciones de auditoría.
-- **Sector sanitario (clientes bajo regulación nacional sanitaria, RGPD reforzado para datos de salud):** prohibición casi absoluta de procesamiento de datos identificables, restricciones geográficas estrictas, obligaciones de pseudonimización.
+- **Sector sanitario (clientes bajo regulación nacional sanitaria, RGPD reforzado para datos de salud):** prohibición casi absoluta de procesamiento de datos identificables, restricciones geográficas estrictas, obligaciones de seudonimización.
 - **Sector público (clientes bajo Esquema Nacional de Seguridad — ENS — en España):** requisitos de certificación, restricciones de subcontratación, auditorías ENS.
 
 **Custodio operativo:** Director Comercial (Andrés Fonseca) en colaboración con Asesoría Jurídica externa. Cada proyecto con cliente regulado pasa por revisión específica antes de aceptación.
@@ -155,8 +155,8 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 - **Tipo de cliente:** grupo hospitalario privado.
 - **Obligaciones específicas para asistentes de IA:**
   - Cláusula de subcontratación que excluye productos de IA con procesamiento fuera del EEE.
-  - Pseudonimización obligatoria de cualquier dato del cliente antes de procesamiento con IA.
-  - Prohibición absoluta de uso de productos de IA generativa con datos clínicos, incluso pseudonimizados.
+  - Seudonimización obligatoria de cualquier dato del cliente antes de procesamiento con IA.
+  - Prohibición absoluta de uso de productos de IA generativa con datos clínicos, incluso seudonimizados.
   - Notificación al cliente de cualquier incidencia de seguridad relacionada con IA en plazo máximo de 24 horas.
 - **Custodio operativo:** Responsable del proyecto + DPO + CISO.
 
@@ -176,12 +176,12 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 | RGPD — datos personales de cliente | DPA + EU Data Boundary | Microsoft 365 Copilot (Enterprise) | First-party (Microsoft como encargado) | ✅ Firmado; CUECs del informe SOC 2 de Microsoft implementados |
 | RGPD — datos personales de cliente | DPA + residencia *at-rest* en Europa | ChatGPT Enterprise | First-party (OpenAI como encargado) | ✅ Firmado; residencia Europa activada |
 | RGPD — datos personales de cliente | DPA + residencia EEE | Claude Enterprise | ⚠️ API first-party de Anthropic **no garantiza residencia UE** | 🔶 En evaluación de migración a **Amazon Bedrock (eu-central-1)** para los proyectos con residencia EEE estricta; mientras tanto, no se usa Claude con datos de cliente sujetos a residencia |
-| No-entrenamiento con datos de cliente | Cláusula no-training | Los tres productos Enterprise anteriores | First-party | ✅ Incluida por defecto en el tier Enterprise de los tres proveedores |
+| No-entrenamiento con datos de cliente | Cláusula de no-entrenamiento | Los tres productos Enterprise anteriores | First-party | ✅ Incluida por defecto en el tier Enterprise de los tres proveedores |
 | Residencia exclusiva EEE (cliente financiero y sanitario) | Procesamiento *at-rest* e inferencia exclusivos en el EEE | Microsoft 365 Copilot (EU Data Boundary) y, para Claude, vía Bedrock eu-central-1 | First-party / Bedrock | 🔶 Confirmado para Copilot; pendiente la vía Bedrock para Claude |
 | SOC 2 Type II / ISO 27001 del proveedor | Revisión del informe bajo NDA + implementación de CUECs | Los tres proveedores | — (atestación del proveedor, no se "obtiene") | 🔄 Informes revisados anualmente bajo NDA; CUECs incorporados al programa interno |
-| HIPAA / PHI | BAA | **No aplica** | — | ⛔ No procede: §5 prohíbe el tratamiento de datos de salud identificables con IA; si emergieran en proyecto, se des-identifican antes de cualquier interacción, no se contrata BAA |
+| HIPAA / PHI | BAA | **No aplica** | — | ⛔ No procede: la organización y sus clientes operan en el EEE, sin nexo con HIPAA (no hay *covered entity* ni *business associate* bajo ley estadounidense). Además, §5 prohíbe tratar datos de salud identificables con IA y, si emergieran, se retiran o anonimizan irreversiblemente antes de cualquier interacción — no se contrata BAA |
 
-*Observación de la custodia: la fila de Claude refleja una tensión real detectada al articular la matriz — la autorización genérica de "Claude Enterprise bajo DPA" de §5 no es suficiente para los clientes con residencia EEE estricta, porque el API first-party de Anthropic no ofrece residencia UE a la fecha de este documento. La matriz fuerza a hacer explícita esa restricción y a decidir la vía de aprovisionamiento (Bedrock eu-central-1) antes de usar el producto con esos datos. Verificar condiciones vigentes antes de contratar.*
+*Observación de la custodia: la fila de Claude refleja una tensión real detectada al articular la matriz — la autorización genérica de "Claude Enterprise bajo DPA" de §5 no es suficiente para los clientes con residencia EEE estricta, porque el API first-party de Anthropic no ofrece residencia UE a la fecha de este documento. La matriz fuerza a hacer explícita esa restricción y a decidir la vía de aprovisionamiento (Bedrock eu-central-1) antes de usar el producto con esos datos. Las herramientas, tiers y vías concretas de esta matriz son ilustrativas de esta organización ficticia, no recomendaciones canónicas de Myrmion. Verificar condiciones vigentes antes de contratar.*
 
 ---
 
@@ -286,7 +286,7 @@ Algunas restricciones de uso nacen de la Constitución Corporativa, no del cumpl
 | Datos de salud identificables | **No se procesan con IA** (prohibición absoluta, §5). Si emergen en un proyecto, se retiran o anonimizan irreversiblemente antes de cualquier interacción con IA | Consultor + DPO; verificación de eficacia de la anonimización documentada | DPO + CISO |
 | Credenciales, claves y secretos técnicos del cliente | Nunca se introducen en ningún producto de IA | Disciplina + control de endpoint | CISO |
 
-*Límite declarado: la des-identificación basada en Presidio en español no garantiza un recall del 100% — la organización lo trata como una capa de defensa en profundidad, no como sustituto de la revisión humana sistemática ya exigida en §2.2 ni de las prohibiciones absolutas. Ninguna afirmación de cumplimiento se apoya en la herramienta de des-identificación por sí sola.*
+*Límite declarado: la des-identificación basada en Presidio en español no garantiza un recall del 100% — la organización lo trata como una capa de defensa en profundidad, no como sustituto de la revisión humana sistemática ya exigida en §2.2 ni de las prohibiciones absolutas. Ninguna afirmación de cumplimiento se apoya en la herramienta de des-identificación por sí sola. La elección concreta (Presidio + spaCy ES) es ilustrativa; cada organización selecciona y valida sus propias herramientas.*
 
 **Custodio operativo de esta sección:** DPO + Director General.
 

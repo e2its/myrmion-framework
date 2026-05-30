@@ -82,7 +82,7 @@ myrmion/
 
 1. Lee el [manifiesto paraguas](./docs/manifesto.md) para entender el ecosistema en conjunto.
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
-3. Si manejas datos personales, de salud o regulados (PII, GDPR, HIPAA, SOC 2…), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
+3. Si manejas datos personales, de salud o regulados (PII, RGPD, HIPAA, PCI-DSS…) o necesitas cumplimiento de proveedor (SOC 2, ISO 27001), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
 4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md).
 
 ## Cómo contribuir
