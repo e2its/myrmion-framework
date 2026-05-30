@@ -153,6 +153,21 @@ Esta plantilla guía a una organización en la articulación de su Marco Regulat
 **Custodio operativo de esta sección:**
 *(típicamente la función comercial o legal contractual)*
 
+**Matriz de licenciamiento por requisito de cumplimiento:**
+
+*(Esta matriz traduce cada requisito de cumplimiento aplicable a la organización al instrumento contractual concreto que debe estar firmado — DPA, BAA, Zero Data Retention, residencia, cláusula de no-entrenamiento —, con qué proveedor, en qué producto/tier y por qué vía de aprovisionamiento. Es la versión trazable y auditable de la lista de productos autorizados de §5. Notas para rellenarla:*
+
+- *La **vía de aprovisionamiento** cambia quién es el encargado del tratamiento: el mismo modelo aprovisionado por la API del fabricante, por un hiperescalar (Amazon Bedrock, Google Vertex) o por un marketplace implica firmar el DPA/BAA con una parte distinta y puede cambiar la residencia de los datos. Registrarla siempre.*
+- *SOC 2, ISO 27001 e ISO 42001 **no son algo que la organización "obtiene"**: son atestaciones o certificaciones del **proveedor**. En la columna de estado se registra que se ha revisado la del proveedor (bajo NDA cuando aplique) y que se han implementado los controles complementarios de usuario (CUECs) que el informe asigna al cliente — no son opcionales.*
+- *Los tiers consumer/gratuitos entrenan típicamente con los datos por defecto: no deben figurar como autorizados para ningún dato de cliente u organización.*
+- *Para el detalle por proveedor y tier vigente, ver la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md). Las condiciones cambian con frecuencia: verificar antes de contratar.)*
+
+| Requisito aplicable | Instrumento a obtener | Proveedor / producto / tier | Vía de aprovisionamiento | Estado |
+|---|---|---|---|---|
+| *(p. ej. RGPD — datos personales de cliente)* | *(p. ej. DPA + SCCs / residencia UE)* | *(p. ej. Claude Enterprise)* | *(p. ej. API first-party / Bedrock / Vertex)* | *(firmado / pendiente)* |
+| *(p. ej. HIPAA — PHI)* | *(BAA)* | | | |
+| | | | | |
+
 ---
 
 ## 4. Marcos voluntarios de referencia
@@ -205,6 +220,21 @@ Esta plantilla guía a una organización en la articulación de su Marco Regulat
 
 **Casos de uso sometidos a aprobación previa:**
 *(p. ej. cualquier asistente que vaya a interactuar directamente con clientes externos sin filtro humano; cualquier asistente que vaya a tomar decisiones financieras superiores a X; cualquier integración con sistemas de pago.)*
+
+**Transformación técnica de des-identificación exigida antes de procesar con IA:**
+
+*(Esta sub-sección cierra la distancia entre prohibir un dato y impedir técnicamente que llegue al modelo. Las restricciones anteriores declaran qué no puede tratarse; ésta articula qué transformación se exige sobre los datos sensibles que sí se permite tratar bajo condiciones, antes de que lleguen a un producto de IA. Para cada categoría: qué transformación se exige — redacción, seudonimización reversible, anonimización irreversible, tokenización —, quién o qué la ejecuta y en qué momento, y cómo se verifica. Notas operativas:*
+
+- *En la fase de Adoption (uso directo de productos comerciales, sin proxy programático) la transformación la ejecuta una persona como **paso manual sancionado**, o una **herramienta interna de des-identificación previa al pegado** — NO una redacción transparente en la ruta del prompt, que requiere un intermediario programático y es territorio de Myrmion Federation.*
+- *Distinguir explícitamente **anonimización** de **seudonimización** y declarar su consecuencia regulatoria: bajo RGPD/LOPDGDD la seudonimización (reversible) sigue siendo dato personal y permanece en el ámbito de la norma; solo la anonimización irreversible lo saca, y la AEPD exige una evaluación documentada del riesgo de reidentificación. Bajo HIPAA/PCI-DSS una des-identificación suficiente sí saca el dato del ámbito.*
+- *Ninguna herramienta garantiza capturar todo el PII/PHI: declarar el límite de recall y la defensa en profundidad. No apoyar una afirmación de cumplimiento en una sola herramienta sin verificación.*
+- *Para el panorama de herramientas por categoría y fase, ver la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md).)*
+
+| Categoría de dato sensible | Transformación exigida antes de IA | Quién/qué la ejecuta y cuándo | Verificación / responsable |
+|---|---|---|---|
+| *(p. ej. datos personales de cliente)* | *(p. ej. seudonimización reversible)* | *(p. ej. consultor, paso manual previo con herramienta interna)* | *(p. ej. revisión por muestreo del DPO)* |
+| *(p. ej. datos de salud — si se permite bajo condiciones)* | *(p. ej. anonimización irreversible verificada)* | | |
+| | | | |
 
 **Custodio operativo de esta sección:**
 
