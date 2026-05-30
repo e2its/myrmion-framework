@@ -52,6 +52,7 @@ La Constitución Corporativa que articulas en Adoption es la misma que materiali
 | Manifiesto Myrmion (paraguas) | ✅ v1.0 |
 | Myrmion Adoption — Manifiesto | ✅ v1.0 |
 | Myrmion Adoption — Plantillas (Capa 1, 2 y 3) | ✅ v1.0 |
+| Myrmion Adoption — Guía de protección de datos (PII/PHI + licenciamiento) | ✅ v1.0 |
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
 | Myrmion Federation — Manifiesto | ✅ v1.0 |
 | Myrmion Federation — Especificaciones técnicas | ⏳ Planeado |
@@ -67,7 +68,8 @@ myrmion/
 ├── docs/
 │   ├── manifesto.md              ← manifiesto paraguas (corto)
 │   ├── adoption/
-│   │   └── manifesto.md          ← manifiesto detallado de Adoption
+│   │   ├── manifesto.md          ← manifiesto detallado de Adoption
+│   │   └── guia-proteccion-datos.md ← guía de protección de datos (capa técnica + contractual)
 │   └── federation/
 │       └── manifesto.md          ← manifiesto detallado de Federation
 ├── templates/
@@ -80,7 +82,8 @@ myrmion/
 
 1. Lee el [manifiesto paraguas](./docs/manifesto.md) para entender el ecosistema en conjunto.
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
-3. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md).
+3. Si manejas datos personales, de salud o regulados (PII, GDPR, HIPAA, SOC 2…), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
+4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md).
 
 ## Cómo contribuir
 

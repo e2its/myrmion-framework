@@ -167,6 +167,22 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 
 **Custodio operativo de la sección:** Director Comercial (Andrés Fonseca) en lo contractual; DPO en lo de cumplimiento operativo.
 
+### Matriz de licenciamiento por requisito de cumplimiento
+
+*Esta matriz es la versión trazable de la lista de productos autorizados de §5. Registra, por cada requisito que aplica a Consultora Modelo, el instrumento contractual concreto, el producto/tier, la vía de aprovisionamiento (que determina con quién se firma) y el estado. Se revisa cada vez que se incorpora o retira un producto. Las condiciones de proveedor se re-verifican en cada revisión anual del documento — ver la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md).*
+
+| Requisito aplicable | Instrumento a obtener | Proveedor / producto / tier | Vía de aprovisionamiento | Estado |
+|---|---|---|---|---|
+| RGPD — datos personales de cliente | DPA + EU Data Boundary | Microsoft 365 Copilot (Enterprise) | First-party (Microsoft como encargado) | ✅ Firmado; CUECs del informe SOC 2 de Microsoft implementados |
+| RGPD — datos personales de cliente | DPA + residencia *at-rest* en Europa | ChatGPT Enterprise | First-party (OpenAI como encargado) | ✅ Firmado; residencia Europa activada |
+| RGPD — datos personales de cliente | DPA + residencia EEE | Claude Enterprise | ⚠️ API first-party de Anthropic **no garantiza residencia UE** | 🔶 En evaluación de migración a **Amazon Bedrock (eu-central-1)** para los proyectos con residencia EEE estricta; mientras tanto, no se usa Claude con datos de cliente sujetos a residencia |
+| No-entrenamiento con datos de cliente | Cláusula no-training | Los tres productos Enterprise anteriores | First-party | ✅ Incluida por defecto en el tier Enterprise de los tres proveedores |
+| Residencia exclusiva EEE (cliente financiero y sanitario) | Procesamiento *at-rest* e inferencia exclusivos en el EEE | Microsoft 365 Copilot (EU Data Boundary) y, para Claude, vía Bedrock eu-central-1 | First-party / Bedrock | 🔶 Confirmado para Copilot; pendiente la vía Bedrock para Claude |
+| SOC 2 Type II / ISO 27001 del proveedor | Revisión del informe bajo NDA + implementación de CUECs | Los tres proveedores | — (atestación del proveedor, no se "obtiene") | 🔄 Informes revisados anualmente bajo NDA; CUECs incorporados al programa interno |
+| HIPAA / PHI | BAA | **No aplica** | — | ⛔ No procede: §5 prohíbe el tratamiento de datos de salud identificables con IA; si emergieran en proyecto, se des-identifican antes de cualquier interacción, no se contrata BAA |
+
+*Observación de la custodia: la fila de Claude refleja una tensión real detectada al articular la matriz — la autorización genérica de "Claude Enterprise bajo DPA" de §5 no es suficiente para los clientes con residencia EEE estricta, porque el API first-party de Anthropic no ofrece residencia UE a la fecha de este documento. La matriz fuerza a hacer explícita esa restricción y a decidir la vía de aprovisionamiento (Bedrock eu-central-1) antes de usar el producto con esos datos. Verificar condiciones vigentes antes de contratar.*
+
 ---
 
 ## 4. Marcos voluntarios de referencia
@@ -258,6 +274,19 @@ Algunas restricciones de uso nacen de la Constitución Corporativa, no del cumpl
 - No se aceptan comisiones, pagos o ventajas de proveedores tecnológicos a cambio de recomendarlos al cliente.
 
 *Nota: la frontera entre Capa 1 (Marco Regulatorio) y Capa 2 (Constitución Corporativa) es porosa en este punto. Es legítimo articular en el Marco Regulatorio aquellas convicciones culturales que la organización ha decidido tratar como restricciones absolutas no negociables — el efecto operativo es el mismo (restricción no susceptible de excepción) y simplifica la aplicación práctica.*
+
+### Transformación técnica de des-identificación exigida antes de procesar con IA
+
+*Las restricciones anteriores declaran qué no puede tratarse. Esta sub-sección articula qué transformación se exige sobre los datos que sí se permite tratar bajo condiciones, antes de que lleguen a un producto de IA, y quién la ejecuta. En la fase de Adoption la transformación es un paso previo sancionado, no una redacción transparente en la ruta del prompt (eso requeriría un intermediario programático — territorio de Federation). Para el panorama de herramientas, ver la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md).*
+
+| Categoría de dato sensible | Transformación exigida antes de IA | Quién/qué la ejecuta y cuándo | Verificación / responsable |
+|---|---|---|---|
+| Datos personales de empleados de cliente (no sensibles) | Minimización + seudonimización reversible de identificadores directos | Consultor, como paso manual previo, con herramienta interna de des-identificación (Microsoft Presidio self-host, modelo spaCy en español + recognizers adaptados al EEE) | Revisión por muestreo trimestral del DPO (alineada con §6) |
+| Propiedad intelectual del cliente bajo NDA | Minimización + retirada de identificadores de proyecto y cliente cuando no son necesarios | Consultor antes del envío | Responsable del proyecto |
+| Datos de salud identificables | **No se procesan con IA** (prohibición absoluta, §5). Si emergen en un proyecto, se retiran o anonimizan irreversiblemente antes de cualquier interacción con IA | Consultor + DPO; verificación de eficacia de la anonimización documentada | DPO + CISO |
+| Credenciales, claves y secretos técnicos del cliente | Nunca se introducen en ningún producto de IA | Disciplina + control de endpoint | CISO |
+
+*Límite declarado: la des-identificación basada en Presidio en español no garantiza un recall del 100% — la organización lo trata como una capa de defensa en profundidad, no como sustituto de la revisión humana sistemática ya exigida en §2.2 ni de las prohibiciones absolutas. Ninguna afirmación de cumplimiento se apoya en la herramienta de des-identificación por sí sola.*
 
 **Custodio operativo de esta sección:** DPO + Director General.
 
