@@ -1,0 +1,23 @@
+# CODEOWNERS — Myrmion
+#
+# Modelo de custodia dual de Myrmion Federation (ver docs/federation/regla-anti-acoplamiento.md §5):
+#   - CUERPO normativo (docs/federation/ y templates/federation/): custodios del framework.
+#     Un PR aquí exige aprobación de un custodio y pasa el checklist de CONTRIBUTING.md.
+#   - APÉNDICE vivo (docs/federation/appendix/): mantenedores de la comunidad.
+#     Revisión más ligera, al ritmo del ecosistema.
+#
+# La fricción asimétrica (cuerpo más estricto que apéndice) es la garantía estructural
+# de que el contenido volátil fluye al apéndice y el cuerpo no se acopla a marcas.
+#
+# NOTA: sustituye los handles de abajo por los equipos/usuarios reales de tu organización
+# (p. ej. @org/equipo-framework y @org/comunidad-stacks). Se dejan con el owner del repo.
+
+# Cuerpo normativo de Federation — custodios del framework
+/docs/federation/                 @e2its
+/templates/federation/            @e2its
+
+# Apéndice vivo de Federation — comunidad (regla más específica, prevalece sobre la anterior)
+/docs/federation/appendix/        @e2its
+
+# Ejemplos
+/examples/federation/             @e2its

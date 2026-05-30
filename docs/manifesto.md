@@ -56,7 +56,7 @@ Lo que Myrmion Federation aporta encima de esa infraestructura: convenciones par
 
 Audiencia: CIOs, jefes de plataforma, tech leads. Las organizaciones que llegan aquí han hecho el trabajo cultural previo y necesitan dar el salto técnico.
 
-📖 [Manifiesto detallado de Myrmion Federation](./federation/manifesto.md)
+📖 [Manifiesto detallado de Myrmion Federation](./federation/manifesto.md) · 🧭 [Índice y guía de navegación del corpus](./federation/indice-y-guia-de-navegacion.md)
 
 ## Cómo encajan los tres
 
