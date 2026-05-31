@@ -15,9 +15,9 @@
 
 ## Decisión 1 — El dominio es el **quinto** segmento del `agentId`, no el cuarto
 
-**Contexto.** Varios documentos (convenciones-mapping, ficha-policy-ejemplo, fichas del apéndice) afirman que «el dominio se deriva del **quinto segmento** del `agentId`». Contando los campos delimitados por `:` en `urn:myrmion:agent:<org>:<dominio>:<nombre>`: 1=`urn`, 2=`myrmion`, 3=`agent`, 4=`<org>`, 5=`<dominio>`, 6=`<nombre>`. El quinto segmento es `<org>`; el dominio es el **quinto**. El conteo era incorrecto y consistente en todo el corpus.
+**Contexto.** Varios documentos (convenciones-mapping, ficha-policy-ejemplo, fichas del apéndice) afirmaban que «el dominio se deriva del **cuarto segmento** del `agentId`». Contando los campos delimitados por `:` en `urn:myrmion:agent:<org>:<dominio>:<nombre>`: 1=`urn`, 2=`myrmion`, 3=`agent`, 4=`<org>`, 5=`<dominio>`, 6=`<nombre>`. El cuarto segmento es `<org>`; el dominio es el **quinto**. El conteo era incorrecto y consistente en todo el corpus.
 
-**Decisión.** El dominio es el **quinto segmento** del `agentId`. Toda referencia al «quinto segmento» como dominio se corrige a «quinto segmento». Donde sea posible se nombra el segmento (`<dominio>`) en lugar de contar, para evitar errores futuros.
+**Decisión.** El dominio es el **quinto segmento** del `agentId`. Toda referencia al «cuarto segmento» como dominio se corrige a «quinto segmento». Donde sea posible se nombra el segmento (`<dominio>`) en lugar de contar, para evitar errores futuros.
 
 **Alternativas.** (A) Dejar «cuarto» contando solo las partes variables tras el prefijo fijo `urn:myrmion:agent:` — descartada: ambigua y contradice el conteo natural por `:`. (B) No numerar, solo nombrar `<dominio>` — adoptada parcialmente como refuerzo.
 

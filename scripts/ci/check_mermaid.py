@@ -27,7 +27,12 @@ for n, (f, i, code) in enumerate(blocks):
     )
     if r.returncode != 0:
         print(f"MERMAID INVÁLIDO: {f} (bloque {i})")
-        print((r.stderr or r.stdout)[-700:])
+        err = (r.stderr or "") + "\n" + (r.stdout or "")
+        # quédate con la primera línea de error de mermaid (Parse error / Expecting …)
+        for ln in err.splitlines():
+            if any(k in ln for k in ("Error", "Expecting", "Parse", "Lexical", "got '")):
+                print("  >>", ln.strip())
+        print(err[:1500])
         bad += 1
 
 print(f"bloques mermaid: {len(blocks)} | inválidos: {bad}")
