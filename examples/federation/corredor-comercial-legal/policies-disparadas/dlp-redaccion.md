@@ -33,7 +33,7 @@ El lead entrante contenía el NIF del contacto del cliente. La capa de des-ident
 
 ## Por qué importa
 
-Este es exactamente el hueco que Adoption no podía cubrir: en Adoption pura no hay punto de inserción para la redacción inline en la ruta del prompt. En Federation, la ruta inter-agente **es** ese punto ([Guía de protección de datos](../../../../docs/adoption/guia-proteccion-datos.md) §3.4). El dato sensible nunca cruza la frontera de dominio en claro, pero la cadena sigue siendo operativa porque el origen puede re-identificar la respuesta.
+Este es exactamente el hueco que Adoption no podía cubrir: en Adoption pura no hay punto de inserción para la redacción inline en la ruta del prompt. En Federation, la ruta inter-agente **es** ese punto ([Guía de protección de datos](../../../../docs/adoption/guia-proteccion-datos.md) §2.1). El dato sensible nunca cruza la frontera de dominio en claro, pero la cadena sigue siendo operativa porque el origen puede re-identificar la respuesta.
 
 ---
 

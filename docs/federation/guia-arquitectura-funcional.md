@@ -90,7 +90,7 @@ flowchart TB
 
 **Qué aporta Federation.** Las [convenciones de mapping](./convenciones-mapping-constitucion-policy.md) (taxonomía de automatizabilidad + procedimiento) y el **formato** de la [ficha de policy template](../../templates/federation/ficha-policy-template.md). El **catálogo poblado** con implementaciones por dialecto es comunidad y vive en [`appendix/policy-templates/`](./appendix/policy-templates/), desacoplado para que el cuerpo no envejezca con cada release de motor.
 
-**Caso canónico que cierra el hueco de Adoption.** La des-identificación de datos sensibles (CF-06) es un patrón de este mapping: la redacción inline en la ruta del prompt que en Adoption exigía un intermediario inexistente, y que aquí es nativa (ver [Guía de protección de datos](../adoption/guia-proteccion-datos.md) §3.4 y el campo `deidTokens` del [bloque](./esquema-bloque-contexto-cultural.md)).
+**Caso canónico que cierra el hueco de Adoption.** La des-identificación de datos sensibles (CF-06) es un patrón de este mapping: la redacción inline en la ruta del prompt que en Adoption exigía un intermediario inexistente, y que aquí es nativa (ver [Guía de protección de datos](../adoption/guia-proteccion-datos.md) §2.1 y el campo `deidTokens` del [bloque](./esquema-bloque-contexto-cultural.md)).
 
 **Sobre qué se monta.** CF-03 (evaluación declarativa en runtime) y CF-06 (des-identificación en la ruta). **No todo principio es traducible**: las restricciones operativas sí, los criterios de decisión finos no (manifiesto §3.3, §8). El resto sigue siendo trabajo de modelado en cada agente, igual que en Adoption.
 

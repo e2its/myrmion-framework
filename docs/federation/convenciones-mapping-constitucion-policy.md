@@ -112,7 +112,7 @@ El disparador es la condición observable que dice "este principio aplica a este
   - `dataClassesTouched` — clases de datos que la capacidad lee o produce.
 - **Del bloque de contexto cultural** ([esquema](./esquema-bloque-contexto-cultural.md)):
   - `hopCount` y `businessCaseId` — el lugar del salto en la cadena y el caso de negocio que la origina.
-  - Campos del `DecisionHop` de `decisionChain` — en especial la existencia o ausencia de un salto previo de un dominio dado: su `agentId` (cuyo cuarto segmento es el dominio), los `criteriaApplied` y el `outcome`.
+  - Campos del `DecisionHop` de `decisionChain` — en especial la existencia o ausencia de un salto previo de un dominio dado: su `agentId` (cuyo quinto segmento es el dominio), los `criteriaApplied` y el `outcome`.
 
 Para un principio duro, el disparador es una condición booleana sobre estos campos. Para un principio blando, es una comparación contra umbral más los controles de refuerzo. Para un principio no automatizable, el disparador identifica cuándo escalar a juicio, no cuándo decidir.
 

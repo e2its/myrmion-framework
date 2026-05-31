@@ -116,7 +116,7 @@ Estas comprobaciones materializan las **tres propiedades** de identidad criptogr
 
 ## CF-06 — Des-identificación / DLP en la ruta
 
-**Qué resuelve.** Redactar, tokenizar o bloquear PII y PHI en los argumentos de las llamadas inter-agente **antes** de que alcancen el modelo. Es el criterio que cierra el hueco de enforcement técnico que Adoption no podía cubrir: en Adoption pura no hay punto de inserción para la redacción inline (ver [Guía de protección de datos](../adoption/guia-proteccion-datos.md) §3.4); en Federation, la ruta inter-agente **es** ese punto.
+**Qué resuelve.** Redactar, tokenizar o bloquear PII y PHI en los argumentos de las llamadas inter-agente **antes** de que alcancen el modelo. Es el criterio que cierra el hueco de enforcement técnico que Adoption no podía cubrir: en Adoption pura no hay punto de inserción para la redacción inline (ver [Guía de protección de datos](../adoption/guia-proteccion-datos.md) §2.1); en Federation, la ruta inter-agente **es** ese punto.
 
 **Checklist de verificación.**
 

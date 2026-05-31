@@ -52,7 +52,7 @@ Y **no** consta respaldo de Finanzas:
 
 3. En `decisionChain` del **bloque de contexto cultural** no existe ningún `DecisionHop` cuyo `agentId` sea de dominio `finanzas` con `outcome == "permitido"`.
 
-El dominio de un salto se deriva del `agentId` (cuarto segmento del URN `urn:myrmion:agent:<org>:<dominio>:<nombre>`).
+El dominio de un salto se deriva del `agentId` (quinto segmento del URN `urn:myrmion:agent:<org>:<dominio>:<nombre>`).
 
 > Nota de contrato: el efecto aquí es `deny`, no `require-prior-hop`. La diferencia es deliberada y sigue el manifiesto §3.3, que para este principio dice «bloquea». Exteriorizar sin respaldo no es un paso que falte en un corredor: es una acción que **no debe ocurrir tal cual**. El camino correcto (obtener el endorsement de Finanzas) se recorre **antes**, por iniciativa del agente. Una organización que prefiera encarrilar en vez de cortar puede cambiar el efecto a `require-prior-hop`; esta ficha documenta la variante estricta.
 
@@ -116,7 +116,7 @@ Principio de cautela: la evidencia registra el **tipo** de patrón financiero, n
 
 ## Snippets
 
-> Los snippets leen `input.capability` (la `Capability` de la tool, del descriptor), `input.context` (el bloque de contexto cultural) e `input.detector` (resultado del detector de patrón financiero). El nombre/valor concreto de los campos en el transporte lo define el [mapeo de transporte](../mapeo-transporte/). `domain_of` extrae el cuarto segmento del `agentId`.
+> Los snippets leen `input.capability` (la `Capability` de la tool, del descriptor), `input.context` (el bloque de contexto cultural) e `input.detector` (resultado del detector de patrón financiero). El nombre/valor concreto de los campos en el transporte lo define el [mapeo de transporte](../mapeo-transporte/). `domain_of` extrae el quinto segmento del `agentId`.
 
 ### Rego (OPA)
 

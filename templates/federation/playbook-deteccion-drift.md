@@ -66,7 +66,7 @@ Patrón sobre el log correlacionado por `correlationId`. Reconstruye cadenas, de
 | Cadencia | [Espacio para rellenar] — *p. ej. base mensual; quincenal para corredores que tocan criticidad alta; toda señal fuerte adelanta la ejecución* |
 | Fuentes (qué loggear) | [Espacio para rellenar] — *p. ej. `correlationId`, `criteriaApplied`, `agentId` emisor/receptor, `hopCount`, `businessCaseId`, `outcome` normalizado, `constitutionHash` por salto* |
 | Umbrales acordados (qué cualifica como señal) | [Espacio para rellenar] — *p. ej. firma nueva persistente sin cambio de hash; desaparición de un `policyId@version` obligatorio; acortamiento sistemático de la cadena; desplazamiento sostenido de la distribución de `outcome`. Fijar el tamaño de «persistente»* |
-| Último resultado | [Espacio para rellenar] — *p. ej. 2026-05-29: en el corredor comercial→legal aparece una firma nueva persistente —`enviar_propuesta` sin el `policyId` de paso por Legal— en el 6% de las cadenas, mismo `constitutionHash`* |
+| Último resultado | [Espacio para rellenar] — *p. ej. 2026-05-29: en el corredor comercial→legal aparece una firma nueva persistente —`enviar_propuesta_cliente` sin el `policyId` de paso por Legal— en el 6% de las cadenas, mismo `constitutionHash`* |
 | Acciones disparadas | [Espacio para rellenar] — *p. ej. revisión formal inmediata (corredor de criticidad alta); decidir entre ratificar (actualizar Constitución/policies), corregir, o registrar excepción explícita (deriva al Patrón B)* |
 
 ---
@@ -100,7 +100,7 @@ Patrón sobre un **banco de escenarios versionado**: dilemas representativos del
 | Cadencia | [Espacio para rellenar] — *p. ej. base trimestral; mensual para bancos de criticidad alta. **No negociable: tras cada cambio de Constitución, al alta de un agente nuevo y al cambio de bloque/descriptor*** |
 | Fuentes (qué loggear) | [Espacio para rellenar] — *p. ej. banco de escenarios + `constitutionHash` evaluado; resolución efectiva de cada agente como `criteriaApplied` + `outcome` normalizado* |
 | Umbrales acordados (qué cualifica como señal) | [Espacio para rellenar] — *p. ej. la coherencia es binaria por escenario: cualquier par de agentes que resuelve incompatiblemente es señal; desviación de la esperada en criticidad alta; regresión de un escenario que antes pasaba* |
-| Último resultado | [Espacio para rellenar] — *p. ej. 2026-05-30: re-ejecución del banco tras la enmienda de Constitución; `urn:myrmion:agent:consultora-modelo:comercial:fonseca` y `urn:myrmion:agent:consultora-modelo:legal:riera` resuelven el escenario «lead con compromiso implícito» de forma incompatible* |
+| Último resultado | [Espacio para rellenar] — *p. ej. 2026-05-30: re-ejecución del banco tras la enmienda de Constitución; `urn:myrmion:agent:consultora-modelo:comercial:propuestas` y `urn:myrmion:agent:consultora-modelo:legal:dictamenes` resuelven el escenario «lead con compromiso implícito» de forma incompatible* |
 | Acciones disparadas | [Espacio para rellenar] — *p. ej. incoherencia confirmada → revisión de gobernanza inmediata; regresión tras cambio de Constitución → reabrir la enmienda; desviación de un solo agente → derivar a Adoption* |
 
 ---

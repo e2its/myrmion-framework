@@ -44,7 +44,7 @@ La regla se activa cuando, en una llamada, concurren las dos condiciones (conven
 
 2. **Aún no consta el salto por Legal.** En `decisionChain` del **bloque de contexto cultural** **no** existe ningún `DecisionHop` cuyo `agentId` pertenezca al dominio `legal` con `outcome == "permitido"`.
 
-El dominio de un salto se deriva del `agentId`, que tiene forma `urn:myrmion:agent:<org>:<dominio>:<nombre>`: el dominio es el cuarto segmento del URN.
+El dominio de un salto se deriva del `agentId`, que tiene forma `urn:myrmion:agent:<org>:<dominio>:<nombre>`: el dominio es el quinto segmento del URN.
 
 Si las dos condiciones concurren, el corredor de gobierno aún no se ha recorrido y la policy debe exigirlo.
 
@@ -86,7 +86,7 @@ Cuando el salto por Legal finalmente ocurre, su propio `DecisionHop` se incorpor
 ## Caveats
 
 - **No juzga el fondo.** La policy garantiza que Legal *intervino con resultado positivo*; no garantiza que la cláusula sea correcta. Ese juicio es trabajo de modelado del agente Legal.
-- **Dominio del salto, no agente concreto.** La regla exige un agente *del dominio* `legal` (cuarto segmento del `agentId`), no un `agentId` fijo, para no acoplarse a una instancia. Si la Constitución exige un agente legal concreto, parametrízalo.
+- **Dominio del salto, no agente concreto.** La regla exige un agente *del dominio* `legal` (quinto segmento del `agentId`), no un `agentId` fijo, para no acoplarse a una instancia. Si la Constitución exige un agente legal concreto, parametrízalo.
 - **Vigencia del salto.** Esta ficha trata el salto de Legal como válido para la cadena identificada por `correlationId`. Si la materia cambia sustancialmente tras el salto (otra cláusula, otro alcance), conviene invalidar el salto. La definición de «cambio sustancial» es constitucional, no de policy.
 - **Degradación segura.** Si el bloque de contexto no trae `decisionChain` cuando `hopCount > 1` (debería traerla siempre), o si falta el campo `canCommit` en el descriptor, la regla no puede evaluarse con fidelidad: el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio ([CF-03](../../criterios-funcionales.md); convenciones §3, paso 6).
 
@@ -108,7 +108,7 @@ Cuando el salto por Legal finalmente ocurre, su propio `DecisionHop` se incorpor
 
 ## Snippets
 
-> Los snippets leen el documento de entrada `input` con la forma: `input.capability` (la `Capability` de la tool invocada, del descriptor), `input.context` (el bloque de contexto cultural). El nombre/valor concreto de los campos en el transporte (header, metadata, atributo de traza) lo define el [mapeo de transporte](../mapeo-transporte/), no esta ficha. La función `domain_of` extrae el cuarto segmento del `agentId`.
+> Los snippets leen el documento de entrada `input` con la forma: `input.capability` (la `Capability` de la tool invocada, del descriptor), `input.context` (el bloque de contexto cultural). El nombre/valor concreto de los campos en el transporte (header, metadata, atributo de traza) lo define el [mapeo de transporte](../mapeo-transporte/), no esta ficha. La función `domain_of` extrae el quinto segmento del `agentId`.
 
 ### Rego (OPA)
 
@@ -121,7 +121,7 @@ import future.keywords.in
 # Comercial §3 — "No asumimos compromisos sin pasar por Legal"
 # automatabilityClass: duro · efecto: require-prior-hop · pre-invocación
 
-# Dominio = cuarto segmento del URN urn:myrmion:agent:<org>:<dominio>:<nombre>
+# Dominio = quinto segmento del URN urn:myrmion:agent:<org>:<dominio>:<nombre>
 domain_of(agent_id) := d if {
     parts := split(agent_id, ":")
     d := parts[4]

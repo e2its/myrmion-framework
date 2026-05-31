@@ -76,7 +76,7 @@ Que la clase sea `duro` no significa que la policy juzgue el fondo jurídico: ga
 
 - **Campos del descriptor de identidad que intervienen:** `capabilities[].canCommit` de la tool invocada por el agente emisor (equivalentemente, `capabilities[].sideEffectClass == "compromiso"`).
 - **Campos del bloque de contexto cultural que intervienen:** `decisionChain` y sus `DecisionHop` (se inspecciona en busca de un salto del dominio `legal` con `outcome == "permitido"` sobre la misma cadena, identificada por `correlationId`).
-- **Condición que activa la policy:** concurren las dos condiciones — (1) `capability.canCommit == true`; y (2) en `decisionChain` **no** existe ningún `DecisionHop` cuyo `agentId` pertenezca al dominio `legal` con `outcome == "permitido"`. El dominio de un salto se deriva del cuarto segmento del `agentId` (`urn:myrmion:agent:<org>:<dominio>:<nombre>`).
+- **Condición que activa la policy:** concurren las dos condiciones — (1) `capability.canCommit == true`; y (2) en `decisionChain` **no** existe ningún `DecisionHop` cuyo `agentId` pertenezca al dominio `legal` con `outcome == "permitido"`. El dominio de un salto se deriva del quinto segmento del `agentId` (`urn:myrmion:agent:<org>:<dominio>:<nombre>`).
 
 ---
 
@@ -125,7 +125,7 @@ Cuando el salto por Legal finalmente ocurre, su propio `DecisionHop` se incorpor
 *Pregunta guía: ¿qué sabe quien diseñó esta policy que los campos anteriores no capturan? Incluye el comportamiento ante el fallo.*
 
 - **No juzga el fondo.** La policy garantiza que Legal intervino con resultado positivo; no garantiza que la cláusula sea correcta. Ese juicio es trabajo de modelado del agente Legal.
-- **Dominio del salto, no agente concreto.** La regla exige un agente *del dominio* `legal` (cuarto segmento del `agentId`), no un `agentId` fijo, para no acoplarse a una instancia. Si la Constitución exige un agente legal concreto, parametrízalo.
+- **Dominio del salto, no agente concreto.** La regla exige un agente *del dominio* `legal` (quinto segmento del `agentId`), no un `agentId` fijo, para no acoplarse a una instancia. Si la Constitución exige un agente legal concreto, parametrízalo.
 - **Vigencia del salto.** El salto de Legal se trata como válido para la cadena identificada por `correlationId`. Si la materia cambia sustancialmente tras el salto (otra cláusula, otro alcance), conviene invalidarlo. Qué es «cambio sustancial» es constitucional, no de policy.
 - **Interacción con otras fichas.** Si la propuesta contiene datos identificables, puede aplicar además una ficha de des-identificación ([CF-06](../../docs/federation/criterios-funcionales.md)) que emita `deidTokens`. Esta ficha no cubre ese caso; redáctalo aparte y enlázalo.
 - **Comportamiento ante el fallo (degradación segura).** Si el bloque no trae `decisionChain` cuando `hopCount > 1` (debería traerla siempre), o si falta `canCommit` en el descriptor, la regla no puede evaluarse con fidelidad: el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio (lo decide el policy engine, [CF-03](../../docs/federation/criterios-funcionales.md); convenciones §3, paso 6).
