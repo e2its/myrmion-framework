@@ -79,15 +79,15 @@ Por cada salto (`DecisionHop`) de la cadena de decisiones que la federación doc
 
 1. **Reconstruir cadenas.** Agrupar todos los `DecisionHop` por `correlationId` y ordenarlos por `hopCount`. Cada grupo es una **cadena de decisiones** completa.
 2. **Construir la firma de la cadena.** Para cada cadena, derivar su *firma*: la secuencia ordenada de `(dominio, criteriaApplied, resultado)` por salto. La firma describe la **forma** de la decisión, no su contenido.
-3. **Establecer la línea base.** Para cada tipo de corredor (mismo par de dominios, p. ej. comercial→legal), construir la distribución de firmas observada en una ventana de referencia estable, segmentada por `constitutionHash`.
-4. **Comparar contra la base.** En cada ejecución, comparar la distribución de firmas reciente con la línea base, sin mezclar `constitutionHash` distintos, para no confundir *deriva* con *cambio decidido*.
+3. **Establecer la línea base.** Para cada tipo de corredor (mismo par de dominios, p. ej. comercial→legal), construir la distribución de firmas observada en una ventana de referencia estable, segmentada por `constitutionHashApplied`.
+4. **Comparar contra la base.** En cada ejecución, comparar la distribución de firmas reciente con la línea base, sin mezclar `constitutionHashApplied` distintos, para no confundir *deriva* con *cambio decidido*.
 5. **Atribuir.** Donde haya divergencia, separar tres causas posibles: (a) cambio decidido de la Constitución, (b) excepción acumulada (deriva al Patrón B), (c) **drift genuino** —cambio de forma sin cambio de Constitución ni excepción registrada que lo explique.
 
 ### 3.3 Señales / Umbrales
 
 Cuenta como **señal de drift** (no como prueba; es disparador de revisión):
 
-- Aparición de **firmas nuevas y persistentes** en un corredor —combinaciones de `criteriaApplied` que antes no se daban— sin cambio de `constitutionHash` que las explique.
+- Aparición de **firmas nuevas y persistentes** en un corredor —combinaciones de `criteriaApplied` que antes no se daban— sin cambio de `constitutionHashApplied` que las explique.
 - **Desaparición sostenida** de un criterio que la Constitución exige para ese corredor: un `policyId@version` obligatorio que deja de aparecer en `criteriaApplied`.
 - **Acortamiento sistemático** de la cadena (saltos que antes existían y desaparecen) sin *policy* que lo respalde —indicio de que un control se está saltando de hecho.
 - **Desplazamiento de la distribución de resultados** del corredor (p. ej. "con condiciones" migra a "aceptado" sin paso intermedio) mantenido más allá de la variación estacional esperada.
