@@ -93,7 +93,7 @@ Cada criterio se considera **cubierto** cuando el stack satisface todos los punt
 - [ ] La identidad es vinculable de forma estable al `agentId` del descriptor.
 - [ ] El receptor puede verificar la identidad del emisor **antes** de ejecutar la llamada.
 
-Estas cuatro propiedades son las que el cuerpo entiende por «mTLS o equivalente». El cuerpo nunca exige mTLS por su nombre (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md), regla 4).
+Estas comprobaciones materializan las **tres propiedades** de identidad criptográfica verificable que el resto del corpus exige —verificación criptográfica antes de ejecutar, credencial de vida corta y revocable, y vinculación estable al `agentId`—: es lo que el cuerpo entiende por «mTLS o equivalente». El cuerpo nunca exige mTLS por su nombre (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md), regla 4).
 
 **Qué NO prescribe.** El IdP concreto ni el mecanismo (mTLS, identidad federada tipo SPIFFE, etc.). Candidatos: ver `appendix/stacks-referencia/`.
 
