@@ -20,7 +20,7 @@ Pseudo-policy neutral (ilustrativa; el dialecto vive en el apéndice):
 
 ```
 IF capability.canCommit == true
-AND NOT decisionChain.contains(hop WHERE hop.domain == "legal" AND hop.outcome == "permitido")
+AND NOT decisionChain.contains(hop WHERE domain_of(hop.agentId) == "legal" AND hop.outcome == "permitido")
 THEN require-prior-hop("legal")
 ```
 
@@ -30,7 +30,7 @@ THEN require-prior-hop("legal")
 - La policy **no bloqueó la propuesta de forma terminal**: la condicionó. El efecto operativo es que el corredor no puede saltar directo a `enviar_propuesta_cliente`; primero tiene que invocar al agente legal.
 - Esto es precisamente lo que produce el **salto 2**: el comercial invoca `validar_clausula` en el agente legal, propagando el bloque actualizado (`hopCount: 2`, `decisionChain` con el eslabón del salto 1).
 - **Validación de compatibilidad previa:** el agente legal comparó el `constitutionHash` del bloque (`sha256:c0n5717uc10n3000...`) contra su `compatibleConstitutionHashes`. **Hubo match** (ambos agentes heredan de la Constitución 3.0), así que la llamada procedió sujeta a policy.
-- Una vez el legal emite el dictamen con `emitir_dictamen` y `outcome: permitido`, la cadena ya contiene el paso por legal exigido y el comercial podrá ejecutar `enviar_propuesta_cliente` (sujeto al resto de policies — ver [bloqueo de cifras](./bloqueo-cifras.md)).
+- Una vez el legal valida la cláusula con `validar_clausula` y `outcome: permitido`, la cadena ya contiene el paso por legal exigido y el comercial podrá ejecutar `enviar_propuesta_cliente` (sujeto al resto de policies — ver [bloqueo de cifras](./bloqueo-cifras.md)).
 
 ## Por qué importa
 

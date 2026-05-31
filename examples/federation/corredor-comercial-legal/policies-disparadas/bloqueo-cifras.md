@@ -21,7 +21,7 @@ Pseudo-policy neutral (ilustrativa):
 ```
 IF capability.externalizes == true
 AND args MATCH patron-financiero(importe | descuento)
-AND NOT decisionChain.contains(hop WHERE hop.domain == "finanzas" AND hop.outcome == "permitido")
+AND NOT decisionChain.contains(hop WHERE domain_of(hop.agentId) == "finanzas" AND hop.outcome == "permitido")
 THEN deny
 ```
 

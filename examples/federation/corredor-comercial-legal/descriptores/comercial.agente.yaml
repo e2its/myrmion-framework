@@ -38,11 +38,6 @@ capabilities:
     externalizes: false
     canCommit: false
     dataClassesTouched: ["C2", "C3"]
-  - toolName: "generar_propuesta"
-    sideEffectClass: "escritura"
-    externalizes: false
-    canCommit: false
-    dataClassesTouched: ["C2", "C3"]
   # La tool que externaliza y compromete: dispara, por construcción, las policies de
   # paso por legal (canCommit) y de bloqueo de cifras (externalizes). Ver policies-disparadas/.
   - toolName: "enviar_propuesta_cliente"

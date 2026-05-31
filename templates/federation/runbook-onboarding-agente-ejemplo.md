@@ -185,7 +185,7 @@ Se ejecutó una invocación real del corredor comercial→legal con un lead de p
 
 - El [bloque de contexto cultural](../../docs/federation/esquema-bloque-contexto-cultural.md) viajó completo: `correlationId`, `businessCaseId`, `constitutionHash` del Comercial y la `decisionChain` con el salto previo.
 - La **validación de compatibilidad** pasó en el agente Legal: el `constitutionHash` que aplicó el Comercial (v3.0, `sha256:a3f5…`) está entre los `compatibleConstitutionHashes` del Legal.
-- La cadena de decisiones se reconstruyó desde el `correlationId`: salto 1 (Comercial, `calificar_lead`, `criteriaApplied: [pol-calificacion-lead@1.2]`) → salto 2 (Legal, `emitir_dictamen`, `outcome: permitido`).
+- La cadena de decisiones se reconstruyó desde el `correlationId`: salto 1 (Comercial, `calificar_lead`, `criteriaApplied: [pol-calificacion-lead@1.2, pol-dlp-pii@2.0]`, `outcome: redactado`) → salto 2 (Legal, `validar_clausula`, `outcome: permitido`).
 - La PII del cliente llegó tokenizada al dominio legal; el dictamen final se re-identificó en el agente Comercial vía `deidToken`.
 
 El agente queda verificado en producción, no solo activo en el catálogo.
