@@ -31,6 +31,8 @@ La **fidelidad** es la propiedad que define un buen mapping: la regla derivada d
 
 Esta derivación realiza el criterio funcional [CF-03](./criterios-funcionales.md): que exista una Constitución versionada y un mapping que, principio a principio, declare disparador, efecto, evidencia y punto de aplicación, o lo marque como no automatizable.
 
+**El mismo método sirve para el Marco Regulatorio.** Aunque este documento habla de «la Constitución» por brevedad, las convenciones de mapping se aplican igual a los principios del **Marco Regulatorio**: se derivan a regla con el mismo disparador / efecto / evidencia / punto de aplicación. La diferencia no está en *cómo* se derivan, sino en su **`origen`** —Constitución o Marco—, que la [ficha de policy](../../templates/federation/ficha-policy-template.md) declara y que determina el tratamiento de su violación: las reglas de la Constitución son **excepcionables**; las del Marco **no** —el intento de excepción es una alerta a legal/DPO tratada como incidente ([gobernanza](./gobernanza-federada.md) §3). Por eso el catálogo marca el origen de cada regla.
+
 ---
 
 ## 2. Taxonomía de automatizabilidad

@@ -26,7 +26,7 @@ Se usa en tres momentos:
 |---|---|---|---|
 | **CF-01** | Gateway de llamadas inter-agente | §3.1, §3.2 | Intermediar y observar toda llamada; punto de extensión para policy y propagación de metadatos |
 | **CF-02** | Service registry federado | §3.1 | Descubrimiento de agentes con descriptores de capacidades extendidos |
-| **CF-03** | Policy engine | §3.3 | Evaluar en runtime las policies derivadas de la Constitución |
+| **CF-03** | Policy engine | §3.3 | Evaluar en runtime las policies derivadas de la Constitución y del Marco Regulatorio |
 | **CF-04** | Identity provider | §3.1 | Identidades de servicio criptográficas con credenciales de vida corta |
 | **CF-05** | Observabilidad agent-aware | §3.2, §3.4 | Trazar cadenas de llamadas completas por `correlationId` |
 | **CF-06** | Des-identificación / DLP en la ruta | §3.3 | Detectar y redactar/tokenizar PII/PHI antes de que alcance el modelo |
@@ -68,7 +68,7 @@ Cada criterio se considera **cubierto** cuando el stack satisface todos los punt
 
 ## CF-03 — Policy engine
 
-**Qué resuelve.** Que los principios automatizables de la Constitución se evalúen en cada llamada, en runtime, con latencia despreciable. Es el músculo de la capa de mapping (§3.3).
+**Qué resuelve.** Que los principios automatizables de la Constitución —y del Marco Regulatorio— se evalúen en cada llamada, en runtime, con latencia despreciable. Es el músculo de la capa de mapping (§3.3). El `origen` de cada policy (Constitución o Marco) determina si su violación es excepcionable; ver [gobernanza §3](./gobernanza-federada.md) y la [ficha de policy](../../templates/federation/ficha-policy-template.md).
 
 **Checklist de verificación.**
 

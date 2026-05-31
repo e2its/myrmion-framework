@@ -34,7 +34,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 | [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📋 pendiente de revisión |
 | [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | 🔍 en revisión |
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | 🔍 en revisión |
-| [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📝 draft |
+| [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📋 pendiente de revisión |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
 | [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📋 pendiente de revisión |
 | [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | 📝 draft |
@@ -56,7 +56,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 
 | Recurso | Qué es | Estado |
 |---|---|---|
-| [templates/federation/](../../templates/federation/) | Plantillas socráticas que la organización rellena (descriptor, bloque, ficha de policy, playbook de drift, charter, registro de excepciones, runbooks, checklist Fase 0) | 📝 draft |
+| [templates/federation/](../../templates/federation/) | Plantillas socráticas que la organización rellena (descriptor, bloque, ficha de policy, playbook de drift, charter, registro de excepciones, runbooks, checklist Fase 0) | 📋 pendiente de revisión |
 | [examples/federation/](../../examples/federation/) | Corredor end-to-end anonimizado + diagramas | 📋 pendiente de revisión |
 
 ---

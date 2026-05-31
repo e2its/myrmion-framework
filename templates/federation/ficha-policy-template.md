@@ -9,7 +9,7 @@
 
 **Versión 1.0**
 
-*Plantilla socrática para redactar una entrada del catálogo de policy: el envoltorio neutral de una regla derivada de la Constitución. Materializa la capa de mapping Constitución → policy del [manifiesto](../../docs/federation/manifesto.md) §3.3 y fija el formato que exigen las [convenciones de mapping](../../docs/federation/convenciones-mapping-constitucion-policy.md). Una ficha dice **qué** hace la policy y **por qué**, nunca cómo se serializa para un motor concreto: las implementaciones por dialecto viven en el [catálogo del apéndice](../../docs/federation/appendix/policy-templates/), nunca aquí.*
+*Plantilla socrática para redactar una entrada del catálogo de policy: el envoltorio neutral de una regla derivada de la Constitución **o del Marco Regulatorio** (el campo `origen` distingue cuál, y de ello depende si su violación es excepcionable). Materializa la capa de mapping Constitución → policy del [manifiesto](../../docs/federation/manifesto.md) §3.3 y fija el formato que exigen las [convenciones de mapping](../../docs/federation/convenciones-mapping-constitucion-policy.md). Una ficha dice **qué** hace la policy y **por qué**, nunca cómo se serializa para un motor concreto: las implementaciones por dialecto viven en el [catálogo del apéndice](../../docs/federation/appendix/policy-templates/), nunca aquí.*
 
 </td>
 </tr>
@@ -23,7 +23,7 @@ Esta plantilla te guía, mediante **preguntas**, para redactar **una** entrada d
 
 No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten** una decisión antes de que la regla se evalúe en producción o se audite. Las respuestas son el contrato neutral de la policy; el dialecto de motor es una materialización posterior que vive en el apéndice.
 
-**Quién la rellena.** El custodio de la Constitución (transformación digital) decide *qué* principio se mapea y con qué efecto; la plataforma de federación decide *dónde* y *cómo* se aplica. La ficha la firman ambos, porque une un principio cultural con un control técnico.
+**Quién la rellena.** El custodio de la capa de origen decide *qué* principio se mapea y con qué efecto — la **Constitución** (transformación digital) o el **Marco Regulatorio** (legal/DPO), según el `origen` de la policy; la plataforma de federación decide *dónde* y *cómo* se aplica. La ficha la firman ambos, porque une un principio de gobierno con un control técnico.
 
 **Esta plantilla es el envoltorio; el dialecto vive en el apéndice.** El cuerpo del corpus es agnóstico de producto por diseño ([regla anti-acoplamiento](../../docs/federation/regla-anti-acoplamiento.md) §3): aquí no se escribe ningún dialecto de motor. La serialización ejecutable de cada policy se referencia en `refImplementaciones[]`, que apunta a [`appendix/policy-templates/`](../../docs/federation/appendix/policy-templates/) — el único lugar donde las reglas tocan el suelo tecnológico.
 
@@ -52,7 +52,7 @@ No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten*
 | Título legible | *(qué hace la policy, en una línea)* |
 | `version` de la policy (semver) | *(p. ej. 1.0)* |
 | Organización | *(razón social o identificador corto)* |
-| Custodio funcional | *(rol que decide qué principio se mapea — típicamente transformación digital)* |
+| Custodio funcional | *(rol que decide qué principio se mapea — transformación digital si el `origen` es la Constitución; legal/DPO si es el Marco Regulatorio)* |
 | Custodio de aplicación | *(rol que decide dónde se aplica — plataforma de federación)* |
 | Fecha de última revisión | *(YYYY-MM-DD)* |
 | Estado | *(Borrador / En revisión / Vigente / Derogada)* |
@@ -67,10 +67,11 @@ No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten*
 
 ---
 
-## 2. `principioConstitucional`
+## 2. `origen` y `principioDeOrigen`
 
-*Pregunta guía: ¿qué principio de la Constitución justifica esta policy, y dónde está escrito? Cita el texto del principio y su localización (§). La trazabilidad constitucional es innegociable: una regla sin principio que la respalde es un agujero de gobierno disfrazado de control (convenciones §5; manifiesto §5).*
+*Pregunta guía: ¿de qué capa de gobernanza deriva esta policy y qué principio la justifica? El **`origen`** determina el tratamiento de su violación en runtime: una policy derivada de la **Constitución** es **excepcionable** (con justificación, alcance temporal y autorizador); una derivada del **Marco Regulatorio** **no lo es** — el intento de excepción es una **alerta** a legal/DPO tratada como incidente, no una decisión discrecional ([gobernanza](../../docs/federation/gobernanza-federada.md) §3). Cita el texto del principio y su localización (§): la trazabilidad es innegociable, una regla sin principio que la respalde es un agujero de gobierno disfrazado de control (convenciones §5; manifiesto §5).*
 
+- **`origen`:** *(`constitucion` | `marco`)* — [Espacio para rellenar]
 - **Cita del principio:** [Espacio para rellenar]
 - **Localización (§):** [Espacio para rellenar]
 

@@ -48,10 +48,11 @@ En el `criteriaApplied` de un `DecisionHop` aparece sufijado con la versión: `p
 
 ---
 
-## 2. `principioConstitucional`
+## 2. `origen` y `principioDeOrigen`
 
-*Pregunta guía: ¿qué principio de la Constitución justifica esta policy, y dónde está escrito?*
+*Pregunta guía: ¿de qué capa de gobernanza deriva esta policy y qué principio la justifica?*
 
+- **`origen`:** `constitucion` — es un principio cultural (el paso por Legal), por tanto **excepcionable** con justificación, alcance temporal y autorizador (gobernanza §3). No es del Marco.
 - **Cita del principio:** «No asumimos compromisos sin pasar por Legal.»
 - **Localización (§):** Constitución del dominio Comercial de Consultora Modelo S.L. — § 3 (Principios de comportamiento).
 
