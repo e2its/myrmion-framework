@@ -23,9 +23,9 @@
 
 ## El caso
 
-Fonseca, del departamento Comercial, ha cualificado un lead (`lead-2026-0042`) y necesita revisión legal de la propuesta antes de enviarla. Su agente departamental, `urn:myrmion:agent:consultora-modelo:comercial:propuestas`, **origina** la cadena en el salto 1 (`hopCount = 1`): invoca `calificar_lead`, aplica sus criterios y deja `outcome: permitido`. Como en el lead aparece el NIF del cliente, la des-identificación en la ruta lo redacta de forma reversible y emite un `deidToken`.
+Fonseca, del departamento Comercial, ha cualificado un lead (`lead-2026-0042`) y necesita revisión legal de la propuesta antes de enviarla. Su agente departamental, `urn:myrmion:agent:consultora-modelo:comercial:propuestas`, **origina** la cadena en el salto 1 (`hopCount = 1`): invoca `calificar_lead`. Como en el lead aparece el NIF del cliente, la des-identificación en la ruta lo redacta de forma reversible (emite un `deidToken`) y el salto deja `outcome: redactado`.
 
-El agente del departamento Legal, `urn:myrmion:agent:consultora-modelo:legal:dictamenes` (que opera para Riera), **recibe** el bloque, valida que el `constitutionHash` del emisor es compatible con el suyo (lo es), invoca `validar_clausula` y decide. El bloque de abajo es el que Legal construye en el salto 2: hereda `correlationId`, `businessCaseId`, `originatingUserRef`, la cadena previa y los `deidTokens`; **incrementa `hopCount` a 2** y **añade** su propio `DecisionHop`.
+El agente del departamento Legal, `urn:myrmion:agent:consultora-modelo:legal:dictamenes` (que opera para Riera), **recibe** el bloque (salto 2), valida que el `constitutionHash` del emisor es compatible con el suyo (lo es), invoca `validar_clausula` sobre el «NIF_1» —sin re-identificar— y deja `outcome: permitido`. El bloque de abajo es el que viaja hacia el **cierre** (salto 3, en que Comercial envía la propuesta al cliente): hereda `correlationId`, `businessCaseId`, `originatingUserRef` y los `deidTokens`, y lleva en `decisionChain` los **dos saltos previos** (Comercial y Legal); `hopCount = 3`.
 
 ---
 
@@ -55,22 +55,22 @@ Este es el bloque que el agente Legal adjunta a su llamada subsiguiente (y que q
   "regulatoryFrameworkHash": "sha256:1a2b3c4d5e6f708192a3b4c5d6e7f8091a2b3c4d5e6f708192a3b4c5d6e7f809",
   "departmentLayerHash": "sha256:9f8e7d6c5b4a39281706f5e4d3c2b1a09f8e7d6c5b4a39281706f5e4d3c2b1a0",
   "originatingUserRef": "usr_op4q7x2k (seudónimo)",
-  "hopCount": 2,
+  "hopCount": 3,
   "decisionChain": [
     {
       "agentId": "urn:myrmion:agent:consultora-modelo:comercial:propuestas",
       "toolInvoked": "calificar_lead",
       "constitutionHashApplied": "sha256:c0ffee11d2a3b4c5d6e7f8091a2b3c4d5e6f7081920a1b2c3d4e5f60718293a4",
-      "criteriaApplied": ["pol-calificacion-lead@1.2", "juicio-de-modelo-no-automatizable"],
-      "outcome": "permitido",
+      "criteriaApplied": ["pol-calificacion-lead@1.2", "pol-dlp-pii@2.0", "juicio-de-modelo-no-automatizable"],
+      "outcome": "redactado",
       "timestamp": "2026-05-30T09:12:00Z"
     },
     {
       "agentId": "urn:myrmion:agent:consultora-modelo:legal:dictamenes",
       "toolInvoked": "validar_clausula",
       "constitutionHashApplied": "sha256:c0ffee11d2a3b4c5d6e7f8091a2b3c4d5e6f7081920a1b2c3d4e5f60718293a4",
-      "criteriaApplied": ["pol-dlp-pii@2.0", "juicio-de-modelo-no-automatizable"],
-      "outcome": "redactado",
+      "criteriaApplied": ["juicio-de-modelo-no-automatizable"],
+      "outcome": "permitido",
       "timestamp": "2026-05-30T09:45:00Z"
     }
   ],
@@ -86,7 +86,7 @@ Este es el bloque que el agente Legal adjunta a su llamada subsiguiente (y que q
 ## 2. Identidad y correlación
 
 - **`correlationId` compartido.** El valor `550e8400-e29b-41d4-a716-446655440000` lo generó el agente Comercial al originar la cadena (`hopCount = 1`). El agente Legal lo **copia tal cual**: no lo regenera. Los dos saltos del corredor se trazan así como una sola cadena de extremo a extremo, lista para el Patrón A de detección de drift.
-- **`hopCount` incrementado.** El salto 1 viajaba con `hopCount = 1` y la `decisionChain` con un solo eslabón. Legal lo lleva a `2` y la cadena pasa a tener dos eslabones: `hopCount` y la longitud de `decisionChain` deben cuadrar.
+- **`hopCount` y longitud de `decisionChain`.** `decisionChain` lleva los saltos **previos** al actual: su longitud es `hopCount − 1` (el salto en curso aún no está en la cadena; se añade al propagarse). Este bloque va hacia el salto 3 —el cierre—, así que `hopCount = 3` y la cadena tiene **dos** eslabones previos (Comercial y Legal). Misma convención que [`hop-2.json`](../../examples/federation/corredor-comercial-legal/bloque/hop-2.json), que con `hopCount = 2` lleva un solo eslabón.
 - **`originatingUserRef` heredado y seudónimo.** Es `usr_op4q7x2k`, un seudónimo opaco de Fonseca. **Nunca su nombre ni su email**: el bloque se exporta a observabilidad y no puede llevar PII directa.
 
 ---
@@ -102,8 +102,8 @@ Este es el bloque que el agente Legal adjunta a su llamada subsiguiente (y que q
 La cadena es **append-only**. El `DecisionHop` del agente Comercial (salto 1) llega intacto; el agente Legal **añade** el suyo (salto 2) sin tocar el anterior. Los `timestamp` son coherentes con el orden (`09:45:00Z` > `09:12:00Z`).
 
 - **`constitutionHashApplied` idéntico en ambos** saltos: los dos agentes operan la misma versión de Constitución, que es justo lo que la validación de compatibilidad (esquema §4) verificó al recibir el salto 1.
-- **`criteriaApplied` honesto.** Cada eslabón distingue la policy automatizada (`pol-calificacion-lead@1.2`, `pol-dlp-pii@2.0`) del literal `"juicio-de-modelo-no-automatizable"` para el criterio fino que Federation no automatiza (Legal valoró el matiz de la cláusula de penalización con juicio de modelo, no con una regla booleana). Esta convención es la que hace **analizable** la cadena a posteriori.
-- **`outcome: redactado`** en el salto 2: Legal aprueba pero la des-identificación de la ruta redactó un dato en el camino (el NIF), por lo que el resultado del salto es `redactado`, no `permitido`. Ni `toolInvoked` ni `criteriaApplied` llevan PII en claro.
+- **`criteriaApplied` honesto.** Cada eslabón distingue las policies automatizadas del literal `"juicio-de-modelo-no-automatizable"`. El salto 1 (Comercial) aplicó `pol-calificacion-lead@1.2` y `pol-dlp-pii@2.0` (la DLP que redactó el NIF en el origen); el salto 2 (Legal) valoró el matiz de la cláusula con **juicio de modelo**, no con una regla booleana. Esta convención es la que hace **analizable** la cadena a posteriori.
+- **`outcome: redactado` en el salto 1** (Comercial): la des-identificación de la ruta redactó el NIF al originar la cadena, por lo que el resultado de ese salto es `redactado`. El salto 2 (Legal) es `permitido`: Legal validó la cláusula sobre el «NIF_1» sin re-identificar. Ni `toolInvoked` ni `criteriaApplied` llevan PII en claro.
 
 En este corredor de dos saltos no hace falta truncar. Si la cadena escalara a finanzas y creciera, la política de Consultora Modelo conservaría el primer salto (originador) y el último, archivaría la cadena completa vía observabilidad agent-aware ([CF-05](../../docs/federation/criterios-funcionales.md)) y la sustituiría por los últimos N eslabones más un `chainDigest` que la mantiene verificable.
 
