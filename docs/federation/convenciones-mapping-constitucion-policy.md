@@ -12,7 +12,7 @@ La Constitución de la federación está escrita en lenguaje natural. Esa es una
 
 Este documento fija las **convenciones** del mapping: qué clase de regla corresponde a qué clase de principio, cómo se traduce un principio paso a paso, qué partes del descriptor de identidad y del bloque de contexto cultural se usan como disparador, y qué se hace con lo que no es traducible. No es el catálogo de reglas ni el formato de cada ficha: esos viven, respectivamente, en el apéndice y en la plantilla, y este documento remite a ellos.
 
-La regla que gobierna este puente es la de §5 del manifiesto: *sin mapping, la Constitución es un deseo; con mapping, es un control*. Y la frontera que lo limita es la de §8: *lo que no es traducible a regla queda como juicio en el agente, y se dice explícitamente*.
+La regla que gobierna este puente es la de §3.3 del manifiesto: *sin mapping, la Constitución es un deseo; con mapping, es un control*. Y la frontera que lo limita es la de §8: *lo que no es traducible a regla queda como juicio en el agente, y se dice explícitamente*.
 
 ---
 

@@ -62,8 +62,8 @@ Framework para organizaciones que han superado la adopción ligera y necesitan q
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
 | Myrmion AI Factory — Framework (repositorio propio) | ✅ Activo |
 | Myrmion Federation — Manifiesto | ✅ v1.0 |
-| Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | ✅ v1.0 |
-| Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | ✅ v1.0 |
+| Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación (parcial v1.0) |
+| Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | 🚧 En preparación |
 | Myrmion Federation — Apéndice de stacks/policy-templates (comunidad) | 🚧 vivo |
 
 ## Estructura del repositorio
