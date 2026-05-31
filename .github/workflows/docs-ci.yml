@@ -1,0 +1,33 @@
+name: docs-ci
+
+on:
+  push:
+    branches: [main, "docs/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  link-check:
+    name: Enlaces relativos
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Comprobar enlaces relativos
+        run: python3 scripts/ci/check_links.py
+
+  mermaid-check:
+    name: Diagramas mermaid
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Instalar mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Config puppeteer (no-sandbox)
+        run: echo '{"args":["--no-sandbox","--disable-setuid-sandbox"]}' > /tmp/pp.json
+      - name: Validar bloques mermaid
+        run: python3 scripts/ci/check_mermaid.py
