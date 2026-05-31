@@ -111,7 +111,7 @@ Esta plantilla convierte los cinco prerrequisitos del manifiesto §6 en **criter
 
 *Pregunta guía: ¿existe gobernanza **formal y operante** de las tres capas de Adoption — Marco Regulatorio, Constitución Corporativa y capas departamentales? No basta con que los documentos existan: tiene que haber custodia diferenciada por capa, revisión de coherencia antes de producción, y gestión de excepciones que deje rastro. Federation añade un cuarto custodio (la plataforma de federación), pero **da por supuesta** la gobernanza de los tres primeros: la verificación de coherencia programática y el [gate de coherencia](../../docs/federation/gobernanza-federada.md) son la versión programática de procesos que ya deben existir manualmente. Si no existen, Federation no tiene qué automatizar.*
 
-**Umbral del manifiesto §6:** **gobernanza formal de las tres capas** (Marco, Constitución, capas departamentales), con la custodia diferenciada de Adoption §5.
+**Umbral del manifiesto §6:** **gobernanza formal de las tres capas** (Marco, Constitución, capas departamentales), con la custodia diferenciada de Adoption §4.
 
 | Sub-comprobación | Cumple | Evidencia |
 |---|:---:|---|
@@ -123,7 +123,7 @@ Esta plantilla convierte los cinco prerrequisitos del manifiesto §6 en **criter
 
 **Veredicto C3:** [Espacio para rellenar — `Cumple` \| `No cumple`]
 
-*Si No cumple → trabajo de Adoption: instituir la custodia y los procesos de gobernanza de Adoption §5 antes de plantear el cuarto custodio. La maquinaria de Federation no sustituye a la gobernanza humana: la ejecuta más rápido. No hay nada que ejecutar si no existe primero.*
+*Si No cumple → trabajo de Adoption: instituir la custodia y los procesos de gobernanza de Adoption §4 antes de plantear el cuarto custodio. La maquinaria de Federation no sustituye a la gobernanza humana: la ejecuta más rápido. No hay nada que ejecutar si no existe primero.*
 
 ---
 
