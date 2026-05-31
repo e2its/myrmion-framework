@@ -60,6 +60,18 @@
 
 Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología) ni datos de menores. Cualquier emergencia de estas categorías en proyecto requiere evaluación específica caso a caso.
 
+**Clasificación de datos (escala `C0–C4`).** Para tratar las categorías anteriores de forma operable, se codifican en una escala de sensibilidad. Es el **vocabulario de clasificación de datos** de Consultora Modelo: lo usan las matrices de des-identificación de este Marco y, en la fase de Federation, el campo `dataClasses` del descriptor de cada agente.
+
+| Código | Clase | En Consultora Modelo |
+|---|---|---|
+| `C0` | Público / no sensible | Material publicado, marketing, contenido divulgativo |
+| `C1` | Interno / comercial propio | Propuestas, planificaciones, decisiones y comunicaciones de proyecto, contratos y facturación propios |
+| `C2` | Personal / confidencial de cliente | Datos personales (de empleados propios y de cliente), datos comerciales y de prospección |
+| `C3` | Contractual sensible / PI bajo NDA | Términos contractuales y cláusulas sensibles; PI, documentación técnica y procesos internos del cliente bajo NDA |
+| `C4` | Categoría especial | Salud, biometría, ideología, datos de menores → **no se procesan con IA** (prohibición absoluta, §5) |
+
+`C0–C3` se tratan bajo las condiciones de des-identificación de este Marco; `C4` no se trata.
+
 **Tamaño:** 80 empleados, 12M€ facturación anual estimada 2026. Por umbral de plantilla, no califica como mediana empresa según criterio de la UE (recomendación 2003/361/CE) — está en el rango superior de pequeña empresa.
 
 ---
