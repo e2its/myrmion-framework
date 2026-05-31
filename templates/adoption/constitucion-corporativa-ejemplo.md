@@ -330,7 +330,7 @@ Adicionalmente, revisiones ad hoc cuando hay cambios significativos en la organi
 
 ### 6.4 Indicadores de que la Constitución no está funcionando
 
-Señales de alarma que monitoreamos:
+Señales de alarma que monitorizamos:
 
 - Outputs de asistentes que contradicen la Constitución de forma sistemática, no por error puntual sino por patrón.
 - Excepciones acumulándose sobre el mismo principio o restricción.

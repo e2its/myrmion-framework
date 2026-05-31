@@ -60,7 +60,7 @@ El esquema corporativo es responsabilidad de la organización pero Federation pu
 
 Es la pieza técnicamente más original del framework y la que ningún gateway opensource cubre por defecto.
 
-Cuando el agente A invoca al agente B vía MCP, además de los argumentos de la tool viaja un bloque de metadatos culturales que incluye, como mínimo: hash de la versión de la Constitución Corporativa aplicada por A, identificador del caso de negocio, hash de las capas departamentales activas en A, identificador del usuario originante (cuando aplique), cadena de decisiones previas relevantes (si la cadena tiene más de un salto), y un correlation id que persiste a lo largo de toda la cadena.
+Cuando el agente A invoca al agente B vía MCP, además de los argumentos de la tool viaja un bloque de metadatos culturales que incluye, como mínimo: hash de la versión de la Constitución Corporativa aplicada por A, identificador del caso de negocio, hash de la capa departamental de la que deriva A, identificador del usuario originante (cuando aplique), cadena de decisiones previas relevantes (si la cadena tiene más de un salto), y un correlation id que persiste a lo largo de toda la cadena.
 
 B recibe ese bloque, valida que la versión de Constitución que A aplicó es compatible con la suya, decide si aplica criterios adicionales propios de su dominio que A no podía conocer, y propaga el bloque actualizado en cualquier llamada subsiguiente que él mismo haga. La cadena de decisiones se reconstruye trivialmente desde el correlation id.
 
@@ -115,7 +115,7 @@ La gobernanza descrita en Adoption — custodia diferenciada por capa, revisión
 
 **Custodia.** Igual que en Adoption: Marco Regulatorio en legal/DPO, Constitución Corporativa en transformación digital o equivalente, capas departamentales en cada departamento. Federation añade un cuarto custodio: la **plataforma de federación**, responsable del stack opensource subyacente, los policy templates corporativos transversales y la pipeline de observabilidad. Este custodio típicamente es el equipo de plataforma o de SRE, no el equipo de transformación.
 
-**Revisión de coherencia.** En Adoption se hace en lectura cruzada antes de subir a producción. En Federation se complementa con verificación programática: los policy templates traducidos desde la Constitución se evalúan automáticamente contra los descriptores de capacidades de cada agente nuevo antes de que se registre en el service registry. Si un agente declara capacidades que entran en conflicto con la Constitución, la registración falla.
+**Revisión de coherencia.** En Adoption se hace en lectura cruzada antes de subir a producción. En Federation se complementa con verificación programática: los policy templates traducidos desde la Constitución se evalúan automáticamente contra los descriptores de capacidades de cada agente nuevo antes de que se registre en el service registry. Si un agente declara capacidades que entran en conflicto con la Constitución, el alta falla.
 
 **Detección de drift.** En Adoption es revisión humana periódica. En Federation se ejecuta sobre los tres patrones del §3.4, con la frecuencia que la criticidad del dominio exija.
 

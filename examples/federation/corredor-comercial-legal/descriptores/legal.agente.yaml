@@ -1,0 +1,69 @@
+# Descriptor de identidad de agente — válido contra docs/federation/esquema-identidad-agente.md (§3, §4)
+# Organización ficticia del corpus: Consultora Modelo S.L. — <org> = consultora-modelo
+# Esta es una representación ilustrativa (no normativa): el contrato es la tabla del esquema, no este YAML.
+
+schemaVersion: "1.0"
+version: "1.0.0"
+agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
+displayName: "Agente Legal — Dictámenes"
+domain: "legal"
+
+departmentLayerRef:
+  docId: "capa-legal"
+  version: "2.1"
+  hash: "sha256:1ega14a7e1ce0b2d9f6a1c3e8740a55b1ec2f9803a4d6e7b8c019d2f3a4b5c6d"
+
+# Misma Constitución vigente (3.0) y mismo hash que el comercial: ambos heredan de la misma
+# versión de Constitución. Es la condición que hace que la validación de compatibilidad dé match.
+constitutionRef:
+  version: "3.0"
+  approvalDate: "2026-01-15"
+  hash: "sha256:c0n5717uc10n3000a1b2c3d4e5f60718293a4b5c6d7e8f901a2b3c4d5e6f7a8b9"
+
+regulatoryFrameworkRef:
+  version: "1.4"
+  hash: "sha256:r3gu14t0ry14000f1e2d3c4b5a69788776655443322110ffeeddccbbaa99887"
+
+# Comparte con el comercial el hash de la Constitución 3.0. Por eso, cuando el comercial (salto 1)
+# aplica 3.0 e invoca al legal (salto 2), el constitutionHash del bloque ∈ compatibleConstitutionHashes.
+compatibleConstitutionHashes:
+  - "sha256:c0n5717uc10n3000a1b2c3d4e5f60718293a4b5c6d7e8f901a2b3c4d5e6f7a8b9"
+  - "sha256:c0n5717uc10n2900b9a8c7d6e5f40312293a4b5c6d7e8f901a2b3c4d5e6f7a8b9"
+
+# Dominio jurídico: criticidad alta. Modula la cadencia de revisión de drift y la severidad del gate.
+criticality: "alta"
+dataClasses: ["C1", "C2", "C3"]
+
+capabilities:
+  - toolName: "validar_clausula"
+    sideEffectClass: "lectura"
+    externalizes: false
+    canCommit: false
+    dataClassesTouched: ["C2", "C3"]
+  # Emite el dictamen que habilita (o no) el compromiso aguas abajo. No compromete por sí misma:
+  # escribe el resultado del análisis legal, que la decisionChain registra como paso por legal.
+  - toolName: "emitir_dictamen"
+    sideEffectClass: "escritura"
+    externalizes: false
+    canCommit: false
+    dataClassesTouched: ["C2", "C3"]
+
+endpoint:
+  transport: "mcp"
+  address: "internal://legal-dictamenes"
+
+mutualAuthMechanism: "mtls"
+mutualAuthVerified: true
+identityRef: "spiffe://consultora-modelo.internal/agent/legal-dictamenes"
+
+owner: "Dirección de Asesoría Jurídica"
+platformCustodian: "Plataforma de Federación"
+
+# El agente legal no depende de otro agente para este corredor.
+dependsOn: []
+
+lifecycleStatus: "activo"
+coherenceReview:
+  status: "aprobado"
+  reviewedAgainst: "policies@2026-02"
+  date: "2026-02-10"

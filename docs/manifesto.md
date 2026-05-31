@@ -50,13 +50,13 @@ Framework de desarrollo de producto: un SDLC agéntico gobernado sobre Claude Co
 
 ### Myrmion Federation — la falange
 
-La segunda fase del trayecto cultural aborda el problema técnico cuando los handovers manuales entre departamentos empiezan a ocupar más tiempo del que ahorra la IA. Extiende el protocolo MCP (Model Context Protocol) con una capa de gobernanza federada culturalmente consciente, apoyándose en infraestructura opensource existente — gateways MCP, toolkits de governance de agentes, registries federados — sin reimplementarla.
+La segunda fase del trayecto cultural aborda el problema técnico cuando los handovers manuales entre departamentos empiezan a ocupar más tiempo del que ahorra la IA. Añade una capa de gobernanza federada culturalmente consciente sobre el protocolo MCP (Model Context Protocol) —sin extender el protocolo, usando los mecanismos que ya provee—, apoyándose en infraestructura opensource existente — gateways MCP, toolkits de governance de agentes, registries federados — sin reimplementarla.
 
 Lo que Myrmion Federation aporta encima de esa infraestructura: convenciones para modelar agentes departamentales como servidores MCP gobernados, mapping de la Constitución Corporativa a policy templates, propagación de contexto cultural en cada llamada inter-agente, y patrones de detección de drift cultural a nivel federación.
 
 Audiencia: CIOs, jefes de plataforma, tech leads. Las organizaciones que llegan aquí han hecho el trabajo cultural previo y necesitan dar el salto técnico.
 
-📖 [Manifiesto detallado de Myrmion Federation](./federation/manifesto.md)
+📖 [Manifiesto detallado de Myrmion Federation](./federation/manifesto.md) · 🧭 [Índice y guía de navegación del corpus](./federation/indice-y-guia-de-navegacion.md)
 
 ## Cómo encajan los tres
 

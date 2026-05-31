@@ -41,7 +41,7 @@ Framework de desarrollo de productos: un SDLC agéntico gobernado sobre Claude C
 
 ### Myrmion Federation
 
-Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Extiende el protocolo MCP con una capa de gobernanza culturalmente consciente, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
+Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Añade una capa de gobernanza culturalmente consciente sobre el protocolo MCP —sin extenderlo—, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
 
 📖 [Manifiesto de Myrmion Federation](./docs/federation/manifesto.md)
 
@@ -62,7 +62,9 @@ Framework para organizaciones que han superado la adopción ligera y necesitan q
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
 | Myrmion AI Factory — Framework (repositorio propio) | ✅ Activo |
 | Myrmion Federation — Manifiesto | ✅ v1.0 |
-| Myrmion Federation — Especificaciones técnicas | ⏳ Planeado |
+| Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación |
+| Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | 🚧 En preparación |
+| Myrmion Federation — Apéndice de stacks/policy-templates (comunidad) | 🚧 En preparación |
 
 ## Estructura del repositorio
 
@@ -78,11 +80,19 @@ myrmion/
 │   │   ├── manifesto.md          ← manifiesto detallado de Adoption
 │   │   └── guia-proteccion-datos.md ← guía de protección de datos (capa técnica + contractual)
 │   └── federation/
-│       └── manifesto.md          ← manifiesto detallado de Federation
+│       ├── manifesto.md          ← manifiesto detallado de Federation
+│       ├── indice-y-guia-de-navegacion.md  ← puerta de entrada al corpus
+│       ├── glosario · criterios-funcionales · regla-anti-acoplamiento
+│       ├── guia-arquitectura-funcional · esquema-identidad-agente · esquema-bloque-contexto-cultural
+│       ├── convenciones-mapping-constitucion-policy · patrones-deteccion-drift
+│       ├── gobernanza-federada · guia-adopcion-por-fases · metricas-federacion · perfil-adopcion-federacion
+│       ├── adr/                  ← Architecture Decision Records (plantilla + ejemplo)
+│       └── appendix/             ← apéndice vivo (comunidad): stacks-referencia, policy-templates, mapeo-transporte, drift-recipes
 ├── templates/
 │   ├── adoption/                 ← plantillas y ejemplos de Marco Regulatorio, Constitución y capas departamentales
-│   └── federation/               ← plantillas de policy, esquemas MCP corporativos (planeado)
-└── examples/                     ← casos de uso anonimizados (en preparación)
+│   └── federation/               ← plantillas socráticas: descriptor, bloque, ficha-policy, charter, runbooks, checklist, perfil (+ ejemplos)
+└── examples/
+    └── federation/               ← corredor Comercial→Legal end-to-end + diagramas (anonimizado)
 ```
 
 ## Cómo empezar
@@ -90,12 +100,17 @@ myrmion/
 1. Lee el [manifiesto paraguas](./docs/manifesto.md) para entender el ecosistema en conjunto.
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
 3. Si manejas datos personales, de salud o regulados (PII, RGPD, HIPAA, PCI-DSS…) o necesitas cumplimiento de proveedor (SOC 2, ISO 27001), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
-4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, sigue con el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md).
+4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, empieza por el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md) y luego el [índice y guía de navegación](./docs/federation/indice-y-guia-de-navegacion.md), que te lleva al documento concreto según tu rol (dirección, plataforma, transformación digital, tech lead).
 5. Si necesitas construir productos de software con un SDLC gobernado, usa [Myrmion AI Factory](https://github.com/e2its/myrmion-AI-factory) — es un framework independiente y se adopta por sí solo.
 
 ## Cómo contribuir
 
-*Próximamente — contribuciones bienvenidas para apéndice de mapeo a productos, plantillas sectoriales y casos de uso anonimizados.*
+Las contribuciones más valiosas, por framework:
+
+- **Adoption:** apéndice de mapeo a productos comerciales conforme evolucionan, plantillas sectoriales (sanidad, financiero, sector público, manufacturing), casos de uso anonimizados.
+- **Federation:** actualizaciones del [apéndice vivo](./docs/federation/appendix/) (stacks de referencia, policy-templates por dialecto, recetas de drift sectoriales, mapeo de transporte por protocolo), y casos de corredor anonimizados.
+
+Antes de contribuir al **cuerpo** de Federation (`docs/federation/` y `templates/federation/`), lee la [regla anti-acoplamiento](./docs/federation/regla-anti-acoplamiento.md): el cuerpo se mantiene libre de marcas; los productos concretos viven solo en el apéndice. Ver [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Licencia
 
