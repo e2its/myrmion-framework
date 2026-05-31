@@ -121,7 +121,7 @@ import future.keywords.in
 # Transversal §5 — "Los datos identificables viajan des-identificados" (CF-06)
 # automatabilityClass: blando · efecto: redact · pre-invocación
 
-sensitive_classes := {"pii", "phi"}
+sensitive_classes := {"C2", "C3"}  # clases sensibles del Marco (C2 personal/cliente, C3 contractual)
 
 touches_sensitive if {
     some c in input.capability.dataClassesTouched
