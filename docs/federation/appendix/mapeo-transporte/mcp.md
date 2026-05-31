@@ -56,7 +56,7 @@ Este ejemplo ilustra el segundo salto del [corredor comercial→legal](../../../
 {
   "method": "tools/call",
   "params": {
-    "name": "revisar_propuesta",
+    "name": "validar_clausula",
     "arguments": {
       "propuestaRef": "«NIF_1»"
     },

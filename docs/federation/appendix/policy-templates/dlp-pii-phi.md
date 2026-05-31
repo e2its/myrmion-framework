@@ -65,7 +65,7 @@ La regla **no** se activa por la presencia de `deidTokens` ya colocados: si el d
 
 Cada decisión deja evidencia, anclada al `DecisionHop` (convenciones §3, paso 4):
 
-- En `criteriaApplied`: `pol-dlp-pii-phi@1.0`.
+- En `criteriaApplied`: `pol-dlp-pii@2.0`.
 - En `outcome`: `redactado` (o `bloqueado` si la transformación falla).
 - En la traza: `correlationId`, `agentId` del emisor, `toolInvoked`, y la lista de campos redactados como `{ field, sensitivity, token }` — **los tokens, nunca los valores originales**.
 
@@ -155,7 +155,7 @@ decision := "deny" if {
 transform := {"redact": [f.field | some f in fields_to_redact]} if decision == "redact"
 
 evidence := {
-    "policyId": "pol-dlp-pii-phi@1.0",
+    "policyId": "pol-dlp-pii@2.0",
     "decision": decision,
     "principleRef": "Transversal §5",
     "correlationId": input.context.correlationId,
@@ -199,7 +199,7 @@ when {
 
 ```cedar
 // Mapeo de evidencia (anotación de policy, para la traza):
-// @policyId("pol-dlp-pii-phi@1.0")
+// @policyId("pol-dlp-pii@2.0")
 // @principleRef("Transversal §5")
 // @effect("redact")
 // @rule("evidence.redactedFields NUNCA contiene valores en claro")

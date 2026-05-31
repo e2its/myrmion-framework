@@ -89,7 +89,7 @@ La clasificación se hace en este orden, de la más fuerte a la más débil:
 2. Si no, ¿se puede acotar con un umbral más defensa en profundidad, asumiendo y documentando el margen de error? → **BLANDO**.
 3. Si no, no se fuerza la traducción → **NO-AUTOMATIZABLE**, y se enruta a juicio humano con constancia.
 
-La duda se resuelve siempre hacia la clase más débil. Clasificar como duro lo que es blando crea reglas frágiles; clasificar como automatizable lo que exige juicio crea reglas infieles. La degradación segura ([CF-06](./criterios-funcionales.md)) gobierna también aquí: ante la duda sobre si un principio es evaluable, se trata como no evaluable y se deniega o se enruta, nunca se permite en silencio.
+La duda se resuelve siempre hacia la clase más débil. Clasificar como duro lo que es blando crea reglas frágiles; clasificar como automatizable lo que exige juicio crea reglas infieles. La degradación segura ([CF-03](./criterios-funcionales.md)) gobierna también aquí: ante la duda sobre si un principio es evaluable, se trata como no evaluable y se deniega o se enruta, nunca se permite en silencio.
 
 ---
 
@@ -205,7 +205,7 @@ Estas formas son ilustrativas y no normativas: su único fin es mostrar cómo el
 **Relacionados:**
 
 - [Manifiesto de la federación](./manifesto.md) — §3.3 (Capa 3, Gobierno), §5 (Gobernanza), §8 (lo que no es).
-- [Criterios funcionales](./criterios-funcionales.md) — [CF-03](./criterios-funcionales.md) (gobierno por Constitución mapeada), [CF-05](./criterios-funcionales.md) (trazabilidad), [CF-06](./criterios-funcionales.md) (degradación segura).
+- [Criterios funcionales](./criterios-funcionales.md) — [CF-03](./criterios-funcionales.md) (gobierno por Constitución mapeada y degradación segura), [CF-05](./criterios-funcionales.md) (trazabilidad), [CF-06](./criterios-funcionales.md) (des-identificación en la ruta).
 - [Glosario de la federación](./glosario-federacion.md) — Constitución, Mapping, Ficha de policy, Disparador, Efecto, Punto de aplicación, Evidencia.
 - [Esquema del descriptor de identidad de agente](./esquema-identidad-agente.md) — campos del disparador.
 - [Esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) — campos del disparador y DecisionHop.

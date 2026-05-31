@@ -61,7 +61,7 @@ sequenceDiagram
     A->>GW: invoca tool(args) + bloque{correlationId, constitutionHash, decisionChain…}
     GW->>GW: verifica identidad de A (CF-04)
     GW->>PE: evalúa policy(args, bloque, capabilities)
-    PE-->>GW: permitido | redactado | bloqueado
+    PE-->>GW: allow | deny | redact | require-prior-hop
     GW->>B: tool(args') + bloque
     B->>B: valida constitutionHash ∈ compatibleConstitutionHashes
     B->>B: aplica criterios de su dominio · añade DecisionHop · hopCount++

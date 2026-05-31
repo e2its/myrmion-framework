@@ -88,7 +88,7 @@ Cuando el salto por Legal finalmente ocurre, su propio `DecisionHop` se incorpor
 - **No juzga el fondo.** La policy garantiza que Legal *intervino con resultado positivo*; no garantiza que la cláusula sea correcta. Ese juicio es trabajo de modelado del agente Legal.
 - **Dominio del salto, no agente concreto.** La regla exige un agente *del dominio* `legal` (cuarto segmento del `agentId`), no un `agentId` fijo, para no acoplarse a una instancia. Si la Constitución exige un agente legal concreto, parametrízalo.
 - **Vigencia del salto.** Esta ficha trata el salto de Legal como válido para la cadena identificada por `correlationId`. Si la materia cambia sustancialmente tras el salto (otra cláusula, otro alcance), conviene invalidar el salto. La definición de «cambio sustancial» es constitucional, no de policy.
-- **Degradación segura.** Si el bloque de contexto no trae `decisionChain` cuando `hopCount > 1` (debería traerla siempre), o si falta el campo `canCommit` en el descriptor, la regla no puede evaluarse con fidelidad: el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio ([CF-06](../../criterios-funcionales.md); convenciones §3, paso 6).
+- **Degradación segura.** Si el bloque de contexto no trae `decisionChain` cuando `hopCount > 1` (debería traerla siempre), o si falta el campo `canCommit` en el descriptor, la regla no puede evaluarse con fidelidad: el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio ([CF-03](../../criterios-funcionales.md); convenciones §3, paso 6).
 
 ---
 

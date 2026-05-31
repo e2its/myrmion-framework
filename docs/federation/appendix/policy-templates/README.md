@@ -40,7 +40,7 @@ Cada ficha de este catálogo es una **instancia** de las convenciones descritas 
 - **Las tres clases de automatizabilidad.** Cada ficha se clasifica como `duro`, `blando` o `no-automatizable` (glosario §4; convenciones §2). La duda se resuelve hacia la clase más débil.
 - **Lectura de campos contractuales.** Los disparadores leen campos del **descriptor de identidad** (`capabilities[].canCommit`, `capabilities[].externalizes`, `capabilities[].sideEffectClass`, `capabilities[].dataClassesTouched`, `domain`, `agentId`) y del **bloque de contexto cultural** (`decisionChain` y sus `DecisionHop`, `correlationId`, `businessCaseId`, `deidTokens`) tal como los definen sus esquemas. No leen campos inventados.
 - **Punto de aplicación explícito.** Cada ficha declara si evalúa en **pre-invocación** o en **post-resultado** (convenciones §3, paso 5).
-- **Evidencia y degradación segura.** Cada decisión deja evidencia (convenciones §3, paso 4) y declara su comportamiento ante el fallo: por defecto `deny`, nunca `allow` en silencio ([CF-06](../../criterios-funcionales.md); convenciones §3, paso 6).
+- **Evidencia y degradación segura.** Cada decisión deja evidencia (convenciones §3, paso 4) y declara su comportamiento ante el fallo: por defecto `deny`, nunca `allow` en silencio ([CF-03](../../criterios-funcionales.md); convenciones §3, paso 6).
 
 El cuerpo manda. Si un snippet de este catálogo contradijera al cuerpo, **el snippet está mal**, no el cuerpo.
 
