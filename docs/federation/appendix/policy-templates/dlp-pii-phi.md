@@ -35,7 +35,7 @@ La regla se activa cuando concurren las dos condiciones (convenciones §3, paso 
 1. **La capacidad invocada toca datos sensibles.** En el **descriptor de identidad**, la `Capability` de la tool declara clases de dato que el Marco Regulatorio clasifica como PII/PHI:
 
    ```
-   capability.dataClassesTouched ∩ {clases PII/PHI} ≠ ∅
+   capability.dataClassesTouched ∩ {clases sensibles del Marco, p. ej. C2/C3} ≠ ∅
    ```
 
 2. **El clasificador detecta dato identificable sin redactar en los argumentos.** El detector de sensibilidad (externo al contrato) marca presencia de un campo PII/PHI que **aún no** viaja como `deidToken`:
@@ -96,10 +96,10 @@ Principio de oro de esta ficha, alineado con la privacidad por construcción del
 
 | # | Entrada (resumen) | Salida esperada |
 |---|-------------------|-----------------|
-| TV-1 | `dataClassesTouched` con clase PII; `sensitiveFields` con un campo sin tokenizar; tokenización disponible. | `redact` (campo → `deidToken` en `deidTokens`) |
-| TV-2 | `dataClassesTouched` con clase PHI; `sensitiveFields` no vacío; tokenización disponible. | `redact` |
+| TV-1 | `dataClassesTouched` con clase C2 (PII); `sensitiveFields` con un campo sin tokenizar; tokenización disponible. | `redact` (campo → `deidToken` en `deidTokens`) |
+| TV-2 | `dataClassesTouched` con clase C3 (contractual sensible); `sensitiveFields` no vacío; tokenización disponible. | `redact` |
 | TV-3 | argumentos ya tokenizados (todos los campos sensibles son `deidToken`); `sensitiveFields` vacío. | (no dispara) → cede a otras reglas |
-| TV-4 | `dataClassesTouched` sin clases PII/PHI; sin campos sensibles. | (no dispara) |
+| TV-4 | `dataClassesTouched` sin clases sensibles (C2/C3); sin campos sensibles. | (no dispara) |
 | TV-5 | PII presente, pero el servicio de tokenización no responde. | `deny` (degradación segura) |
 
 > Ejemplo ilustrativo (`Consultora Modelo S.L.`): el agente de **Fonseca** (Comercial), `urn:myrmion:agent:consultora-modelo:comercial:propuestas`, invoca al agente de **Riera** (Legal), `urn:myrmion:agent:consultora-modelo:legal:dictamenes`, sobre el lead `lead-2026-0042`. Los argumentos incluyen el NIF y el correo del contacto del cliente (PII). La regla redacta esos campos: el NIF viaja como `deidToken` `{ token: "«NIF_1»", scope: "cadena:550e8400…", ttl: "PT1H" }`. Riera trabaja sobre tokens; la respuesta final se re-identifica solo en el agente de Fonseca. La evidencia registra los tokens, nunca los valores. Ver [`../../../../examples/federation/corredor-comercial-legal/`](../../../../examples/federation/corredor-comercial-legal/).

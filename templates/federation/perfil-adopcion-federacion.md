@@ -50,10 +50,10 @@ La referencia normativa de cada variable —su significado y su impacto— está
 | **VF01** | Nº de agentes departamentales activos | *(rellenar)* | ≥5–6 | [checklist Fase 0](./checklist-prerrequisitos-fase0.md) |
 | **VF02** | Nº de pares que colaboran con frecuencia | *(rellenar)* | ≥3 | [guia-adopcion-por-fases](../../docs/federation/guia-adopcion-por-fases.md) |
 | **VF03** | Protocolo inter-agente | *(rellenar)* | MCP | [appendix/mapeo-transporte](../../docs/federation/appendix/mapeo-transporte/) |
-| **VF04** | Exposición regulatoria / sector | *(rellenar)* | General | [appendix/drift-recipes](../../docs/federation/appendix/drift-recipes/), CF-06 |
-| **VF05** | Reversibilidad de des-identificación requerida | *(rellenar)* | Reversible donde aplique | [CF-06](../../docs/federation/criterios-funcionales.md), [esquema-bloque §5](../../docs/federation/esquema-bloque-contexto-cultural.md) |
+| **VF04** | Exposición regulatoria / sector | *(rellenar)* | media | [appendix/drift-recipes](../../docs/federation/appendix/drift-recipes/), CF-06 |
+| **VF05** | Reversibilidad de des-identificación requerida | *(rellenar)* | mixta (reversible + irreversible) | [CF-06](../../docs/federation/criterios-funcionales.md), [esquema-bloque §5](../../docs/federation/esquema-bloque-contexto-cultural.md) |
 | **VF06** | Stack pre-existente relevante | *(rellenar)* | Ninguno | [criterios-funcionales](../../docs/federation/criterios-funcionales.md), [appendix/stacks-referencia](../../docs/federation/appendix/stacks-referencia/) |
-| **VF07** | Criticidad máxima de dominio | *(rellenar)* | Alta | [patrones-deteccion-drift](../../docs/federation/patrones-deteccion-drift.md) (cadencia) |
+| **VF07** | Criticidad máxima de dominio | *(rellenar)* | media | [patrones-deteccion-drift](../../docs/federation/patrones-deteccion-drift.md) (cadencia) |
 | **VF08** | Modelo de despliegue | *(rellenar)* | *Sustrato con identidad por carga, aislamiento de red y ciclo de vida gestionado* (sin default tecnológico) | [CF-01](../../docs/federation/criterios-funcionales.md), [CF-04](../../docs/federation/criterios-funcionales.md) |
 | **VF09** | Volumen de tráfico inter-agente | *(rellenar)* | Decenas–cientos/hora | [metricas-federacion](../../docs/federation/metricas-federacion.md) |
 | **VF10** | Token `<org>` del namespace de `agentId` | *(rellenar)* | *(elige la organización)* | [esquema-identidad-agente §2](../../docs/federation/esquema-identidad-agente.md) |
@@ -78,10 +78,10 @@ profile:
   VF01_num_agentes: 0
   VF02_pares_colaboran: 0
   VF03_protocolo: MCP            # MCP | A2A | mixto
-  VF04_exposicion_regulatoria: general
-  VF05_deid_reversible: where-applicable
+  VF04_exposicion_regulatoria: media
+  VF05_deid_reversible: mixta
   VF06_stack_preexistente: null
-  VF07_criticidad_max: alta
+  VF07_criticidad_max: media
   VF08_despliegue: "sustrato con identidad por carga + aislamiento de red + ciclo de vida gestionado"
   VF09_volumen_inter_agente: medium
   VF10_org_namespace: "<org>"

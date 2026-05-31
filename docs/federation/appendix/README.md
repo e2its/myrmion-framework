@@ -80,7 +80,7 @@ La cobertura no es transitiva: cubrir CF-04 no implica cubrir CF-03. **Ninguna f
 | **Microsoft Agent Governance Toolkit** | Gobernanza de agentes (suite) | ◐ | ◐ | ● | ● | ◐ | ◐ |
 | **IBM ContextForge** | Gateway / contexto MCP | ● | ◐ | ◐ | ● | ◐ | ● |
 | **Agentgateway** | Gateway de agentes | ● | ◐ | ◐ | ● | ◐ | ○ |
-| **Lunar.dev MCPX** | Gateway / proxy MCP | ● | ○ | ◐ | ◐ | ◐ | ◐ |
+| **Lunar.dev MCPX** | Gateway / proxy MCP | ● | ◐ | ◐ | ○ | ◐ | ◐ |
 | **MCP Mesh** | Service mesh para MCP | ● | ◐ | ◐ | ● | ◐ | ○ |
 | **MCP Gateway Registry** | Service registry MCP | ◐ | ● | ○ | ◐ | ○ | ○ |
 | **OPA (Open Policy Agent)** | Policy engine | ○ | ○ | ● | ○ | ○ | ○ |

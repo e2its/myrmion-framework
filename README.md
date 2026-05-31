@@ -41,7 +41,7 @@ Framework de desarrollo de productos: un SDLC agéntico gobernado sobre Claude C
 
 ### Myrmion Federation
 
-Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Extiende el protocolo MCP con una capa de gobernanza culturalmente consciente, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
+Framework para organizaciones que han superado la adopción ligera y necesitan que sus agentes departamentales se invoquen mutuamente con gobernanza federada. Añade una capa de gobernanza culturalmente consciente sobre el protocolo MCP —sin extenderlo—, apoyándose en infraestructura opensource existente (gateways MCP, toolkits de governance de agentes). Audiencia: CIOs, jefes de plataforma, tech leads.
 
 📖 [Manifiesto de Myrmion Federation](./docs/federation/manifesto.md)
 
