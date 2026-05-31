@@ -31,12 +31,12 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 | [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.0 |
 | [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | 🔍 en revisión |
 | [regla-anti-acoplamiento.md](./regla-anti-acoplamiento.md) | Qué va al cuerpo vs al apéndice. Norma transversal | ✅ v1.0 |
-| [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📝 draft |
+| [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📋 pendiente de revisión |
 | [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | 🔍 en revisión |
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | 🔍 en revisión |
 | [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📝 draft |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
-| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📝 draft |
+| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📋 pendiente de revisión |
 | [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | 📝 draft |
 | [metricas-federacion.md](./metricas-federacion.md) | Las métricas que importan (§7) | 📝 draft |
 | [perfil-adopcion-federacion.md](./perfil-adopcion-federacion.md) | Variables VF que modifican decisiones según contexto | 📝 draft |
