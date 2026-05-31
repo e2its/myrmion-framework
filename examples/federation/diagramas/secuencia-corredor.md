@@ -58,7 +58,7 @@ sequenceDiagram
 
     rect rgb(255, 248, 235)
     Note over Leg,Traza: Salto 3 — respuesta gobernada (CF-03, CF-05, CF-06)
-    Note over Leg: El agente Legal valida la cláusula con «NIF_1»;<br/>correlaciona sin re-identificar al lead
+    Note over Leg: El agente Legal valida la cláusula con «NIF_1»<br/>correlaciona sin re-identificar al lead
     Leg->>Leg: Añade DecisionHop[1]: validar_clausula,<br/>criteriaApplied, outcome: permitido
     Leg-->>Gw: Veredicto + bloque enriquecido
     deactivate Leg
@@ -67,7 +67,7 @@ sequenceDiagram
     deactivate Gw
     end
 
-    Note over Com: El agente Comercial incorpora el veredicto;<br/>la propuesta queda trazable extremo a extremo
+    Note over Com: El agente Comercial incorpora el veredicto<br/>la propuesta queda trazable extremo a extremo
     Com-->>Lead: Propuesta validada
     deactivate Com
 ```
