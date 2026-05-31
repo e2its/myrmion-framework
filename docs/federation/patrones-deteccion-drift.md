@@ -71,7 +71,7 @@ Por cada salto (`DecisionHop`) de la cadena de decisiones que la federación doc
 - **`criteriaApplied`** — la lista de criterios que el agente declaró haber aplicado en ese salto, expresada como `policyId@version` cuando el criterio es una *policy* automatizada o como el literal `"juicio-de-modelo-no-automatizable"` cuando es un juicio fino. Es la **unidad de análisis**: el patrón estudia secuencias de `criteriaApplied`, no contenido.
 - **`agentId`** emisor y receptor de cada salto (`urn:myrmion:agent:<org>:<dominio>:<nombre>`), y **`hopCount`** del salto.
 - **`businessCaseId`** para agrupar todas las cadenas que sirven a un mismo asunto, y **resultado normalizado** del salto, tomado del vocabulario del bloque, no texto libre.
-- **`constitutionHash`** aplicado en el salto, para poder atribuir un cambio de patrón a un cambio de Constitución frente a una deriva genuina.
+- **`constitutionHashApplied`** aplicado en el salto, para poder atribuir un cambio de patrón a un cambio de Constitución frente a una deriva genuina.
 
 > Todo son metadatos de decisión. El asunto del lead, el texto de la propuesta o los datos del cliente **no entran**: si fuera necesario referenciarlos, se hace mediante `deidToken`, nunca con el dato en claro.
 
