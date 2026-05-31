@@ -57,7 +57,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 | Recurso | Qué es | Estado |
 |---|---|---|
 | [templates/federation/](../../templates/federation/) | Plantillas socráticas que la organización rellena (descriptor, bloque, ficha de policy, playbook de drift, charter, registro de excepciones, runbooks, checklist Fase 0) | 📝 draft |
-| [examples/federation/](../../examples/federation/) | Corredor end-to-end anonimizado + diagramas | 📝 draft |
+| [examples/federation/](../../examples/federation/) | Corredor end-to-end anonimizado + diagramas | 📋 pendiente de revisión |
 
 ---
 

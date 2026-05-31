@@ -2,7 +2,7 @@
 
 **Versión 1.0**
 
-*Materializa el §4 (criterios) y §5 (gobernanza) del [manifiesto](../../../docs/federation/manifesto.md): un agente solo entra en la federación si su descriptor pasa el gate de coherencia del registro, que ata identidad, capacidades y hash antes de hacerlo descubrible.*
+*Materializa el §4 (criterios) y §5 (gobernanza) del [manifiesto](../../../docs/federation/manifesto.md): un agente solo entra en la federación si su descriptor pasa el gate de coherencia del registro, que verifica las **seis comprobaciones** de [gobernanza §2.1](../../../docs/federation/gobernanza-federada.md) antes de hacerlo descubrible.*
 
 Este diagrama acompaña al [ejemplo del corredor comercial→legal](../corredor-comercial-legal/README.md) y a la [guía de arquitectura funcional](../../../docs/federation/guia-arquitectura-funcional.md). Describe el momento previo a cualquier corredor: cómo el agente Legal de **Consultora Modelo S.L.** (`legal:dictamenes`, cuyo custodio es **Riera**) se da de alta para que el agente Comercial pueda descubrirlo. El gate es **funcional**, no un producto de registro concreto; el mapeo a un service registry real vive en el apéndice.
 
@@ -10,31 +10,31 @@ Este diagrama acompaña al [ejemplo del corredor comercial→legal](../corredor-
 
 ## El caso
 
-Antes de que el corredor del [diagrama de secuencia](./secuencia-corredor.md) pueda funcionar, el agente de Legal tiene que existir en el registro y ser **coherente**: que su `agentId` esté bien formado, que los `hash` de sus referencias de gobernanza correspondan a la forma canónica de cada documento, que sus capacidades estén declaradas y que no colisione con otra identidad ya registrada. Además, el gate evalúa esas capacidades declaradas contra los policy templates derivados de la Constitución: si entran en conflicto, el alta falla. El gate rechaza todo lo que no encaje; un descriptor incoherente nunca llega a ser descubrible.
+Antes de que el corredor del [diagrama de secuencia](./secuencia-corredor.md) pueda funcionar, el agente de Legal tiene que existir en el registro y pasar el gate de coherencia: las **seis comprobaciones** que [gobernanza §2.1](../../../docs/federation/gobernanza-federada.md) define — descriptor válido (incl. `agentId` bien formado y no reutilizado), `constitutionRef` vigente, capacidades sin efectos vetados por la Constitución, `dataClasses` coherentes con el **Marco Regulatorio**, identidad criptográfica verificable y `coherenceReview` reproducible. El gate es **bloqueante y atómico**: si **cualquiera** de las seis falla, el alta falla y el agente nunca llega a ser descubrible.
 
 ## El gate
 
 ```mermaid
 flowchart TD
-    A([Custodio del agente Legal<br/>propone el alta de legal:dictamenes]) --> B[Envía descriptor:<br/>agentId, capacidades, refs de gobernanza con hash, metadatos]
+    A([Custodio del agente Legal<br/>propone el alta de legal:dictamenes]) --> B[Envía descriptor:<br/>agentId, capacidades, dataClasses,<br/>refs de gobernanza con hash, identidad]
 
-    B --> G1{¿agentId bien formado?<br/>urn:myrmion:agent:&lt;org&gt;:&lt;dominio&gt;:&lt;nombre&gt;}
-    G1 -- No --> R1[Rechazo: identidad mal formada]
-    G1 -- Sí --> G2{¿agentId ya registrado<br/>con otra identidad?}
+    B --> G1{1. ¿Descriptor válido contra el esquema?<br/>campos y tipos correctos; agentId<br/>urn:myrmion:agent:&lt;org&gt;:&lt;dominio&gt;:&lt;nombre&gt;<br/>bien formado y no reutilizado}
+    G1 -- No --> R1[Rechazo: descriptor inválido<br/>o agentId malformado/reutilizado]
+    G1 -- Sí --> G2{2. ¿constitutionRef vigente?<br/>el hash resuelve a una versión<br/>publicada y vigente de la Constitución}
 
-    G2 -- Sí, colisiona --> R2[Rechazo: colisión de identidad]
-    G2 -- No --> G3{¿Cada hash = &quot;sha256:&quot; sobre<br/>la forma canónica del documento referido?<br/>NFC + LF + sin trailing ws + sin sección 0}
+    G2 -- No --> R2[Rechazo: Constitución no vigente<br/>o hash desconocido]
+    G2 -- Sí --> G3{3. ¿capabilities sin efectos<br/>que la Constitución prohíbe?}
 
-    G3 -- No coincide --> R3[Rechazo: hash incoherente]
-    G3 -- Coincide --> G4{¿Capacidades declaradas<br/>y verificables? CF-01}
+    G3 -- No, conflicto --> R3[Rechazo: capacidad en conflicto<br/>con la Constitución]
+    G3 -- Sí --> G4{4. ¿dataClasses coherentes<br/>con el Marco Regulatorio?<br/>subconjunto permitido + clase sensible<br/>con des-identificación CF-06}
 
-    G4 -- No --> R4[Rechazo: capacidades sin declarar]
-    G4 -- Sí --> G5{¿Identidad criptográfica<br/>verificable? CF-04}
+    G4 -- No --> R4[Rechazo: dato no autorizado por el Marco<br/>o clase sensible sin DLP]
+    G4 -- Sí --> G5{5. ¿Identidad criptográfica<br/>verificable? mutualAuthVerified CF-04}
 
     G5 -- No --> R5[Rechazo: identidad no verificable]
-    G5 -- Sí --> G6{¿Capacidades coherentes con<br/>los policy templates de la Constitución?}
+    G5 -- Sí --> G6{6. ¿coherenceReview reproducible?<br/>re-ejecutar el gate da el mismo status}
 
-    G6 -- No, conflicto --> R6[Rechazo: capacidad en conflicto<br/>con la Constitución]
+    G6 -- No --> R6[Rechazo: resultado no reproducible]
     G6 -- Sí --> P[(Alta admitida:<br/>coherenceReview.status = aprobado)]
 
     P --> D([Agente DESCUBRIBLE<br/>lifecycleStatus: activo])
@@ -56,14 +56,14 @@ flowchart TD
 
 ## Qué comprueba cada compuerta (contrato, no implementación)
 
-| Compuerta | Comprobación | Contrato / criterio |
-|-----------|--------------|---------------------|
-| `agentId` bien formado | URN con la forma `urn:myrmion:agent:<org>:<dominio>:<nombre>` | [esquema de identidad de agente](../../../docs/federation/esquema-identidad-agente.md) §2 |
-| Sin colisión | El `agentId` no apunta a una identidad distinta ya sellada (no se reutilizan) | [esquema de identidad](../../../docs/federation/esquema-identidad-agente.md) §2 |
-| Hash coherente | Cada `hash` de referencia (`constitutionRef`, `departmentLayerRef`, `regulatoryFrameworkRef`) = `"sha256:"` sobre la forma canónica del documento (UTF-8 NFC + LF + sin *trailing whitespace* + **excluida** la sección "0. Metadatos") | [contrato de hash](../../../docs/federation/esquema-identidad-agente.md#6-contrato-de-hash) |
-| Capacidades declaradas | Las capacidades y sus propiedades de gobernanza (`sideEffectClass`, `externalizes`, `canCommit`) son explícitas | CF-01 |
-| Identidad verificable | Identidad criptográfica verificable (`mutualAuthVerified`) — una de las tres propiedades de CF-04 | CF-04 |
-| Coherencia con la Constitución | Las capacidades no entran en conflicto con los policy templates derivados de la Constitución; si lo hacen, el alta falla | [gobernanza federada](../../../docs/federation/gobernanza-federada.md) · manifiesto §5 |
+| # | Compuerta | Comprobación | Contrato / criterio |
+|---|-----------|--------------|---------------------|
+| 1 | Descriptor válido | Campos requeridos y tipos correctos; `agentId` con forma `urn:myrmion:agent:<org>:<dominio>:<nombre>`, bien formado y **no reutilizado** | [esquema de identidad](../../../docs/federation/esquema-identidad-agente.md) §2–§3 |
+| 2 | `constitutionRef` vigente | El `hash` resuelve a una versión **publicada y vigente** de la Constitución (no borrador ni retirada), según el [contrato de hash](../../../docs/federation/esquema-identidad-agente.md#6-contrato-de-hash) (UTF-8 NFC + LF + sin *trailing whitespace* + **excluida** la sección "0. Metadatos") | esquema §6 · gobernanza §2.1 |
+| 3 | Capacidades vs Constitución | Ninguna `capability` declara un efecto que la Constitución veta de forma absoluta (p. ej. `canCommit` sin paso por legal) | [gobernanza](../../../docs/federation/gobernanza-federada.md) §2.1 · manifiesto §5 |
+| 4 | `dataClasses` vs Marco | Las clases de dato son subconjunto de las que el **Marco Regulatorio** autoriza al dominio; cada clase sensible (PII/PHI) tiene des-identificación en la ruta | [CF-06](../../../docs/federation/criterios-funcionales.md) · gobernanza §2.1 |
+| 5 | Identidad verificable | Identidad criptográfica verificable (`mutualAuthVerified`) — las tres propiedades de [CF-04](../../../docs/federation/criterios-funcionales.md) | CF-04 |
+| 6 | `coherenceReview` reproducible | Re-ejecutar el gate sobre el mismo descriptor y estado produce el mismo `status`; se sella en `coherenceReview` | [gobernanza](../../../docs/federation/gobernanza-federada.md) §2.1 |
 
 ### Notas de lectura
 
