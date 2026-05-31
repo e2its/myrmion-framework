@@ -146,7 +146,7 @@ La comparación es O(1) (pertenencia a un conjunto de hashes), no requiere re-pa
 
 `lifecycleStatus` recorre: `propuesto` → (gate de coherencia) → `activo` → `deprecated` → `retirado`.
 
-- **Alta:** el agente se propone con su descriptor; el [gate de coherencia](./gobernanza-federada.md) evalúa `capabilities` contra los policy templates derivados de la Constitución. Si pasa, `coherenceReview.status = aprobado` y el agente entra en el registry como `activo`. Si no, la registración falla. Detalle operativo en el [runbook de onboarding](../../templates/federation/runbook-onboarding-agente.md).
+- **Alta:** el agente se propone con su descriptor; el [gate de coherencia](./gobernanza-federada.md) evalúa `capabilities` contra los policy templates derivados de la Constitución. Si pasa, `coherenceReview.status = aprobado` y el agente entra en el registry como `activo`. Si no, el alta falla. Detalle operativo en el [runbook de onboarding](../../templates/federation/runbook-onboarding-agente.md).
 - **Actualización:** un cambio en `capabilities`, `constitutionRef` o `dataClasses` re-dispara el gate de coherencia.
 - **Retirada:** ver [runbook de retirada](../../templates/federation/runbook-retirada-agente.md) — deregister, revocar `identityRef`, archivar el descriptor y el histórico, y notificar a los agentes que lo tienen en `dependsOn`. El `agentId` queda archivado, no liberado.
 

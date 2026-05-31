@@ -64,7 +64,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Clase de automatizabilidad (automatabilityClass).** La categoría de un principio cultural según cuánto se puede materializar en policy sin pérdida de fidelidad. Toma uno de tres valores literales: `duro` (regla booleana exacta), `blando` (umbral + defensa en profundidad) y `no-automatizable` (juicio fino que permanece como trabajo de modelado en el agente). No todo principio es traducible; declararlo explícitamente es parte del método (manifiesto §3.3, §8).
 
-**Gate de coherencia.** La verificación programática que un agente nuevo debe pasar antes de registrarse en el service registry: sus capacidades declaradas se evalúan contra los policy templates derivados de la Constitución. Si declara capacidades que entran en conflicto con la Constitución, la registración **falla**. Es la versión programática de la revisión de coherencia de Adoption (manifiesto §5).
+**Gate de coherencia.** La verificación programática que un agente nuevo debe pasar antes de registrarse en el service registry: sus capacidades declaradas se evalúan contra los policy templates derivados de la Constitución. Si declara capacidades que entran en conflicto con la Constitución, el alta **falla**. Es la versión programática de la revisión de coherencia de Adoption (manifiesto §5).
 
 **Excepción.** Una llamada que el policy engine bloquea y que la organización decide aprobar manualmente. Las excepciones son legítimas pero **dejan rastro** en el [registro de excepciones](../../templates/federation/registro-excepciones.md): justificación, alcance temporal y autorizador. Una excepción al Marco Regulatorio no es una excepción: es una alerta (el Marco no admite excepciones, ver Adoption §4).
 

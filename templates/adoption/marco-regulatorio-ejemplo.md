@@ -132,7 +132,7 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 
 **Reglamento NIS2 (Directiva (UE) 2022/2555):** Consultora Modelo no es entidad esencial ni importante por umbral de plantilla y sector. No directamente aplicable. Aplicable indirectamente cuando un cliente lo es y exige medidas de ciberseguridad alineadas a NIS2 contractualmente.
 
-**Reglamento de propiedad intelectual:** Real Decreto Legislativo 1/1996 (España) y equivalentes europeos. Relevante porque algunos productos de IA generativa pueden producir outputs con problemas de derechos de autor. La organización monitorea las decisiones jurisprudenciales y ajusta sus restricciones de uso conforme emergen criterios.
+**Reglamento de propiedad intelectual:** Real Decreto Legislativo 1/1996 (España) y equivalentes europeos. Relevante porque algunos productos de IA generativa pueden producir outputs con problemas de derechos de autor. La organización monitoriza las decisiones jurisprudenciales y ajusta sus restricciones de uso conforme emergen criterios.
 
 **Custodio operativo:** Asesoría Jurídica externa (Despacho Garrido Abogados).
 

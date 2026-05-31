@@ -115,7 +115,7 @@ La gobernanza descrita en Adoption — custodia diferenciada por capa, revisión
 
 **Custodia.** Igual que en Adoption: Marco Regulatorio en legal/DPO, Constitución Corporativa en transformación digital o equivalente, capas departamentales en cada departamento. Federation añade un cuarto custodio: la **plataforma de federación**, responsable del stack opensource subyacente, los policy templates corporativos transversales y la pipeline de observabilidad. Este custodio típicamente es el equipo de plataforma o de SRE, no el equipo de transformación.
 
-**Revisión de coherencia.** En Adoption se hace en lectura cruzada antes de subir a producción. En Federation se complementa con verificación programática: los policy templates traducidos desde la Constitución se evalúan automáticamente contra los descriptores de capacidades de cada agente nuevo antes de que se registre en el service registry. Si un agente declara capacidades que entran en conflicto con la Constitución, la registración falla.
+**Revisión de coherencia.** En Adoption se hace en lectura cruzada antes de subir a producción. En Federation se complementa con verificación programática: los policy templates traducidos desde la Constitución se evalúan automáticamente contra los descriptores de capacidades de cada agente nuevo antes de que se registre en el service registry. Si un agente declara capacidades que entran en conflicto con la Constitución, el alta falla.
 
 **Detección de drift.** En Adoption es revisión humana periódica. En Federation se ejecuta sobre los tres patrones del §3.4, con la frecuencia que la criticidad del dominio exija.
 

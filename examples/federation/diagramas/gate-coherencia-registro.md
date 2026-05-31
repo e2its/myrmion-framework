@@ -10,7 +10,7 @@ Este diagrama acompaña al [ejemplo del corredor comercial→legal](../corredor-
 
 ## El caso
 
-Antes de que el corredor del [diagrama de secuencia](./secuencia-corredor.md) pueda funcionar, el agente de Legal tiene que existir en el registro y ser **coherente**: que su `agentId` esté bien formado, que los `hash` de sus referencias de gobernanza correspondan a la forma canónica de cada documento, que sus capacidades estén declaradas y que no colisione con otra identidad ya registrada. Además, el gate evalúa esas capacidades declaradas contra los policy templates derivados de la Constitución: si entran en conflicto, la registración falla. El gate rechaza todo lo que no encaje; un descriptor incoherente nunca llega a ser descubrible.
+Antes de que el corredor del [diagrama de secuencia](./secuencia-corredor.md) pueda funcionar, el agente de Legal tiene que existir en el registro y ser **coherente**: que su `agentId` esté bien formado, que los `hash` de sus referencias de gobernanza correspondan a la forma canónica de cada documento, que sus capacidades estén declaradas y que no colisione con otra identidad ya registrada. Además, el gate evalúa esas capacidades declaradas contra los policy templates derivados de la Constitución: si entran en conflicto, el alta falla. El gate rechaza todo lo que no encaje; un descriptor incoherente nunca llega a ser descubrible.
 
 ## El gate
 
@@ -63,7 +63,7 @@ flowchart TD
 | Hash coherente | Cada `hash` de referencia (`constitutionRef`, `departmentLayerRef`, `regulatoryFrameworkRef`) = `"sha256:"` sobre la forma canónica del documento (UTF-8 NFC + LF + sin *trailing whitespace* + **excluida** la sección "0. Metadatos") | [contrato de hash](../../../docs/federation/esquema-identidad-agente.md#6-contrato-de-hash) |
 | Capacidades declaradas | Las capacidades y sus propiedades de gobernanza (`sideEffectClass`, `externalizes`, `canCommit`) son explícitas | CF-01 |
 | Identidad verificable | Identidad criptográfica verificable (`mutualAuthVerified`) — una de las tres propiedades de CF-04 | CF-04 |
-| Coherencia con la Constitución | Las capacidades no entran en conflicto con los policy templates derivados de la Constitución; si lo hacen, la registración falla | [gobernanza federada](../../../docs/federation/gobernanza-federada.md) · manifiesto §5 |
+| Coherencia con la Constitución | Las capacidades no entran en conflicto con los policy templates derivados de la Constitución; si lo hacen, el alta falla | [gobernanza federada](../../../docs/federation/gobernanza-federada.md) · manifiesto §5 |
 
 ### Notas de lectura
 

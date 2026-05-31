@@ -134,7 +134,7 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 
 ### 3.3 Comprobación 3 — `capabilities` sin efectos que la Constitución prohíbe
 
-*Pregunta guía: ¿alguna `Capability` declarada, por sus propiedades de gobernanza (`sideEffectClass`, `externalizes`, `canCommit`, `dataClassesTouched`), declara un efecto que la Constitución veta de forma absoluta — p. ej. `externalizes: true` sobre cifras financieras sin paso por finanzas, o `canCommit: true` sin paso por legal? El conflicto es estructural y no se resuelve en runtime. Falla si alguna capability declara un efecto que ningún contexto haría admisible. Esta es la comprobación que da nombre al gate y la materialización exacta de la frase del manifiesto §5: «si un agente declara capacidades que entran en conflicto con la Constitución, la registración falla».*
+*Pregunta guía: ¿alguna `Capability` declarada, por sus propiedades de gobernanza (`sideEffectClass`, `externalizes`, `canCommit`, `dataClassesTouched`), declara un efecto que la Constitución veta de forma absoluta — p. ej. `externalizes: true` sobre cifras financieras sin paso por finanzas, o `canCommit: true` sin paso por legal? El conflicto es estructural y no se resuelve en runtime. Falla si alguna capability declara un efecto que ningún contexto haría admisible. Esta es la comprobación que da nombre al gate y la materialización exacta de la frase del manifiesto §5: «si un agente declara capacidades que entran en conflicto con la Constitución, el alta falla».*
 
 | Sub-comprobación | Resultado | Evidencia |
 |---|---|---|

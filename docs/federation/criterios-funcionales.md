@@ -58,7 +58,7 @@ Cada criterio se considera **cubierto** cuando el stack satisface todos los punt
 **Checklist de verificación.**
 
 - [ ] Almacena y consulta agentes por su [descriptor de identidad](./esquema-identidad-agente.md) **extendido**: no solo nombre y endpoint, sino dominio, criticidad, clases de dato y versión de Constitución aplicada.
-- [ ] El alta de un agente puede condicionarse al resultado del *gate de coherencia* (ver [gobernanza-federada.md](./gobernanza-federada.md)): si el descriptor entra en conflicto con la Constitución, la registración falla.
+- [ ] El alta de un agente puede condicionarse al resultado del *gate de coherencia* (ver [gobernanza-federada.md](./gobernanza-federada.md)): si el descriptor entra en conflicto con la Constitución, el alta falla.
 - [ ] Soporta el ciclo de vida completo: alta, actualización de descriptor, marcado como deprecated y baja (deregister) sin liberar el `agentId`.
 - [ ] Permite notificar a los agentes dependientes (`dependsOn`) cuando un agente del que dependen se retira.
 
