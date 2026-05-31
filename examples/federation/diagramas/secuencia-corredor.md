@@ -34,7 +34,7 @@ sequenceDiagram
 
     Lead->>Com: Solicita propuesta comercial
     activate Com
-    Note over Com: El agente redacta la propuesta;<br/>detecta que requiere validación legal
+    Note over Com: El agente redacta la propuesta<br/>detecta que requiere validación legal
 
     rect rgb(235, 244, 255)
     Note over Com,Reg: Salto 1 — descubrimiento e identidad (CF-01, CF-04)
@@ -47,10 +47,10 @@ sequenceDiagram
 
     rect rgb(235, 255, 240)
     Note over Com,Leg: Salto 2 — petición con contexto (CF-02, CF-03, CF-04, CF-05)
-    Note over Com: DLP redactó el NIF del lead en el salto 1:<br/>DecisionHop[0] calificar_lead, outcome: redactado,<br/>deidToken «NIF_1»; hopCount pasa a 2
+    Note over Com: DLP redactó el NIF del lead en el salto 1:<br/>DecisionHop[0] calificar_lead, outcome: redactado,<br/>deidToken «NIF_1», hopCount pasa a 2
     Com->>Gw: Invoca validar_clausula + bloque de contexto cultural
     activate Gw
-    Note over Gw: Autenticación mutua con identidad<br/>criptográfica verificable;<br/>require-prior-hop(legal) satisfecho
+    Note over Gw: Autenticación mutua con identidad<br/>criptográfica verificable<br/>require-prior-hop(legal) satisfecho
     Gw->>Leg: Petición admitida + bloque propagado (2 hops)
     activate Leg
     Gw->>Traza: Asienta hop de entrada (correlationId)
