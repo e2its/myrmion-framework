@@ -45,7 +45,7 @@ Un principio es **duro** cuando su cumplimiento se decide con una condición boo
 
 **Criterios para clasificar un principio como DURO:**
 
-- El disparador se expresa íntegramente con campos del descriptor (`capabilities.externalizes`, `canCommit`, `sideEffectClass`, `dataClassesTouched`) o del bloque de contexto cultural (`jurisdiction`, `dataSensitivity`, `language`, `businessRules`), comparados con valores fijos.
+- El disparador se expresa íntegramente con campos del descriptor (`capabilities.externalizes`, `canCommit`, `sideEffectClass`, `dataClassesTouched`) o del bloque de contexto cultural (`hopCount`, los `DecisionHop` de `decisionChain` —su `agentId`, `criteriaApplied`, `outcome`—), comparados con valores fijos.
 - Dos evaluadores que apliquen la regla a la misma entrada llegan siempre al mismo resultado.
 - El efecto no depende de cuánto, sino de si: no hay umbral, hay condición.
 
@@ -65,7 +65,7 @@ Un principio es **blando** cuando su cumplimiento depende de una magnitud, una p
 
 Un principio blando exige **defensa en profundidad**: nunca se confía a un único disparador. Se combinan controles —por ejemplo, un umbral en pre-invocación más una redacción en post-resultado más una marca en la evidencia para revisión posterior— de modo que el fallo de uno no abra la frontera. El umbral se documenta como un parámetro de la ficha, no como una constante oculta, para que pueda revisarse sin reescribir el principio.
 
-**Ejemplo de principio blando:** *"El contexto que cruza a otro dominio no debe exponer datos sensibles más allá de lo necesario."* "Lo necesario" no es booleano: se acota con un umbral de sensibilidad (`dataSensitivity`) que dispara `redact`, reforzado con `deidTokens` para los campos que aun así deben correlacionarse, y con evidencia de qué se redactó.
+**Ejemplo de principio blando:** *"El contexto que cruza a otro dominio no debe exponer datos sensibles más allá de lo necesario."* "Lo necesario" no es booleano: se acota con la clase de dato que la tool toca (`dataClassesTouched` del descriptor, contra el conjunto de clases sensibles que define el Marco) que dispara `redact`, reforzado con `deidTokens` para los campos que aun así deben correlacionarse, y con evidencia de qué se redactó.
 
 ### Clase NO-AUTOMATIZABLE — juicio fino que permanece en el agente
 
@@ -108,11 +108,11 @@ El disparador es la condición observable que dice "este principio aplica a este
 - **Del descriptor de identidad** ([esquema](./esquema-identidad-agente.md)):
   - `capabilities.externalizes` — si la capacidad invocada expone resultados fuera del dominio del agente.
   - `canCommit` — si la capacidad puede comprometer a la organización.
-  - `sideEffectClass` — `read`, `write` o `external`.
+  - `sideEffectClass` — `lectura`, `escritura`, `comunicacion-externa` o `compromiso`.
   - `dataClassesTouched` — clases de datos que la capacidad lee o produce.
 - **Del bloque de contexto cultural** ([esquema](./esquema-bloque-contexto-cultural.md)):
-  - `language`, `jurisdiction`, `dataSensitivity`, `businessRules` — el marco interpretativo del salto.
-  - Campos del `DecisionHop` — en especial la existencia o ausencia de un salto previo (`fromAgent`, `toAgent`, `policyRefs`).
+  - `hopCount` y `businessCaseId` — el lugar del salto en la cadena y el caso de negocio que la origina.
+  - Campos del `DecisionHop` de `decisionChain` — en especial la existencia o ausencia de un salto previo de un dominio dado: su `agentId` (cuyo cuarto segmento es el dominio), los `criteriaApplied` y el `outcome`.
 
 Para un principio duro, el disparador es una condición booleana sobre estos campos. Para un principio blando, es una comparación contra umbral más los controles de refuerzo. Para un principio no automatizable, el disparador identifica cuándo escalar a juicio, no cuándo decidir.
 
@@ -129,7 +129,7 @@ El efecto debe ser consistente con la clase: un principio duro produce un efecto
 
 ### Paso 4 — Del efecto a la evidencia
 
-Toda evaluación deja **evidencia**: el registro verificable de que la regla se evaluó, con qué entrada y con qué resultado. La evidencia se ancla al `DecisionHop` del salto (campo `policyRefs` y `outcome`) y alimenta la cadena de custodia. Sin evidencia, una regla no es auditable, y una regla no auditable no satisface [CF-05](./criterios-funcionales.md). La evidencia es obligatoria incluso cuando el efecto es `allow`: que algo se permitió debe constar igual que que algo se denegó.
+Toda evaluación deja **evidencia**: el registro verificable de que la regla se evaluó, con qué entrada y con qué resultado. La evidencia se ancla al `DecisionHop` del salto (campos `criteriaApplied` y `outcome`) y alimenta la cadena de custodia. Sin evidencia, una regla no es auditable, y una regla no auditable no satisface [CF-05](./criterios-funcionales.md). La evidencia es obligatoria incluso cuando el efecto es `allow`: que algo se permitió debe constar igual que que algo se denegó.
 
 ### Paso 5 — Del efecto al punto de aplicación
 
@@ -142,7 +142,7 @@ Un mismo principio puede generar reglas en ambos puntos (típico de los principi
 
 ### Paso 6 — Cierre con degradación segura
 
-Antes de dar por cerrada una regla se comprueba su comportamiento ante el fallo: si un campo necesario para el disparador falta, si la identidad no se puede verificar o si la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio ([CF-06](./criterios-funcionales.md)). Una regla que no especifica su comportamiento ante el fallo está incompleta.
+Antes de dar por cerrada una regla se comprueba su comportamiento ante el fallo: si un campo necesario para el disparador falta, si la identidad no se puede verificar o si la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio (lo decide el policy engine, [CF-03](./criterios-funcionales.md)). Una regla que no especifica su comportamiento ante el fallo está incompleta.
 
 ---
 
@@ -175,21 +175,21 @@ Una regla derivada se puede expresar de forma neutral, sin sintaxis de ningún m
 regla: compromiso-requiere-validacion-legal   (clase: DURO)
   cuando:
     capability.canCommit == true
-    y NO existe DecisionHop previo con policyRefs incluyendo "validacion-legal"
+    y NO existe en decisionChain un DecisionHop de un agente del dominio "legal" con outcome == "permitido"
   entonces:
     efecto = require-prior-hop -> dominio "legal"
   punto-aplicacion: pre-invocacion
-  evidencia: registrar en DecisionHop.policyRefs y DecisionHop.outcome
+  evidencia: registrar en DecisionHop.criteriaApplied y DecisionHop.outcome
   ante-fallo: deny con evidencia
 ```
 
 ```
 regla: redaccion-de-datos-sensibles-en-frontera   (clase: BLANDO)
   cuando:
-    dataSensitivity >= umbral_sensibilidad
-    y toAgent.domain != fromAgent.domain
+    capability.externalizes == true   (el resultado cruza el dominio del agente)
+    y capability.dataClassesTouched incluye una clase por encima del umbral de sensibilidad del Marco
   entonces:
-    efecto = redact   (sustituir por deidTokens los campos por encima del umbral)
+    efecto = redact   (sustituir por deidTokens los campos de clase sensible)
   punto-aplicacion: post-resultado
   evidencia: registrar qué campos se redactaron
   defensa-en-profundidad: combinar con control de pre-invocacion sobre dataClassesTouched

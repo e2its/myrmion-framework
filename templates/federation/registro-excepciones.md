@@ -84,7 +84,7 @@ Esta plantilla define el **formato del registro de excepciones** de tu federaci�
 
 | ID | Fecha apertura | Policy violada | Agente origen | Agente destino | `correlationId` | Justificaci처n | Caducidad | Autorizador | Estado |
 |---|---|---|---|---|---|---|---|---|---|
-| EXC-0001 | 2026-05-30 | `paso-por-legal@1.2` | `urn:myrmion:agent:consultora-modelo:comercial:propuestas` | `urn:myrmion:agent:consultora-modelo:legal:dictamenes` | `550e8400-e29b-41d4-a716-446655440000` | Cierre del lead `lead-2026-0042` vence el 02/06; Riera (Legal) emite dictamen verbal favorable y autoriza continuar mientras se formaliza el `DecisionHop` de Legal. | 2026-06-06 | Riera (Legal), por delegaci처n del custodio de la Constituci처n | activa |
+| EXC-0001 | 2026-05-30 | `pol-paso-por-legal@1.0` | `urn:myrmion:agent:consultora-modelo:comercial:propuestas` | `urn:myrmion:agent:consultora-modelo:legal:dictamenes` | `550e8400-e29b-41d4-a716-446655440000` | Cierre del lead `lead-2026-0042` vence el 02/06; Riera (Legal) emite dictamen verbal favorable y autoriza continuar mientras se formaliza el `DecisionHop` de Legal. | 2026-06-06 | Riera (Legal), por delegaci처n del custodio de la Constituci처n | activa |
 | [Espacio para rellenar] | | | | | | | | | |
 
 ---
