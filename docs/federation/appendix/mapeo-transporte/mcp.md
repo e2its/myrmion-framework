@@ -67,7 +67,7 @@ Este ejemplo ilustra el segundo salto del [corredor comercial→legal](../../../
         "businessCaseId": "lead-2026-0042",
         "constitutionHash": "sha256:…",
         "regulatoryFrameworkHash": "sha256:…",
-        "departmentLayersHash": "sha256:…",
+        "departmentLayerHash": "sha256:…",
         "originatingUserRef": "usr_op4q…(seudónimo)",
         "hopCount": 2,
         "decisionChain": [

@@ -64,7 +64,7 @@ El bloque viaja como **metadatos del mensaje o de la tarea** A2A. El subárbol d
         "businessCaseId": "lead-2026-0042",
         "constitutionHash": "sha256:…",
         "regulatoryFrameworkHash": "sha256:…",
-        "departmentLayersHash": "sha256:…",
+        "departmentLayerHash": "sha256:…",
         "originatingUserRef": "usr_op4q…(seudónimo)",
         "hopCount": 2,
         "decisionChain": [

@@ -61,7 +61,7 @@ El bloque envuelve la llamada, no la sustituye: viaja **junto a** los argumentos
 | `businessCaseId` | Heredado (origen de la cadena) | [Espacio para rellenar] |
 | `constitutionHash` | **Nuevo** — la versión que *este* emisor aplicó | [Espacio para rellenar] |
 | `regulatoryFrameworkHash` | Nuevo — el Marco que este emisor aplicó | [Espacio para rellenar] |
-| `departmentLayersHash` | Nuevo — capas departamentales activas en este emisor | [Espacio para rellenar] |
+| `departmentLayerHash` | Nuevo — capa departamental de la que deriva este emisor | [Espacio para rellenar] |
 | `originatingUserRef` | Heredado (seudónimo opaco; ausente si la cadena la inició el sistema) | [Espacio para rellenar] |
 | `hopCount` | Heredado + **se incrementa** en este salto | [Espacio para rellenar] |
 | `decisionChain` | Heredada + se le **añade** este `DecisionHop` | [Espacio para rellenar] |
@@ -69,7 +69,7 @@ El bloque envuelve la llamada, no la sustituye: viaja **junto a** los argumentos
 | `compatibilityPolicy` | Política de plataforma (§5) | [Espacio para rellenar] |
 | `escalationContext` | Solo si la cadena se rompe | [Espacio para rellenar] |
 
-*Pregunta guía: ¿cómo garantiza tu implementación que `constitutionHash`, `regulatoryFrameworkHash` y `departmentLayersHash` se calculan con el [contrato de hash](../../docs/federation/esquema-identidad-agente.md#6-contrato-de-hash) (sha256 sobre forma canónica, excluyendo metadatos) y no con un hash improvisado que no case con el del descriptor de identidad?*
+*Pregunta guía: ¿cómo garantiza tu implementación que `constitutionHash`, `regulatoryFrameworkHash` y `departmentLayerHash` se calculan con el [contrato de hash](../../docs/federation/esquema-identidad-agente.md#6-contrato-de-hash) (sha256 sobre forma canónica, excluyendo metadatos) y no con un hash improvisado que no case con el del descriptor de identidad?*
 
 [Espacio para rellenar]
 

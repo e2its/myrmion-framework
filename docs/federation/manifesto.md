@@ -60,7 +60,7 @@ El esquema corporativo es responsabilidad de la organización pero Federation pu
 
 Es la pieza técnicamente más original del framework y la que ningún gateway opensource cubre por defecto.
 
-Cuando el agente A invoca al agente B vía MCP, además de los argumentos de la tool viaja un bloque de metadatos culturales que incluye, como mínimo: hash de la versión de la Constitución Corporativa aplicada por A, identificador del caso de negocio, hash de las capas departamentales activas en A, identificador del usuario originante (cuando aplique), cadena de decisiones previas relevantes (si la cadena tiene más de un salto), y un correlation id que persiste a lo largo de toda la cadena.
+Cuando el agente A invoca al agente B vía MCP, además de los argumentos de la tool viaja un bloque de metadatos culturales que incluye, como mínimo: hash de la versión de la Constitución Corporativa aplicada por A, identificador del caso de negocio, hash de la capa departamental de la que deriva A, identificador del usuario originante (cuando aplique), cadena de decisiones previas relevantes (si la cadena tiene más de un salto), y un correlation id que persiste a lo largo de toda la cadena.
 
 B recibe ese bloque, valida que la versión de Constitución que A aplicó es compatible con la suya, decide si aplica criterios adicionales propios de su dominio que A no podía conocer, y propaga el bloque actualizado en cualquier llamada subsiguiente que él mismo haga. La cadena de decisiones se reconstruye trivialmente desde el correlation id.
 

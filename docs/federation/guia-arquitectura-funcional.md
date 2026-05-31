@@ -48,7 +48,7 @@ La frontera entre lo que esta guía describe (funcional) y los productos que lo 
 
 ## 3. §3.2 — Capa de propagación de contexto cultural
 
-**Qué hace.** Cuando A invoca a B, además de los argumentos de la tool viaja el [bloque de contexto cultural](./esquema-bloque-contexto-cultural.md): versión de Constitución aplicada, caso de negocio, capas departamentales activas, cadena de decisiones previa y un `correlationId` que persiste toda la cadena. B valida compatibilidad, aplica sus propios criterios y propaga el bloque actualizado.
+**Qué hace.** Cuando A invoca a B, además de los argumentos de la tool viaja el [bloque de contexto cultural](./esquema-bloque-contexto-cultural.md): versión de Constitución aplicada, caso de negocio, capa departamental aplicada, cadena de decisiones previa y un `correlationId` que persiste toda la cadena. B valida compatibilidad, aplica sus propios criterios y propaga el bloque actualizado.
 
 **Secuencia de una llamada inter-agente** (el caso normal, compatible):
 

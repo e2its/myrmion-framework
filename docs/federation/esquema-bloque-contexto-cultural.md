@@ -29,7 +29,7 @@ El bloque de contexto cultural es lo que hace que esa cultura viaje. Es lo que d
 | `businessCaseId` | R | string | Caso de negocio que origina la cadena (lead, expediente, ticket). Agrupa cadenas que sirven a un mismo asunto. |
 | `constitutionHash` | R | hash | Hash de la versión de Constitución que el **emisor** aplicó (mismo [contrato de hash](./esquema-identidad-agente.md#6-contrato-de-hash)). Lo que el receptor valida (§4). |
 | `regulatoryFrameworkHash` | R | hash | Hash del Marco Regulatorio que el emisor aplicó. La incompatibilidad de Marco es **dura**: no hay excepción. |
-| `departmentLayersHash` | R | hash | Hash de las capas departamentales activas en el emisor. Documenta qué criterios de dominio se aplicaron upstream. |
+| `departmentLayerHash` | R | hash | Hash de la capa departamental de la que deriva el emisor (paralelo a `departmentLayerRef` del descriptor; mismo [contrato de hash](./esquema-identidad-agente.md#6-contrato-de-hash)). Documenta qué criterios de dominio aplicó el emisor. |
 | `originatingUserRef` | C | seudónimo opaco | Referencia al usuario que originó la cadena. **Nunca PII directa**: un seudónimo opaco. **Ausente** en cadenas iniciadas por el sistema (no por una persona). |
 | `hopCount` | R | entero ≥ 1 | Número de saltos acumulados. La primera invocación de la cadena es `1`. |
 | `decisionChain` | C | array de `DecisionHop` | La cadena de decisiones previas. **Obligatoria cuando `hopCount > 1`.** Ver §3. |
@@ -103,7 +103,7 @@ El contrato es §2–§5. Este JSON solo ilustra un bloque en el segundo salto d
   "businessCaseId": "lead-2026-0042",
   "constitutionHash": "sha256:…",
   "regulatoryFrameworkHash": "sha256:…",
-  "departmentLayersHash": "sha256:…",
+  "departmentLayerHash": "sha256:…",
   "originatingUserRef": "usr_op4q…(seudónimo)",
   "hopCount": 2,
   "decisionChain": [
