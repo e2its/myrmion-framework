@@ -10,6 +10,8 @@
 > | `automatabilityClass` | `blando` |
 > | Punto de aplicación | pre-invocación |
 
+> **Nota de versión.** Esta ficha documenta la policy base `pol-cifras-sin-finanzas@1.0`. El [ejemplo end-to-end](../../../../examples/federation/corredor-comercial-legal/) ejecuta la versión vigente `@1.1` (la organización la endureció) y la [señal de drift](../../../../examples/federation/corredor-comercial-legal/senal-drift.md) propone evolucionar a `@1.2`. La divergencia es **deliberada**: ilustra el ciclo de vida de una policy (ver [ADR-0002](../../adr/0002-decisiones-de-revision-de-coherencia.md), D3).
+
 ---
 
 ## Principio de origen

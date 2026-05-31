@@ -38,10 +38,10 @@
 | **VF01** | Nº de agentes departamentales activos | 6 (comercial, legal, finanzas, personas, operaciones, soporte) | ≥5–6 | No |
 | **VF02** | Nº de pares que colaboran con frecuencia | 4 (comercial↔legal, comercial↔finanzas, personas↔legal, operaciones↔soporte) | ≥3 | No |
 | **VF03** | Protocolo inter-agente | MCP | MCP | No |
-| **VF04** | Exposición regulatoria / sector | General + RGPD; datos de cliente C2–C3, sin C4 | General | No |
-| **VF05** | Reversibilidad de des-identificación | Reversible para NIF/identificadores de cliente; irreversible para datos de RR. HH. sensibles | Reversible donde aplique | No |
+| **VF04** | Exposición regulatoria / sector | General + RGPD; datos de cliente C2–C3, sin C4 | media | No |
+| **VF05** | Reversibilidad de des-identificación | Reversible para NIF/identificadores de cliente; irreversible para datos de RR. HH. sensibles | mixta (reversible + irreversible) | No |
 | **VF06** | Stack pre-existente relevante | Gateway MCP comunitario ya en uso para tools internas | Ninguno | **Sí → ADR-0100** |
-| **VF07** | Criticidad máxima de dominio | Alta (legal y finanzas) | Alta | No |
+| **VF07** | Criticidad máxima de dominio | Alta (legal y finanzas) | media | Sí |
 | **VF08** | Modelo de despliegue | Contenedores con identidad por carga gestionada, aislamiento de red por dominio y ciclo de vida en GitOps | *(funcional)* | No |
 | **VF09** | Volumen de tráfico inter-agente | ~200 llamadas inter-agente/día | Decenas–cientos/hora | No |
 | **VF10** | Token `<org>` del namespace | `consultora-modelo` | *(elige la org)* | — |
