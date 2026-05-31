@@ -20,7 +20,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Agente departamental.** La materialización programática de una Capa Departamental de Adoption como servidor invocable. En Federation, cada agente expone un *descriptor de identidad* y se registra en el *service registry*. Hereda, por construcción, de la Constitución Corporativa y del Marco Regulatorio. No confundir con «asistente»: en Adoption el asistente vive dentro de un producto comercial; en Federation el agente es un servicio con identidad criptográfica propia.
 
-**Corredor (corridor).** Un par origen→destino de agentes que colabora con frecuencia significativa y cuya colaboración manual (handover) Federation sustituye por invocación gobernada. El corredor es la unidad de migración (manifiesto §6, Fase 3): no se federa «la organización», se federa un corredor cada vez. Un corredor puede tener más de dos saltos cuando la cadena de decisión atraviesa varios dominios (p. ej. comercial→legal→finanzas).
+**Corredor (corridor).** El traspaso recurrente entre dos agentes departamentales (origen→destino) que hoy se hace a mano —una persona resume el output de uno y se lo entrega al otro (*handover*)— y que Federation sustituye por invocación gobernada. Ejemplo: el corredor comercial→legal, donde cada *lead* que califica Comercial pasa por Legal para validar una cláusula antes de cerrar (ver el [ejemplo end-to-end](../../examples/federation/corredor-comercial-legal/)). *El término se usa en el sentido de **corredor de tránsito** —una vía muy transitada que se pavimenta antes que las demás—, no de corredor de bolsa ni de atletismo.* El corredor es la **unidad de migración** (manifiesto §6, Fase 3): no se federa «la organización», se federa un corredor cada vez. Puede tener más de dos saltos cuando la cadena de decisión atraviesa varios dominios (p. ej. comercial→legal→finanzas).
 
 **Salto (hop).** Una invocación inter-agente individual dentro de una cadena. `hopCount` cuenta los saltos acumulados en una cadena de decisión. La primera invocación de una cadena es `hopCount = 1`.
 
@@ -36,7 +36,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Service registry.** El catálogo federado donde los agentes se registran con su descriptor extendido (no solo nombre y endpoint, sino dominio, criticidad y versión de Constitución aplicada). El alta en el registry pasa por el *gate de coherencia*. Es responsabilidad del stack; Federation define qué debe poder almacenar y consultar, no cómo (ver [CF-02](./criterios-funcionales.md)).
 
-**Identidad criptográfica.** La propiedad de que la identidad de un agente es verificable por medios criptográficos antes de ejecutar una llamada, con credenciales de vida corta y revocables. El cuerpo nunca exige «mTLS»: exige estas propiedades, que mTLS u otros mecanismos satisfacen (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md), regla 4).
+**Identidad criptográfica.** La propiedad de que la identidad de un agente es verificable por medios criptográficos, con tres requisitos (CF-04): (1) el receptor verifica criptográficamente la identidad del emisor **antes de ejecutar** la llamada; (2) la credencial es de **vida corta y revocable**; (3) la identidad es **vinculable de forma estable al `agentId`**. El cuerpo nunca exige «mTLS»: exige estas tres propiedades, que mTLS u otros mecanismos satisfacen (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md), regla 4).
 
 ---
 
@@ -52,9 +52,9 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **`criteriaApplied`.** En cada eslabón de la cadena, la lista de criterios que el agente aplicó, expresada como `policyId@version` (cuando el criterio es una policy automatizada) o como el literal `"juicio-de-modelo-no-automatizable"` (cuando el criterio es un juicio fino que Federation no pretende automatizar). Esta convención es la que hace analizable el *Patrón A* de detección de drift.
 
-**Validación de compatibilidad.** La comprobación que hace el agente receptor: que la versión de Constitución que aplicó el emisor (`constitutionHash`) está entre las que él reconoce compatibles (`compatibleConstitutionHashes`). Si no hay match, la llamada **no procede**: la política por defecto es *escalado a humano* con el bloque completo como evidencia.
+**Validación de compatibilidad.** La comprobación que hace el agente receptor: que la versión de Constitución que aplicó el emisor (`constitutionHash`) está entre las que él reconoce compatibles (`compatibleConstitutionHashes`). Si no hay match, la llamada **no procede**: se aplica `compatibilityPolicy` —valores `{escalar, rechazar}`, por defecto `escalar`— rellenando `escalationContext` y escalando a humano con el bloque completo como evidencia. La política puede endurecerse a `rechazar`, nunca relajarse a permitir.
 
-**Token de des-identificación (`deidToken`).** Referencia opaca a un dato sensible que ha sido redactado en la ruta. Nunca contiene el valor original: solo un puntero a un vault, un ámbito y un TTL. Permite re-identificar la respuesta final **únicamente en el agente de origen** cuando la redacción es reversible. Conecta con la capa técnica de la [Guía de protección de datos](../adoption/guia-proteccion-datos.md).
+**Token de des-identificación (`deidToken`).** Referencia opaca a un dato sensible **redactado de forma reversible** en la ruta. Nunca contiene el valor original: solo un puntero a un vault, un ámbito (`scope`) y un TTL (`ttl`). Solo existe cuando la redacción es reversible; cuando es irreversible **no hay token**, porque el dato se ha ido y no vuelve. Permite re-identificar la respuesta final **únicamente en el agente de origen**. En el bloque de contexto cultural estos tokens viajan en el campo `deidTokens` (array). Conecta con la capa técnica de la [Guía de protección de datos](../adoption/guia-proteccion-datos.md).
 
 ---
 
@@ -62,7 +62,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Policy template.** Un patrón reutilizable que traduce un principio de la Constitución Corporativa a una regla evaluable por un policy engine. Federation define el *formato* y las *convenciones* del mapping ([convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md)); el *catálogo poblado* con implementaciones por dialecto vive en `appendix/policy-templates/`.
 
-**Clase de automatizabilidad (automatabilityClass).** La categoría de un principio cultural según cuánto se puede materializar en policy sin pérdida de fidelidad: **duro** (regla booleana exacta), **blando** (umbral + defensa en profundidad), **no automatizable** (juicio fino que permanece como trabajo de modelado en el agente). No todo principio es traducible; declararlo explícitamente es parte del método (manifiesto §3.3, §8).
+**Clase de automatizabilidad (automatabilityClass).** La categoría de un principio cultural según cuánto se puede materializar en policy sin pérdida de fidelidad. Toma uno de tres valores literales: `duro` (regla booleana exacta), `blando` (umbral + defensa en profundidad) y `no-automatizable` (juicio fino que permanece como trabajo de modelado en el agente). No todo principio es traducible; declararlo explícitamente es parte del método (manifiesto §3.3, §8).
 
 **Gate de coherencia.** La verificación programática que un agente nuevo debe pasar antes de registrarse en el service registry: sus capacidades declaradas se evalúan contra los policy templates derivados de la Constitución. Si declara capacidades que entran en conflicto con la Constitución, la registración **falla**. Es la versión programática de la revisión de coherencia de Adoption (manifiesto §5).
 
