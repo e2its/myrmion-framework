@@ -4,6 +4,7 @@
 # Los hashes son ilustrativos (forma "sha256:<hex>"); su contrato de cálculo está en esquema-identidad-agente.md §6.
 
 schemaVersion: "1.0"
+version: "1.0.0"
 agentId: "urn:myrmion:agent:consultora-modelo:comercial:propuestas"
 displayName: "Agente Comercial — Propuestas"
 domain: "comercial"

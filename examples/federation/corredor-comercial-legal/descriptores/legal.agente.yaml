@@ -3,6 +3,7 @@
 # Esta es una representación ilustrativa (no normativa): el contrato es la tabla del esquema, no este YAML.
 
 schemaVersion: "1.0"
+version: "1.0.0"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"

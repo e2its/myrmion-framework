@@ -148,7 +148,7 @@ Punto de aplicación y dónde se evalúa (rol arquitectónico: gateway antes de 
 
 ## 9. `caveats`
 
-*Pregunta guía: ¿qué sabe quien diseñó esta policy que los campos anteriores no capturan? Supuestos, interacciones con otras fichas, casos límite, falsos positivos conocidos, granularidad de las autorizaciones que exige. Incluye obligatoriamente el **comportamiento ante el fallo**: si falta un campo del disparador o la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio ([CF-06](../../docs/federation/criterios-funcionales.md); convenciones §3, paso 6).*
+*Pregunta guía: ¿qué sabe quien diseñó esta policy que los campos anteriores no capturan? Supuestos, interacciones con otras fichas, casos límite, falsos positivos conocidos, granularidad de las autorizaciones que exige. Incluye obligatoriamente el **comportamiento ante el fallo**: si falta un campo del disparador o la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio (lo decide el policy engine, [CF-03](../../docs/federation/criterios-funcionales.md); convenciones §3, paso 6).*
 
 [Espacio para rellenar]
 

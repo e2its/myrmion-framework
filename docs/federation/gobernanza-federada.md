@@ -10,7 +10,7 @@
 
 La gobernanza de Federation no sustituye a la de Adoption: la hereda y la endurece. Todo lo que el manifiesto de [Myrmion Adoption](../adoption/manifesto.md) §4 dice sobre custodia diferenciada, revisión de coherencia, drift, excepciones y retirada **sigue vigente**. Este documento no lo repite — describe solo dónde Federation cambia algo, y por qué.
 
-El cambio de fondo es uno y se enuncia en una frase: **lo que en Adoption era criterio humano aplicado en lectura cruzada, en Federation es comprobación reproducible aplicada en la ruta.** Eso introduce cuatro deltas concretos, que son las cuatro secciones de este documento:
+El cambio de fondo es uno y se enuncia en una frase: **lo que en Adoption era criterio humano aplicado en lectura cruzada, en Federation es comprobación reproducible aplicada en la ruta.** Eso introduce cuatro deltas que este documento detalla, una por sección (un quinto delta de gobernanza —la detección de drift— vive en su propio documento y se recoge en el resumen final):
 
 1. Un **cuarto custodio** — la plataforma de federación (§1).
 2. Un **gate de coherencia** programático en el alta al service registry (§2).

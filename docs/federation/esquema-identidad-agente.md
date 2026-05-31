@@ -40,6 +40,7 @@ urn:myrmion:agent:<org>:<dominio>:<nombre>
 | Campo | Req. | Tipo | Descripción |
 |---|---|---|---|
 | `schemaVersion` | R | string (semver) | Versión de **este** esquema que el descriptor cumple. Permite evolucionar el contrato sin romper agentes antiguos. |
+| `version` | O | string (semver) | Versión del **propio descriptor** (distinta de `schemaVersion`, que versiona el contrato). Se incrementa al cambiar capacidades, dominio o Constitución aplicada. |
 | `agentId` | R | URN | Identificador estable y no reutilizable (§2). |
 | `displayName` | R | string | Nombre legible para humanos (dashboards, auditoría). |
 | `domain` | R | string | Dominio departamental. Vocabulario alineado con las Capas Departamentales de Adoption. |
@@ -82,6 +83,7 @@ El contrato es la tabla de §3–§4. Este YAML solo ilustra la forma:
 
 ```yaml
 schemaVersion: "1.0"
+version: "1.0.0"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"
