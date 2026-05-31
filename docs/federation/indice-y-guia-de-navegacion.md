@@ -31,33 +31,33 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 | [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.0 |
 | [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | ✅ v1.0 |
 | [regla-anti-acoplamiento.md](./regla-anti-acoplamiento.md) | Qué va al cuerpo vs al apéndice. Norma transversal | ✅ v1.0 |
-| [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | ⏳ |
-| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | ⏳ |
-| [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | ⏳ |
-| [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | ⏳ |
-| [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | ⏳ |
-| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | ⏳ |
-| [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | ⏳ |
-| [metricas-federacion.md](./metricas-federacion.md) | Las métricas que importan (§7) | ⏳ |
-| [perfil-adopcion-federacion.md](./perfil-adopcion-federacion.md) | Variables VF que modifican decisiones según contexto | ⏳ |
-| [adr/](./adr/) | Architecture Decision Records: plantilla + ejemplos | ⏳ |
+| [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📝 draft |
+| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | 📝 draft |
+| [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | 📝 draft |
+| [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📝 draft |
+| [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
+| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📝 draft |
+| [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | 📝 draft |
+| [metricas-federacion.md](./metricas-federacion.md) | Las métricas que importan (§7) | 📝 draft |
+| [perfil-adopcion-federacion.md](./perfil-adopcion-federacion.md) | Variables VF que modifican decisiones según contexto | 📝 draft |
+| [adr/](./adr/) | Architecture Decision Records: plantilla + ejemplos | 📝 draft |
 
 ### Apéndice vivo (`docs/federation/appendix/`) — comunidad
 
 | Recurso | Qué contiene | Estado |
 |---|---|---|
-| [appendix/README.md](./appendix/README.md) | Contrato de desacoplamiento + matriz componente × CF | ⏳ |
-| appendix/stacks-referencia/ | Fichas de stacks candidatos con su cobertura de CF | ⏳ |
-| appendix/policy-templates/ | Catálogo de policy templates con snippets por dialecto | ⏳ |
-| appendix/drift-recipes/ | Patrones de drift específicos de sectores regulados | ⏳ |
-| appendix/mapeo-transporte/ | Cómo viaja el bloque de contexto por protocolo (MCP, A2A) | ⏳ |
+| [appendix/README.md](./appendix/README.md) | Contrato de desacoplamiento + matriz componente × CF | 📝 draft |
+| appendix/stacks-referencia/ | Fichas de stacks candidatos con su cobertura de CF | 📝 draft |
+| appendix/policy-templates/ | Catálogo de policy templates con snippets por dialecto | 📝 draft |
+| appendix/drift-recipes/ | Patrones de drift específicos de sectores regulados | 📝 draft |
+| appendix/mapeo-transporte/ | Cómo viaja el bloque de contexto por protocolo (MCP, A2A) | 📝 draft |
 
 ### Plantillas (`templates/federation/`) y ejemplos (`examples/federation/`)
 
 | Recurso | Qué es | Estado |
 |---|---|---|
-| [templates/federation/](../../templates/federation/) | Plantillas socráticas que la organización rellena (descriptor, bloque, ficha de policy, playbook de drift, charter, registro de excepciones, runbooks, checklist Fase 0) | ⏳ |
-| [examples/federation/](../../examples/federation/) | Corredor end-to-end anonimizado + diagramas | ⏳ |
+| [templates/federation/](../../templates/federation/) | Plantillas socráticas que la organización rellena (descriptor, bloque, ficha de policy, playbook de drift, charter, registro de excepciones, runbooks, checklist Fase 0) | 📝 draft |
+| [examples/federation/](../../examples/federation/) | Corredor end-to-end anonimizado + diagramas | 📝 draft |
 
 ---
 
@@ -98,7 +98,7 @@ La [Guía de protección de datos](../adoption/guia-proteccion-datos.md) de Adop
 
 ## 6. Estado del corpus
 
-A fecha de esta versión, el manifiesto y los cimientos normativos (índice, glosario, criterios funcionales, regla anti-acoplamiento) están cerrados; el resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. Los documentos marcados ⏳ arriba indican lo pendiente. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
+A fecha de esta versión, el manifiesto y los cimientos normativos (índice, glosario, criterios funcionales, regla anti-acoplamiento) están cerrados; el resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. Los documentos marcados 📝 draft arriba indican lo pendiente. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
 
 ---
 
