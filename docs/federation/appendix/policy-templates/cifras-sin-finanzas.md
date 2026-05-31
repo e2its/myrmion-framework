@@ -95,7 +95,7 @@ Principio de cautela: la evidencia registra el **tipo** de patrón financiero, n
 - **Cifras no numéricas.** Un dato financiero puede no ser una cifra (p. ej. «aplicaremos el mejor precio de mercado»). Esta regla, basada en patrón, no lo captura; complétala con detección semántica si tu riesgo lo exige.
 - **Endorsement caduco.** Igual que en «Paso por Legal», un endorsement de Finanzas vale para la materia tal como era al respaldarla. Si la cifra cambia tras el endorsement, invalídalo. La definición de «cambio sustancial» es constitucional.
 - **Frontera de externalización.** `externalizes` la declara el modelador del agente en el descriptor (decidible en tiempo de diseño): la policy la consume como booleano, no la infiere en runtime.
-- **Degradación segura.** Si falta el campo `externalizes` en el descriptor o no se puede ejecutar el detector, la regla no se evalúa con fidelidad: el resultado por defecto es `deny` con evidencia ([CF-06](../../criterios-funcionales.md); convenciones §3, paso 6).
+- **Degradación segura.** Si falta el campo `externalizes` en el descriptor o no se puede ejecutar el detector, la regla no se evalúa con fidelidad: el resultado por defecto es `deny` con evidencia (convenciones §3, paso 6).
 
 ---
 

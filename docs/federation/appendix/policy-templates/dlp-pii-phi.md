@@ -88,7 +88,7 @@ Principio de oro de esta ficha, alineado con la privacidad por construcción del
 - **Tokens estables vs. por cadena.** Un `deidToken` estable para un mismo dato permite correlación entre cadenas (útil y, a la vez, riesgo de re-identificación). Un token con `scope` por cadena (`scope: "cadena:<correlationId>"`) evita la correlación pero impide unir hilos. La elección es constitucional, no de policy; documéntala.
 - **No es la autenticación de la llamada.** La des-identificación en la ruta es ortogonal a la autenticación mutua con identidad criptográfica verificable ([CF-04](../../criterios-funcionales.md)): una protege el *contenido sensible*, la otra protege el *canal y la identidad*. Hacen falta las dos.
 - **PHI puede exigir más.** Algunos marcos regulatorios de datos de salud exigen mínimos adicionales (retención, jurisdicción). Esta ficha cubre la des-identificación en la ruta; no agota el cumplimiento. La capa técnica completa está en la [Guía de protección de datos](../../../adoption/guia-proteccion-datos.md) de Adoption.
-- **Degradación segura.** Si el servicio de tokenización no responde o un campo no puede redactarse, la decisión es `deny`, nunca dejar pasar en claro ([CF-06](../../criterios-funcionales.md); convenciones §3, paso 6).
+- **Degradación segura.** Si el servicio de tokenización no responde o un campo no puede redactarse, la decisión es `deny`, nunca dejar pasar en claro (convenciones §3, paso 6).
 
 ---
 

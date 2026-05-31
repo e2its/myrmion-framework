@@ -51,7 +51,7 @@ Para que la regla sea operable, estos son los reemplazos que más se repiten al 
 | «Presidio detecta PII en…» | «des-identificación en la ruta con motor vendor-neutral» ([CF-06](./criterios-funcionales.md)) | `appendix/stacks-referencia/` |
 | «MLflow registry de bundles» | (fuera de scope: es de la arquitectura de referencia, no de federación) | no entra |
 
-La regla 4 del test (mTLS → propiedades) merece énfasis propio: **el cuerpo nunca exige «mTLS» por su nombre.** Exige las tres propiedades de identidad criptográfica de [CF-04](./criterios-funcionales.md): (1) el receptor verifica criptográficamente la identidad del emisor antes de ejecutar; (2) la credencial es de vida corta y revocable; (3) la identidad es vinculable de forma estable al `agentId`. mTLS las satisface; otros mecanismos también.
+El caso canónico de traducción «mTLS → propiedades» (§3) merece énfasis propio: **el cuerpo nunca exige «mTLS» por su nombre.** Exige las tres propiedades de identidad criptográfica de [CF-04](./criterios-funcionales.md): (1) el receptor verifica criptográficamente la identidad del emisor antes de ejecutar; (2) la credencial es de vida corta y revocable; (3) la identidad es vinculable de forma estable al `agentId`. mTLS las satisface; otros mecanismos también.
 
 ---
 

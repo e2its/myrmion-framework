@@ -29,7 +29,7 @@ El mapping no reescribe el principio: lo **deriva**. Toma la obligación expresa
 
 La **fidelidad** es la propiedad que define un buen mapping: la regla derivada debe permitir todo lo que el principio permite y denegar todo lo que el principio prohíbe, sin añadir ni quitar. Cuando un principio no se puede derivar con fidelidad a una regla mecánica, no se fuerza la traducción: se clasifica como no automatizable (§4) y se documenta como tal. Forzar una regla infiel es peor que no tener regla, porque crea la ilusión de control donde no lo hay.
 
-Esta derivación realiza el criterio funcional [CF-03](./criterios-funcionales.md): que exista una Constitución versionada y un mapping que, principio a principio, declare disparador, efecto, evidencia y punto de aplicación, o lo marque como no automatizable.
+Esta derivación es el método de mapping de §3.3 del manifiesto: principio a principio, declara disparador, efecto, evidencia y punto de aplicación, o lo marca como no automatizable. Produce las policies que el policy engine ([CF-03](./criterios-funcionales.md)) evalúa en runtime.
 
 **El mismo método sirve para el Marco Regulatorio.** Aunque este documento habla de «la Constitución» por brevedad, las convenciones de mapping se aplican igual a los principios del **Marco Regulatorio**: se derivan a regla con el mismo disparador / efecto / evidencia / punto de aplicación. La diferencia no está en *cómo* se derivan, sino en su **`origen`** —Constitución o Marco—, que la [ficha de policy](../../templates/federation/ficha-policy-template.md) declara y que determina el tratamiento de su violación: las reglas de la Constitución son **excepcionables**; las del Marco **no** —el intento de excepción es una alerta a legal/DPO tratada como incidente ([gobernanza](./gobernanza-federada.md) §3). Por eso el catálogo marca el origen de cada regla.
 
@@ -89,7 +89,7 @@ La clasificación se hace en este orden, de la más fuerte a la más débil:
 2. Si no, ¿se puede acotar con un umbral más defensa en profundidad, asumiendo y documentando el margen de error? → **BLANDO**.
 3. Si no, no se fuerza la traducción → **NO-AUTOMATIZABLE**, y se enruta a juicio humano con constancia.
 
-La duda se resuelve siempre hacia la clase más débil. Clasificar como duro lo que es blando crea reglas frágiles; clasificar como automatizable lo que exige juicio crea reglas infieles. La degradación segura ([CF-03](./criterios-funcionales.md)) gobierna también aquí: ante la duda sobre si un principio es evaluable, se trata como no evaluable y se deniega o se enruta, nunca se permite en silencio.
+La duda se resuelve siempre hacia la clase más débil. Clasificar como duro lo que es blando crea reglas frágiles; clasificar como automatizable lo que exige juicio crea reglas infieles. La degradación segura (convenciones §3, paso 6) gobierna también aquí: ante la duda sobre si un principio es evaluable, se trata como no evaluable y se deniega o se enruta, nunca se permite en silencio.
 
 ---
 
@@ -142,7 +142,7 @@ Un mismo principio puede generar reglas en ambos puntos (típico de los principi
 
 ### Paso 6 — Cierre con degradación segura
 
-Antes de dar por cerrada una regla se comprueba su comportamiento ante el fallo: si un campo necesario para el disparador falta, si la identidad no se puede verificar o si la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio (lo decide el policy engine, [CF-03](./criterios-funcionales.md)). Una regla que no especifica su comportamiento ante el fallo está incompleta.
+Antes de dar por cerrada una regla se comprueba su comportamiento ante el fallo: si un campo necesario para el disparador falta, si la identidad no se puede verificar o si la regla no se puede evaluar, el resultado por defecto es `deny` con evidencia, nunca `allow` en silencio. Una regla que no especifica su comportamiento ante el fallo está incompleta.
 
 ---
 
@@ -205,7 +205,7 @@ Estas formas son ilustrativas y no normativas: su único fin es mostrar cómo el
 **Relacionados:**
 
 - [Manifiesto de la federación](./manifesto.md) — §3.3 (Capa 3, Gobierno), §5 (Gobernanza), §8 (lo que no es).
-- [Criterios funcionales](./criterios-funcionales.md) — [CF-03](./criterios-funcionales.md) (gobierno por Constitución mapeada y degradación segura), [CF-05](./criterios-funcionales.md) (trazabilidad), [CF-06](./criterios-funcionales.md) (des-identificación en la ruta).
+- [Criterios funcionales](./criterios-funcionales.md) — [CF-03](./criterios-funcionales.md) (gobierno por Constitución mapeada), [CF-05](./criterios-funcionales.md) (trazabilidad), [CF-06](./criterios-funcionales.md) (des-identificación en la ruta).
 - [Glosario de la federación](./glosario-federacion.md) — Constitución, Mapping, Ficha de policy, Disparador, Efecto, Punto de aplicación, Evidencia.
 - [Esquema del descriptor de identidad de agente](./esquema-identidad-agente.md) — campos del disparador.
 - [Esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) — campos del disparador y DecisionHop.

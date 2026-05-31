@@ -36,7 +36,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Service registry.** El catálogo federado donde los agentes se registran con su descriptor extendido (no solo nombre y endpoint, sino dominio, criticidad y versión de Constitución aplicada). El alta en el registry pasa por el *gate de coherencia*. Es responsabilidad del stack; Federation define qué debe poder almacenar y consultar, no cómo (ver [CF-02](./criterios-funcionales.md)).
 
-**Identidad criptográfica.** La propiedad de que la identidad de un agente es verificable por medios criptográficos, con tres requisitos (CF-04): (1) el receptor verifica criptográficamente la identidad del emisor **antes de ejecutar** la llamada; (2) la credencial es de **vida corta y revocable**; (3) la identidad es **vinculable de forma estable al `agentId`**. El cuerpo nunca exige «mTLS»: exige estas tres propiedades, que mTLS u otros mecanismos satisfacen (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md), regla 4).
+**Identidad criptográfica.** La propiedad de que la identidad de un agente es verificable por medios criptográficos, con tres requisitos (CF-04): (1) el receptor verifica criptográficamente la identidad del emisor **antes de ejecutar** la llamada; (2) la credencial es de **vida corta y revocable**; (3) la identidad es **vinculable de forma estable al `agentId`**. El cuerpo nunca exige «mTLS»: exige estas tres propiedades, que mTLS u otros mecanismos satisfacen (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md) §3).
 
 ---
 
