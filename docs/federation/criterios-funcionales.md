@@ -1,6 +1,6 @@
 # Myrmion Federation — Criterios funcionales del stack
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Los seis criterios funcionales que el stack opensource elegido debe cumplir, expresados como propiedades verificables sin nombrar producto. Materializan el §4 del [manifiesto](./manifesto.md) — «criterios, no marcas» — y son la espina dorsal del corpus: el resto de documentos se apoya en ellos por identificador (CF-01..CF-06).*
 
@@ -109,8 +109,9 @@ Estas comprobaciones materializan las **tres propiedades** de identidad criptogr
 - [ ] Exporta los metadatos del bloque de contexto cultural como atributos del span (o equivalente), sin necesidad de instrumentación ad hoc por agente.
 - [ ] Exporta a backends estándar; idealmente sobre un estándar abierto de telemetría (p. ej. OpenTelemetry) para no acoplar la observabilidad a un backend concreto.
 - [ ] Permite las tres consultas que los [patrones de drift](./patrones-deteccion-drift.md) necesitan: por cadena (Patrón A), por excepción acumulada (Patrón B), por coherencia entre agentes (Patrón C).
+- [ ] Genera, bajo demanda, las **exportaciones de auditoría** que un auditor interno, un certificador o una autoridad pueden pedir: la reconstrucción completa de cadenas por `correlationId` (con sus `criteriaApplied`), las excepciones de un periodo con justificación, caducidad y autorizador, los resultados del gate de coherencia por agente y periodo, y el historial versionado de policies aplicadas. Son las consultas que el [área de cumplimiento](../compliance/README.md) — auditoría interna, plan de monitorización post-comercialización, runbook de incidentes — da por disponibles.
 
-**Qué NO prescribe.** El backend de observabilidad ni el dashboard. Federation articula qué medir; el dashboard lo aporta el stack.
+**Qué NO prescribe.** El backend de observabilidad ni el dashboard. Federation articula qué medir; el dashboard lo aporta el stack. El formato concreto de cada exportación de auditoría también es del stack: el criterio exige que la consulta sea posible y completa, no una serialización determinada.
 
 ---
 
@@ -144,4 +145,4 @@ El detalle de cómo cada capa se monta sobre estos criterios está en [guia-arqu
 
 ---
 
-*Criterios funcionales de Myrmion Federation — versión 1.0. Parte del corpus normativo. Las implementaciones candidatas viven en [`appendix/`](./appendix/README.md), nunca en este documento.*
+*Criterios funcionales de Myrmion Federation — versión 1.1 (CF-05 añade las exportaciones de auditoría). Parte del corpus normativo. Las implementaciones candidatas viven en [`appendix/`](./appendix/README.md), nunca en este documento.*
