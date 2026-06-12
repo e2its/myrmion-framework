@@ -107,14 +107,14 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 **Marcos aplicables:**
 
 - **Reglamento (UE) 2024/1689 — EU AI Act** — base normativa principal.
-- Calendario de aplicabilidad relevante: prohibiciones aplicables desde febrero 2025; obligaciones GPAI desde agosto 2025; mayoría de obligaciones desde agosto 2026; sistemas de alto riesgo embebidos en productos regulados desde agosto 2027 (con extensión propuesta a diciembre 2027 en Digital Omnibus Package). Verificar fechas vigentes en cada revisión anual del documento.
+- Calendario de aplicabilidad relevante (verificado a la fecha de aprobación contra el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md)): prohibiciones y alfabetización aplicables desde febrero 2025; obligaciones GPAI desde agosto 2025; transparencia (art. 50) desde agosto 2026; alto riesgo del Anexo III previsto para diciembre 2027 y del Anexo I para agosto 2028 según el acuerdo del Digital Omnibus, pendiente de publicación en el DOUE a la fecha de este documento. Verificar fechas vigentes en cada revisión anual del documento.
 - **Real Decreto 817/2023** (España) — regulación de un entorno de pruebas de inteligencia artificial; aplicable solo si la organización participa en sandbox.
 
 **Clasificación de los sistemas de IA usados por la organización:**
 
 - **Riesgo mínimo:** asistentes de productividad interna (Microsoft Copilot for Microsoft 365 para empleados, ChatGPT Enterprise para uso interno, Claude Enterprise para análisis y redacción internos).
 - **Riesgo limitado:** asistentes que generan outputs incorporados en entregables al cliente. Sujetos a obligaciones de transparencia.
-- **Sin casos de uso clasificados como alto riesgo o prohibido** a la fecha de aprobación de este documento. Cualquier caso de uso nuevo que pudiera caer en alto riesgo requiere evaluación específica antes de autorización.
+- **Sin casos de uso clasificados como alto riesgo o prohibido** a la fecha de aprobación de este documento. Cualquier caso de uso nuevo que pudiera caer en alto riesgo requiere [evaluación de impacto](../compliance/evaluacion-impacto-ia.md) aprobada antes de autorización. Cada asistente que interactúa con personas mantiene su [ficha de transparencia](../compliance/ficha-transparencia-ia.md); el rol de la organización en todos los casos de uso vigentes es deployer (revisado contra el art. 25).
 
 **Obligaciones operativas relevantes para asistentes de IA:**
 
