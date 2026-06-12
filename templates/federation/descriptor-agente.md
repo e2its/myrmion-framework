@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Plantilla de Descriptor de Identidad de Agente
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Plantilla socrática para que un departamento declare su agente ante la federación. Es la pieza que rellena cada organización a partir del contrato del [esquema de identidad de agente](../../docs/federation/esquema-identidad-agente.md): el documento fundacional con el que un agente declara quién es, qué dominio gobierna, qué capacidades expone y a qué versión de la Constitución se adhiere. Sin un descriptor válido y con su `coherenceReview` aprobada, un agente no entra en el service registry.*
 
@@ -48,7 +48,7 @@ No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten*
 |---|---|
 | Departamento al que pertenece el agente | *(nombre del departamento o función)* |
 | `agentId` del agente declarado | *(urn:myrmion:agent:&lt;org&gt;:&lt;dominio&gt;:&lt;nombre&gt;)* |
-| `schemaVersion` (versión del esquema que cumple) | *(p. ej. 1.0)* |
+| `schemaVersion` (versión del esquema que cumple) | *(p. ej. 1.1)* |
 | `version` del descriptor | *(p. ej. 1.0.0)* |
 | Fecha de última revisión | *(YYYY-MM-DD)* |
 | Custodio de dominio (`owner`) | *(rol o persona responsable del contenido cultural)* |
@@ -118,6 +118,12 @@ No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten*
 ### 2.4 `compatibleConstitutionHashes`
 
 *Pregunta guía: ¿qué hashes de Constitución reconoce este agente como compatibles con el suyo? Este conjunto es lo que habilita la validación de compatibilidad en O(1) cuando recibe una llamada: el receptor comprueba que el `constitutionHash` del emisor está aquí, sin re-parsear la Constitución. Incluye la versión vigente y, si procede, versiones anteriores cuyas cadenas de decisión sigan abiertas. ¿Por qué declaras compatible cada una?*
+
+[Espacio para rellenar]
+
+### 2.5 `regulatoryClassification`
+
+*Pregunta guía: si tu Marco Regulatorio declara aplicable un régimen regulatorio de IA (p. ej. EU AI Act), ¿cómo está clasificado este agente bajo ese régimen? Declara `{regime, riskClass, role, assessedDate}` según el [esquema §4b](../../docs/federation/esquema-identidad-agente.md): la clase de riesgo del caso de uso (coherente con la clasificación del Marco §2.2, aprobada por su custodio — no es una autoevaluación departamental) y el rol de tu organización respecto al sistema (¿proveedor o deployer? — cuidado con el art. 25: poner vuestro nombre o modificar sustancialmente os convierte en proveedor). Si es `alto-riesgo`, referencia además la [evaluación de impacto](../compliance/evaluacion-impacto-ia.md) aprobada (`impactAssessmentRef`), la [ficha de transparencia](../compliance/ficha-transparencia-ia.md) (`transparencyRef`) y el [plan de monitorización post-comercialización](../compliance/plan-monitorizacion-post-mercado.md) (`pmmPlanRef`). La ficha de transparencia es exigible también fuera del alto riesgo cuando la clasificación del caso de uso en el Marco la declara como artefacto requerido — su criterio típico: el agente interactúa con personas o genera contenido. La comprobación 7 del gate verifica todo esto en el alta.*
 
 [Espacio para rellenar]
 
@@ -219,7 +225,7 @@ Repite la subsección **3.x** por cada capacidad. Para cada una, responde:
 
 ## 6. Composición del descriptor
 
-*Pregunta guía: a partir de tus respuestas anteriores, ¿puedes componer el descriptor en su forma serializable y validarlo contra el contrato? Recuerda las reglas de validación: `agentId` con formato URN canónico, estable y único; campos requeridos presentes y bien tipados; los `hash` según el contrato de hash; cada capacidad con `toolName`, `sideEffectClass`, `externalizes`, `canCommit` y `dataClassesTouched`; `version` y `schemaVersion` en semver; `coherenceReview.status` en `pendiente` al proponer el alta. El YAML siguiente solo ilustra la forma — el contrato es la tabla de campos del esquema.*
+*Pregunta guía: a partir de tus respuestas anteriores, ¿puedes componer el descriptor en su forma serializable y validarlo contra el contrato? Recuerda las reglas de validación: `agentId` con formato URN canónico, estable y único; campos requeridos presentes y bien tipados; los `hash` según el contrato de hash; cada capacidad con `toolName`, `sideEffectClass`, `externalizes`, `canCommit` y `dataClassesTouched`; `regulatoryClassification` presente si tu Marco Regulatorio declara un régimen de IA (§2.5); `version` y `schemaVersion` en semver; `coherenceReview.status` en `pendiente` al proponer el alta. El YAML siguiente solo ilustra la forma — el contrato es la tabla de campos del esquema.*
 
 ```yaml
 schemaVersion: "[Espacio para rellenar]"
@@ -233,6 +239,14 @@ constitutionRef: { version: "[…]", approvalDate: "[YYYY-MM-DD]", hash: "sha256
 regulatoryFrameworkRef: { version: "[…]", hash: "sha256:[…]" }
 compatibleConstitutionHashes: ["sha256:[…]"]
 dataClasses: ["[…]"]
+regulatoryClassification:
+  regime: "[según el Marco Regulatorio — p. ej. eu-ai-act, o se omite el bloque si el Marco declara que ningún régimen aplica]"
+  riskClass: "[alto-riesgo | riesgo-limitado | minimo]"
+  role: "[proveedor | deployer]"
+  assessedDate: "[YYYY-MM-DD]"
+  impactAssessmentRef: "[requerido si alto-riesgo]"
+  transparencyRef: "[requerido si alto-riesgo o si el Marco lo exige para el caso de uso — típicamente: interactúa con personas o genera contenido]"
+  pmmPlanRef: "[requerido si alto-riesgo]"
 capabilities:
   - toolName: "[Espacio para rellenar]"
     sideEffectClass: "[lectura | escritura | comunicacion-externa | compromiso]"
@@ -252,4 +266,4 @@ coherenceReview: { status: "[pendiente | aprobado | rechazado]", reviewedAgainst
 
 ---
 
-*Plantilla de descriptor de identidad de agente de Myrmion Federation — versión 1.0. Parte del corpus normativo. Espejo socrático del [Esquema de Identidad de Agente](../../docs/federation/esquema-identidad-agente.md). Ver también el [Glosario de la Federación](../../docs/federation/glosario-federacion.md) y el [ejemplo rellenado](./descriptor-agente-ejemplo.md).*
+*Plantilla de descriptor de identidad de agente de Myrmion Federation — versión 1.1 (añade §2.5, clasificación regulatoria). Parte del corpus normativo. Espejo socrático del [Esquema de Identidad de Agente](../../docs/federation/esquema-identidad-agente.md). Ver también el [Glosario de la Federación](../../docs/federation/glosario-federacion.md) y el [ejemplo rellenado](./descriptor-agente-ejemplo.md).*

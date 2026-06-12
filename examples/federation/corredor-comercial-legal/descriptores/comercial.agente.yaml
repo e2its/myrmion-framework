@@ -3,8 +3,8 @@
 # Esta es una representación ilustrativa (no normativa): el contrato es la tabla del esquema, no este YAML.
 # Los hashes son ilustrativos (forma "sha256:<hex>"); su contrato de cálculo está en esquema-identidad-agente.md §6.
 
-schemaVersion: "1.0"
-version: "1.0.0"
+schemaVersion: "1.1"
+version: "1.1.0"
 agentId: "urn:myrmion:agent:consultora-modelo:comercial:propuestas"
 displayName: "Agente Comercial — Propuestas"
 domain: "comercial"
@@ -31,6 +31,16 @@ compatibleConstitutionHashes:
 
 criticality: "media"
 dataClasses: ["C1", "C2", "C3"]
+
+# Clasificación bajo el régimen que el Marco v1.4 declara aplicable (EU AI Act). Riesgo limitado:
+# la propuesta la envía una persona tras revisión; el agente asiste, no decide. La ficha de
+# transparencia cubre el aviso de IA en la comunicación con el cliente (art. 50).
+regulatoryClassification:
+  regime: "eu-ai-act"
+  riskClass: "riesgo-limitado"
+  role: "deployer"
+  assessedDate: "2026-02-01"
+  transparencyRef: "compliance/ficha-transparencia-comercial-propuestas@1.0"
 
 capabilities:
   - toolName: "calificar_lead"

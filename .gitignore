@@ -1,2 +1,5 @@
 # Estado local de herramientas de sesión (no versionar)
 .claude/
+
+# Análisis y notas internas (no publicar en el repo público)
+/private/

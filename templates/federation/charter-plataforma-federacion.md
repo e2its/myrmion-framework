@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Charter de la Plataforma de Federación
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Plantilla para constituir el **cuarto custodio** descrito en el §5 del [manifiesto](../../docs/federation/manifesto.md) y especificado en la [gobernanza federada](../../docs/federation/gobernanza-federada.md) §1 — la plataforma de federación. Articula su misión, sus responsabilidades, su RACI y sus fronteras con los otros tres custodios, para una organización concreta.*
 
@@ -135,9 +135,9 @@ Este charter es el documento que **constituye** ese custodio en una organizació
 
 ### 2.4 El gate de coherencia en el alta
 
-*La plataforma opera el gate de coherencia ([gobernanza federada](../../docs/federation/gobernanza-federada.md) §2): el conjunto de comprobaciones programáticas reproducibles que se ejecutan en el alta al [service registry](../../docs/federation/criterios-funcionales.md) (CF-02). El contrato es fijo y este charter no lo afloja: el gate es **bloqueante y atómico** — si cualquiera de las comprobaciones falla, el alta falla; no hay alta "con observaciones" ni alta parcial. Las seis comprobaciones están especificadas en el cuerpo; el detalle paso a paso de su ejecución sobre tu stack vive en el [runbook de onboarding](./runbook-onboarding-agente.md).*
+*La plataforma opera el gate de coherencia ([gobernanza federada](../../docs/federation/gobernanza-federada.md) §2): el conjunto de comprobaciones programáticas reproducibles que se ejecutan en el alta al [service registry](../../docs/federation/criterios-funcionales.md) (CF-02). El contrato es fijo y este charter no lo afloja: el gate es **bloqueante y atómico** — si cualquiera de las comprobaciones falla, el alta falla; no hay alta "con observaciones" ni alta parcial. Las siete comprobaciones están especificadas en el cuerpo; el detalle paso a paso de su ejecución sobre tu stack vive en el [runbook de onboarding](./runbook-onboarding-agente.md).*
 
-*Pregunta guía: ¿quién, dentro de la plataforma, opera el gate; cómo se garantiza la reproducibilidad (que re-ejecutar el gate sobre el mismo descriptor y el mismo estado de Constitución produzca el mismo resultado); y cómo se sella el resultado (`coherenceReview`) en el descriptor de identidad? La autoridad de las comprobaciones culturales — `constitutionRef` vigente, conflicto de capabilities con la Constitución, `dataClasses` contra el Marco — no es de la plataforma: la plataforma ejecuta la comprobación, pero quién decide qué es "vigente" o "prohibido" es el custodio de la Constitución o del Marco.*
+*Pregunta guía: ¿quién, dentro de la plataforma, opera el gate; cómo se garantiza la reproducibilidad (que re-ejecutar el gate sobre el mismo descriptor y el mismo estado de sus insumos — Constitución, Marco y artefactos de cumplimiento referenciados — produzca el mismo resultado); y cómo se sella el resultado (`coherenceReview`) en el descriptor de identidad? La autoridad de las comprobaciones culturales y regulatorias — `constitutionRef` vigente, conflicto de capabilities con la Constitución, `dataClasses` contra el Marco, clasificación regulatoria y sus artefactos (comprobación 7) — no es de la plataforma: la plataforma ejecuta la comprobación, pero quién decide qué es "vigente", "prohibido" o cómo se clasifica un caso de uso es el custodio de la Constitución o del Marco.*
 
 [Espacio para rellenar]
 
@@ -318,6 +318,8 @@ Este charter es el documento que **constituye** ese custodio en una organizació
 *Plantilla del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
 *Este charter constituye el cuarto custodio — la plataforma de federación — descrito en el §5 del [manifiesto de Myrmion Federation](../../docs/federation/manifesto.md) y especificado en la [gobernanza federada](../../docs/federation/gobernanza-federada.md) §1. Instancia el contrato normativo para una organización concreta; donde charter y cuerpo discrepen, prevalece el cuerpo. La plataforma ejecuta el motor; no escribe las reglas culturales.*
+
+*Plantilla del charter de la plataforma de federación — versión 1.1. Parte del corpus normativo de Myrmion Federation.*
 
 *Para ver este charter rellenado como referencia orientativa, consultar el [ejemplo de Consultora Modelo S.L.](./charter-plataforma-federacion-ejemplo.md).*
 

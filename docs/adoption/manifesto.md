@@ -1,6 +1,6 @@
 # Framework de Adopción Corporativa de IA
 
-**Manifiesto — versión 1.0**
+**Manifiesto — versión 1.1**
 
 *Un framework opensource para empresas que adoptan IA mediante productos comerciales y necesitan que esa adopción refleje su cultura, no la del proveedor.*
 
@@ -65,6 +65,8 @@ En caso de conflicto entre capas, la superior prevalece sin excepciones. Esta je
 El Marco Regulatorio captura las obligaciones legales y normativas que aplican a la organización por su jurisdicción, sector y naturaleza de los datos que maneja. RGPD y EU AI Act para cualquier organización europea que procese datos personales. LOPDGDD y obligaciones AEPD para España específicamente. Marcos sectoriales — financiero, sanitario, sector público — donde aplique. Restricciones contractuales con clientes que se hayan asumido como obligación de cumplimiento.
 
 A nivel internacional, esta capa absorbe también marcos voluntarios pero ampliamente referenciados como base de buenas prácticas: el NIST AI Risk Management Framework, la norma certificable ISO/IEC 42001 sobre sistemas de gestión de IA, y los crosswalks que ambos mantienen con el EU AI Act. El framework no opina sobre cuál de estos marcos seguir como referencia primaria — esa decisión depende de la jurisdicción operativa de la organización, su exposición a clientes en distintos mercados y los requisitos contractuales que haya asumido. La función del Marco Regulatorio dentro del framework es articular el resultado de esa decisión como artefacto operativo que los asistentes deben respetar, sea cual sea la base normativa de origen.
+
+Cuando la organización necesita ir más allá de articular y pasar a **demostrar** — prepararse para una certificación ISO/IEC 42001 o cubrir las obligaciones concretas del EU AI Act (transparencia, alfabetización, clasificación de casos de uso, evaluación de impacto, incidentes) — el ecosistema mantiene un [área de cumplimiento](../compliance/README.md) con los puentes y plantillas que extienden esta Capa 1. Su custodio natural es el mismo que el del Marco: legal/compliance/DPO.
 
 A diferencia de las otras dos capas, el Marco Regulatorio no es algo que la organización elija o defina. Lo recibe. Lo único que la organización decide es cómo lo articula como artefacto explícito que sus asistentes deben respetar. Modificarlo solo es posible cumpliendo más estrictamente, nunca relajándolo.
 
@@ -256,4 +258,4 @@ La frontera con **Myrmion Federation**, la siguiente fase del ecosistema que cub
 
 ---
 
-*Manifiesto del Framework de Adopción Corporativa de IA — versión 1.0.*
+*Manifiesto del Framework de Adopción Corporativa de IA — versión 1.1.*

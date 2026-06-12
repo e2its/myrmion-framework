@@ -1,6 +1,6 @@
 # Myrmion Federation — Esquema de identidad de agente
 
-**Versión 1.0**
+**Versión 1.1**
 
 *El contrato del descriptor de identidad que cada agente departamental publica para registrarse en la federación y ser descubierto por otros agentes. Materializa la capa §3.1 del [manifiesto](./manifesto.md). Este documento define el contrato — qué campos, con qué semántica y con qué reglas de validación; la [plantilla socrática](../../templates/federation/descriptor-agente.md) es la que rellena cada organización, y el [ejemplo del corredor](../../examples/federation/corredor-comercial-legal/) muestra descriptores reales.*
 
@@ -50,6 +50,7 @@ urn:myrmion:agent:<org>:<dominio>:<nombre>
 | `compatibleConstitutionHashes` | R | array de hashes | Conjunto de hashes de Constitución que este agente reconoce como compatibles con el suyo. Es lo que habilita la **validación de compatibilidad en O(1)** (§7) sin re-parsear la Constitución. |
 | `criticality` | R | enum `{baja, media, alta, critica}` | Criticidad del dominio. Modula la cadencia de revisión de drift y la severidad del gate de coherencia. |
 | `dataClasses` | R | array de enum | Clases de dato que el agente maneja, con el vocabulario que defina el Marco Regulatorio de la organización (p. ej. `C0..C4`). |
+| `regulatoryClassification` | C | objeto `RegulatoryClassification` | Clasificación del agente bajo el régimen regulatorio de IA que el Marco Regulatorio declare aplicable (§4b). **Requerido cuando el Marco declara un régimen** (p. ej. EU AI Act); se omite solo si el Marco declara explícitamente que ningún régimen de IA aplica. La verifica la comprobación 7 del [gate de coherencia](./gobernanza-federada.md). |
 | `capabilities` | R | array de `Capability` | Qué tools expone el agente y sus propiedades de gobernanza (§4). |
 | `endpoint` | R | objeto `{transport, address}` | Dónde se invoca. `transport` es un descriptor abstracto del protocolo (p. ej. `mcp`); el binding concreto vive en [`appendix/mapeo-transporte/`](./appendix/mapeo-transporte/). |
 | `mutualAuthMechanism` | R | string | Nombre del mecanismo de autenticación mutua que el agente soporta. **Campo libre, no enum**: el cuerpo no privilegia ningún mecanismo (ver [CF-04](./criterios-funcionales.md)). |
@@ -75,6 +76,22 @@ Cada entrada de `capabilities` describe una tool que el agente expone, con las p
 
 `externalizes` y `canCommit` son **abstracciones decidibles en tiempo de diseño**: las declara quien modela el agente, no se infieren en runtime. Es lo que permite que el [gate de coherencia](./gobernanza-federada.md) evalúe el descriptor antes de que el agente se registre.
 
+### 4b. El sub-objeto `RegulatoryClassification`
+
+La criticidad (`criticality`) es una clasificación **de negocio** — modula la cadencia de drift y la severidad del gate. La clasificación regulatoria es otra cosa: la posición del agente bajo el **régimen regulatorio de IA** que el Marco Regulatorio declare aplicable (la clasificación de casos de uso de la [plantilla del Marco](../../templates/adoption/marco-regulatorio.md) §2.2). Las dos coexisten porque responden a preguntas distintas: un agente puede ser de criticidad `alta` para el negocio y de `riesgo-limitado` para el regulador, o al revés. Este sub-objeto es lo que convierte el inventario del service registry en el registro **por sistema** que la regulación de IA exige y que una certificación organizacional no cubre por sí sola.
+
+| Campo | Req. | Tipo | Descripción |
+|---|---|---|---|
+| `regime` | R | string | Identificador del régimen, con el vocabulario que fije el Marco Regulatorio (p. ej. `eu-ai-act`). El framework no fija la lista de regímenes: la fija el Marco. |
+| `riskClass` | R | enum del régimen | Clase de riesgo del agente según el régimen. Para el EU AI Act: `alto-riesgo`, `riesgo-limitado`, `minimo`. **`prohibido` no es un valor registrable:** un caso prohibido no tiene vía de alta — la comprobación 7 del gate lo convierte en alerta al custodio del Marco, no en un fallo ordinario. |
+| `role` | R | enum `{proveedor, deployer}` | Rol de la organización respecto al sistema bajo el régimen. Atención: poner el nombre propio sobre un sistema o modificarlo sustancialmente convierte al deployer en proveedor (EU AI Act art. 25); el rol se decide con el custodio del Marco, no por intuición del modelador. |
+| `assessedDate` | R | fecha | Cuándo se clasificó el agente contra la clasificación de casos de uso del Marco. Una reclasificación re-dispara el gate (§8). |
+| `impactAssessmentRef` | C | URI/docId | Evaluación de impacto **aprobada** del sistema ([plantilla](../../templates/compliance/evaluacion-impacto-ia.md)). **Requerido si `riskClass = alto-riesgo`.** |
+| `transparencyRef` | C | URI/docId | [Ficha de transparencia](../../templates/compliance/ficha-transparencia-ia.md) del agente. **Requerido cuando la clasificación del caso de uso en el Marco (§2.2 de su plantilla) lo declara como artefacto requerido** — el criterio típico del Marco: el agente interactúa con personas o genera contenido — y siempre en alto riesgo. La exigibilidad la fija la clasificación del Marco, no se infiere del descriptor: es lo que la hace decidible para la comprobación 7 del gate. |
+| `pmmPlanRef` | C | URI/docId | [Plan de monitorización post-comercialización](../../templates/compliance/plan-monitorizacion-post-mercado.md). **Requerido si `riskClass = alto-riesgo`.** |
+
+Quién lo rellena: el custodio de dominio (`owner`) lo **propone** al modelar el agente; el custodio del Marco Regulatorio lo **aprueba** — la clasificación regulatoria es materia de la Capa 1, no una autoevaluación departamental. El mapeo completo de obligaciones por clase y rol vive en el [puente EU AI Act](../compliance/puente-eu-ai-act.md) del área de cumplimiento.
+
 ---
 
 ## 5. Representación ilustrativa (no normativa)
@@ -82,8 +99,8 @@ Cada entrada de `capabilities` describe una tool que el agente expone, con las p
 El contrato es la tabla de §3–§4. Este YAML solo ilustra la forma:
 
 ```yaml
-schemaVersion: "1.0"
-version: "1.0.0"
+schemaVersion: "1.1"
+version: "1.1.0"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"
@@ -93,6 +110,12 @@ regulatoryFrameworkRef: { version: "1.4", hash: "sha256:…" }
 compatibleConstitutionHashes: ["sha256:…", "sha256:…"]
 criticality: "alta"
 dataClasses: ["C1", "C2", "C3"]
+regulatoryClassification:
+  regime: "eu-ai-act"
+  riskClass: "riesgo-limitado"
+  role: "deployer"
+  assessedDate: "2026-02-01"
+  transparencyRef: "compliance/ficha-transparencia-legal-dictamenes@1.0"
 capabilities:
   - toolName: "emitir_dictamen"
     sideEffectClass: "escritura"
@@ -149,7 +172,7 @@ La comparación es O(1) (pertenencia a un conjunto de hashes), no requiere re-pa
 `lifecycleStatus` recorre: `propuesto` → (gate de coherencia) → `activo` → `deprecated` → `retirado`.
 
 - **Alta:** el agente se propone con su descriptor; el [gate de coherencia](./gobernanza-federada.md) evalúa `capabilities` contra los policy templates derivados de la Constitución. Si pasa, `coherenceReview.status = aprobado` y el agente entra en el registry como `activo`. Si no, el alta falla. Detalle operativo en el [runbook de onboarding](../../templates/federation/runbook-onboarding-agente.md).
-- **Actualización:** un cambio en `capabilities`, `constitutionRef` o `dataClasses` re-dispara el gate de coherencia.
+- **Actualización:** un cambio en `capabilities`, `constitutionRef`, `dataClasses` o `regulatoryClassification` re-dispara el gate de coherencia.
 - **Retirada:** ver [runbook de retirada](../../templates/federation/runbook-retirada-agente.md) — deregister, revocar `identityRef`, archivar el descriptor y el histórico, y notificar a los agentes que lo tienen en `dependsOn`. El `agentId` queda archivado, no liberado.
 
 ---
@@ -167,4 +190,4 @@ El descriptor declara *qué* información expone el agente y *qué* propiedades 
 
 ---
 
-*Esquema de identidad de agente de Myrmion Federation — versión 1.0. Parte del corpus normativo. Su plantilla socrática es [descriptor-agente.md](../../templates/federation/descriptor-agente.md); su contraparte en runtime es el [bloque de contexto cultural](./esquema-bloque-contexto-cultural.md).*
+*Esquema de identidad de agente de Myrmion Federation — versión 1.1 (añade `regulatoryClassification`, §4b). Parte del corpus normativo. Su plantilla socrática es [descriptor-agente.md](../../templates/federation/descriptor-agente.md); su contraparte en runtime es el [bloque de contexto cultural](./esquema-bloque-contexto-cultural.md).*

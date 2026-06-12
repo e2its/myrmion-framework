@@ -1,6 +1,6 @@
 # Myrmion Federation — Índice y guía de navegación
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Puerta de entrada al corpus de Federation. Léelo primero. El [manifiesto](./manifesto.md) explica el porqué y el qué; este índice te lleva al documento concreto según lo que necesites hacer.*
 
@@ -26,17 +26,17 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 
 | Documento | Qué resuelve | Estado |
 |---|---|---|
-| [manifesto.md](./manifesto.md) | Porqué, principios, arquitectura, fases, métricas | ✅ v1.0 |
-| [indice-y-guia-de-navegacion.md](./indice-y-guia-de-navegacion.md) | Este documento: puerta de entrada y rutas por rol | ✅ v1.0 |
-| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.0 |
-| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | ✅ v1.0 |
+| [manifesto.md](./manifesto.md) | Porqué, principios, arquitectura, fases, métricas | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [indice-y-guia-de-navegacion.md](./indice-y-guia-de-navegacion.md) | Este documento: puerta de entrada y rutas por rol | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | [regla-anti-acoplamiento.md](./regla-anti-acoplamiento.md) | Qué va al cuerpo vs al apéndice. Norma transversal | ✅ v1.0 |
 | [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📋 pendiente de revisión |
-| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | ✅ v1.0 |
+| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash + clasificación regulatoria | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | ✅ v1.0 |
 | [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📋 pendiente de revisión |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
-| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📋 pendiente de revisión |
+| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia (7 comprobaciones), ciclo de vida (§5) | 📝 v1.1 — draft (modificado, re-revisión pendiente) |
 | [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | 📝 draft |
 | [metricas-federacion.md](./metricas-federacion.md) | Las métricas que importan (§7) | 📝 draft |
 | [perfil-adopcion-federacion.md](./perfil-adopcion-federacion.md) | Variables VF que modifican decisiones según contexto | 📝 draft |
@@ -85,6 +85,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 - **«Cómo sé si la federación está drifteando.»** → [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) + `templates/federation/playbook-deteccion-drift.md`.
 - **«Necesito cambiar de gateway / policy engine / stack.»** → [criterios-funcionales.md](./criterios-funcionales.md) (lo que el nuevo stack debe cumplir) + [appendix/stacks-referencia/](./appendix/stacks-referencia/). El cuerpo no cambia.
 - **«Cómo viaja el contexto cultural por MCP.»** → [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) (el qué) + [appendix/mapeo-transporte/](./appendix/mapeo-transporte/) (el cómo, por protocolo).
+- **«Necesito demostrar cumplimiento ISO/IEC 42001 o EU AI Act.»** → [área de cumplimiento](../compliance/README.md): puentes con ambas normas, clasificación regulatoria del agente ([esquema §4b](./esquema-identidad-agente.md)), y las plantillas de transparencia, evaluación de impacto, incidentes y monitorización post-comercialización.
 
 ---
 
@@ -94,12 +95,14 @@ Federation es la segunda fase del trayecto cultural; la primera es [Myrmion Adop
 
 La [Guía de protección de datos](../adoption/guia-proteccion-datos.md) de Adoption articula la capa técnica de des-identificación y la contractual de licenciamiento; Federation es donde la des-identificación inline en la ruta — que en Adoption no tenía punto de inserción — se vuelve nativa ([CF-06](./criterios-funcionales.md), §3.3 del manifiesto).
 
+El [área de cumplimiento](../compliance/README.md) es la capa transversal de evidencia frente a ISO/IEC 42001 y el EU AI Act: en Federation se materializa en la clasificación regulatoria del descriptor, la comprobación 7 del gate y las exportaciones de auditoría de CF-05; sus puentes mapean los artefactos de todo el ecosistema a ambas normas.
+
 ---
 
 ## 6. Estado del corpus
 
-A fecha de esta versión, el manifiesto y los cimientos normativos (índice, glosario, criterios funcionales, regla anti-acoplamiento) están cerrados; el resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. Los documentos marcados 📝 draft arriba indican lo pendiente. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
+A fecha de esta versión, la [regla anti-acoplamiento](./regla-anti-acoplamiento.md) y el [esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) permanecen cerrados en v1.0. El manifiesto, este índice, el glosario, los criterios funcionales, el esquema de identidad y la gobernanza federada fueron modificados en la integración del [área de cumplimiento](../compliance/README.md) (clasificación regulatoria, comprobación 7 del gate, exportaciones de auditoría): por la regla de gobernanza documental del corpus, suben a v1.1 y **quedan en draft hasta superar la re-revisión**. El resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
 
 ---
 
-*Índice de Myrmion Federation — versión 1.0. Parte del corpus normativo.*
+*Índice de Myrmion Federation — versión 1.1. Parte del corpus normativo.*

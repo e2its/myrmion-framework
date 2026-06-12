@@ -1,6 +1,6 @@
 # Myrmion Federation — Glosario
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Vocabulario normativo del corpus de Federation. Cuando un término aparece en cursiva en otro documento del cuerpo, su definición canónica está aquí. Si un término se usa de forma incompatible con esta definición, el error está en el otro documento, no en el glosario.*
 
@@ -36,6 +36,8 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Service registry.** El catálogo federado donde los agentes se registran con su descriptor extendido (no solo nombre y endpoint, sino dominio, criticidad y versión de Constitución aplicada). El alta en el registry pasa por el *gate de coherencia*. Es responsabilidad del stack; Federation define qué debe poder almacenar y consultar, no cómo (ver [CF-02](./criterios-funcionales.md)).
 
+**Clasificación regulatoria (`regulatoryClassification`).** El sub-objeto del descriptor que declara la posición del agente bajo el régimen regulatorio de IA que el Marco Regulatorio establezca como aplicable (p. ej. EU AI Act): régimen, clase de riesgo, rol de la organización (proveedor o deployer) y, para alto riesgo, las referencias a sus artefactos obligatorios del [área de cumplimiento](../compliance/README.md). Distinta de `criticality` (clasificación de negocio): un agente puede ser crítico para el negocio y de riesgo mínimo para el regulador, o al revés. La propone el custodio de dominio, la aprueba el custodio del Marco, y la verifica la comprobación 7 del *gate de coherencia*. Contrato en [esquema-identidad-agente.md](./esquema-identidad-agente.md) §4b.
+
 **Identidad criptográfica.** La propiedad de que la identidad de un agente es verificable por medios criptográficos, con tres requisitos (CF-04): (1) el receptor verifica criptográficamente la identidad del emisor **antes de ejecutar** la llamada; (2) la credencial es de **vida corta y revocable**; (3) la identidad es **vinculable de forma estable al `agentId`**. El cuerpo nunca exige «mTLS»: exige estas tres propiedades, que mTLS u otros mecanismos satisfacen (ver [regla anti-acoplamiento](./regla-anti-acoplamiento.md) §3).
 
 ---
@@ -64,7 +66,7 @@ El glosario es **normativo**: las plantillas, los esquemas y los ejemplos usan e
 
 **Clase de automatizabilidad (automatabilityClass).** La categoría de un principio cultural según cuánto se puede materializar en policy sin pérdida de fidelidad. Toma uno de tres valores literales: `duro` (regla booleana exacta), `blando` (umbral + defensa en profundidad) y `no-automatizable` (juicio fino que permanece como trabajo de modelado en el agente). No todo principio es traducible; declararlo explícitamente es parte del método (manifiesto §3.3, §8).
 
-**Gate de coherencia.** La verificación programática que un agente nuevo debe pasar antes de registrarse en el service registry: sus capacidades declaradas se evalúan contra los policy templates derivados de la Constitución. Si declara capacidades que entran en conflicto con la Constitución, el alta **falla**. Es la versión programática de la revisión de coherencia de Adoption (Adoption §4).
+**Gate de coherencia.** La verificación programática que un agente nuevo debe pasar antes de registrarse en el service registry: siete comprobaciones bloqueantes y atómicas ([gobernanza federada](./gobernanza-federada.md) §2.1) que validan el descriptor contra el esquema, la Constitución, el Marco Regulatorio, la identidad criptográfica, la reproducibilidad del propio gate y la clasificación regulatoria. Si cualquiera falla, el alta **falla**. Es la versión programática de la revisión de coherencia de Adoption (Adoption §4).
 
 **Excepción.** Una llamada que el policy engine bloquea y que la organización decide aprobar manualmente. Las excepciones son legítimas pero **dejan rastro** en el [registro de excepciones](../../templates/federation/registro-excepciones.md): justificación, alcance temporal y autorizador. Una excepción al Marco Regulatorio no es una excepción: es una alerta (el Marco no admite excepciones, ver Adoption §4).
 
@@ -98,4 +100,4 @@ Los tres patrones se desarrollan en [patrones-deteccion-drift.md](./patrones-det
 
 ---
 
-*Glosario de Myrmion Federation — versión 1.0. Parte del corpus normativo. Términos heredados de [Myrmion Adoption](../adoption/manifesto.md) se definen allí.*
+*Glosario de Myrmion Federation — versión 1.1. Parte del corpus normativo. Términos heredados de [Myrmion Adoption](../adoption/manifesto.md) se definen allí.*

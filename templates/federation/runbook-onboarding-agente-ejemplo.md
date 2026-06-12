@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Runbook de alta de un agente (ejemplo)
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Ejemplo rellenado de la [plantilla de runbook de alta](./runbook-onboarding-agente.md), instanciado para Consultora Modelo S.L. Documenta el alta del agente Legal (`...:legal:dictamenes`) que va a servir el corredor comercial→legal. Es referencia orientativa, no normativa: la organización real rellena su propia instancia.*
 
@@ -63,7 +63,7 @@ Corredor **comercial→legal**. El agente Comercial (`urn:myrmion:agent:consulto
 
 ### 2.1 Descriptor candidato
 
-Descriptor candidato: instancia de la [plantilla de descriptor](./descriptor-agente.md), `schemaVersion` 1.0, `version` 1.0.0, conforme al [esquema de identidad](../../docs/federation/esquema-identidad-agente.md). Es el mismo artefacto que ilustra el [ejemplo de descriptor](./descriptor-agente-ejemplo.md). Al proponer el alta, su `lifecycleStatus` es `propuesto` y su `coherenceReview.status` es `pendiente`.
+Descriptor candidato: instancia de la [plantilla de descriptor](./descriptor-agente.md), `schemaVersion` 1.1, `version` 1.1.0, conforme al [esquema de identidad](../../docs/federation/esquema-identidad-agente.md). Es el mismo artefacto que ilustra el [ejemplo de descriptor](./descriptor-agente-ejemplo.md). Al proponer el alta, su `lifecycleStatus` es `propuesto` y su `coherenceReview.status` es `pendiente`.
 
 ### 2.2 Verificación de campos requeridos
 
@@ -78,6 +78,7 @@ Descriptor candidato: instancia de la [plantilla de descriptor](./descriptor-age
 | `regulatoryFrameworkRef` | ☑ | ☑ | v1.4, `hash: sha256:f0a1…` |
 | `compatibleConstitutionHashes` | ☑ | ☑ | `[sha256:a3f5…, sha256:b7e2…]` |
 | `mutualAuthMechanism` / `mutualAuthVerified` | ☑ | ☑ | mecanismo de autenticación mutua con identidad criptográfica verificable; `mutualAuthVerified: true` |
+| `regulatoryClassification` | ☑ | ☑ | `eu-ai-act`, `riesgo-limitado`, `deployer`; aprobada por el custodio del Marco el 2026-02-01 |
 | `coherenceReview` (`status = pendiente` al proponer) | ☑ | ☑ | `status: pendiente` hasta que pase el gate |
 
 ### 2.3 Hashes recalculados
@@ -91,15 +92,15 @@ Recalculados el 2026-02-10 según el contrato de hash (UTF-8 NFC, saltos LF, sin
 
 ---
 
-## 3. Gate de coherencia — las seis comprobaciones
+## 3. Gate de coherencia — las siete comprobaciones
 
-*Las seis comprobaciones se ejecutan en el orden definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2.1. El gate es atómico.*
+*Las siete comprobaciones se ejecutan en el orden definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2.1. El gate es atómico.*
 
 ### 3.1 Comprobación 1 — Descriptor válido contra el esquema
 
 | Sub-comprobación | Resultado | Evidencia |
 |---|---|---|
-| Valida contra el esquema (campos y tipos) | ☑ pasa | Validación automática contra `schemaVersion` 1.0: 0 errores |
+| Valida contra el esquema (campos y tipos) | ☑ pasa | Validación automática contra `schemaVersion` 1.1: 0 errores |
 | `agentId` con forma URN canónica | ☑ pasa | `urn:myrmion:agent:consultora-modelo:legal:dictamenes` |
 | `agentId` no reutilizado (registry activo + archivo) | ☑ pasa | Sin coincidencia en el registry activo ni en el archivo de retirados |
 
@@ -141,7 +142,19 @@ Recalculados el 2026-02-10 según el contrato de hash (UTF-8 NFC, saltos LF, sin
 | Resultado reproducible (re-ejecución produce el mismo `status`) | ☑ pasa | Re-ejecución del gate sobre el mismo descriptor y el mismo estado de Constitución produce `aprobado` |
 | `coherenceReview.status = aprobado` | ☑ pasa | `aprobado` |
 
-### 3.7 Veredicto del gate
+### 3.7 Comprobación 7 — Clasificación regulatoria presente y completa
+
+| Sub-comprobación | Resultado | Evidencia |
+|---|---|---|
+| `regulatoryClassification` presente si el Marco declara un régimen | ☑ pasa | El Marco v1.4 declara aplicable el EU AI Act; el descriptor incluye `{regime: eu-ai-act, riskClass: riesgo-limitado, role: deployer, assessedDate: 2026-02-01}` |
+| Clase y rol coherentes con el Marco vigente y aprobados por su custodio | ☑ pasa | Coincide con la clasificación del caso de uso «dictamen jurídico interno» en el Marco v1.4 §2.2; aprobación del DPO registrada |
+| Si `alto-riesgo`: evaluación de impacto aprobada referenciada | ☑ n/a | `riskClass = riesgo-limitado` |
+| Si `alto-riesgo` o el Marco lo exige para el caso de uso: ficha de transparencia referenciada | ☑ pasa | El Marco §2.2 exige ficha para este caso de uso (genera contenido que llega a personas); `transparencyRef: compliance/ficha-transparencia-legal-dictamenes@1.0` |
+| Si `alto-riesgo`: plan de monitorización post-comercialización referenciado | ☑ n/a | `riskClass = riesgo-limitado` |
+
+*Nota del operador: la clasificación como `riesgo-limitado` se revisó con el custodio del Marco precisamente porque el dictamen condiciona compromisos contractuales. Conclusión registrada: el caso de uso «dictamen jurídico interno» no figura en las áreas del Anexo III — ese es el criterio de clasificación; que el dictamen lo firme y decida un humano (Riera) es una salvaguarda del diseño, no lo que lo desclasifica. Si el caso de uso cambiara (p. ej. pasara a afectar a empleo o a acceso a servicios), la reclasificación re-dispararía este gate.*
+
+### 3.8 Veredicto del gate
 
 | Resultado global del gate | Comprobaciones fallidas | Acción disparada |
 |---|---|---|
@@ -155,7 +168,7 @@ Recalculados el 2026-02-10 según el contrato de hash (UTF-8 NFC, saltos LF, sin
 
 ### 4.1 Tabla de remediación por comprobación
 
-No aplicable en este alta: las seis comprobaciones pasaron en la primera ejecución del gate.
+No aplicable en este alta: las siete comprobaciones pasaron en la primera ejecución del gate.
 
 ### 4.2 La excepción no es atajo
 
@@ -196,7 +209,7 @@ El agente queda verificado en producción, no solo activo en el catálogo.
 
 ### 6.1 Archivado de la evidencia del alta
 
-Esta instancia rellena del runbook se archivó junto al descriptor del agente Legal en el repositorio de gobernanza de Consultora Modelo S.L., con el veredicto del gate (PASA), los hashes del descriptor y el registro de la transición `propuesto → activo`. Permite reconstruir, en cualquier auditoría futura, que el agente entró bajo la Constitución v3.0 (`sha256:a3f5…`) habiendo pasado las seis comprobaciones.
+Esta instancia rellena del runbook se archivó junto al descriptor del agente Legal en el repositorio de gobernanza de Consultora Modelo S.L., con el veredicto del gate (PASA), los hashes del descriptor y el registro de la transición `propuesto → activo`. Permite reconstruir, en cualquier auditoría futura, que el agente entró bajo la Constitución v3.0 (`sha256:a3f5…`) habiendo pasado las siete comprobaciones.
 
 ### 6.2 Notificación a corredores y custodias
 
@@ -210,7 +223,7 @@ Se notificó el alta a:
 
 - [x] Agente identificado con corredor y caso de negocio que lo justifican (§1)
 - [x] Descriptor candidato completo, con `lifecycleStatus: propuesto`, `coherenceReview.status: pendiente` y hashes recalculados (§2)
-- [x] Gate de coherencia: las seis comprobaciones en PASA, veredicto atómico (§3)
+- [x] Gate de coherencia: las siete comprobaciones en PASA, veredicto atómico (§3)
 - [x] Si hubo fallo: remediado y gate re-ejecutado — o excepción registrada (§4) *(no hubo fallo)*
 - [x] Descriptor registrado en el service registry con `identityRef` vinculada al `agentId` (§5.1)
 - [x] `lifecycleStatus` cambiado de `propuesto` a `activo` (§5.2)
@@ -222,4 +235,4 @@ Se notificó el alta a:
 
 *Ejemplo del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
-*Ejemplo orientativo de la [plantilla de runbook de alta de un agente](./runbook-onboarding-agente.md), versión 1.0. Consultora Modelo S.L., Fonseca, Riera y los hashes son ficticios. El gate de coherencia que se ejecuta está definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2; el descriptor de este mismo agente está en el [ejemplo de descriptor](./descriptor-agente-ejemplo.md).*
+*Ejemplo orientativo de la [plantilla de runbook de alta de un agente](./runbook-onboarding-agente.md), versión 1.1. Consultora Modelo S.L., Fonseca, Riera y los hashes son ficticios. El gate de coherencia que se ejecuta está definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2; el descriptor de este mismo agente está en el [ejemplo de descriptor](./descriptor-agente-ejemplo.md).*
