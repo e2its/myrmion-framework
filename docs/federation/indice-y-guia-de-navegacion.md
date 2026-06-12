@@ -28,11 +28,11 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 |---|---|---|
 | [manifesto.md](./manifesto.md) | Porqué, principios, arquitectura, fases, métricas | ✅ v1.0 |
 | [indice-y-guia-de-navegacion.md](./indice-y-guia-de-navegacion.md) | Este documento: puerta de entrada y rutas por rol | ✅ v1.0 |
-| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.0 |
-| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | ✅ v1.0 |
+| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.1 |
+| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | ✅ v1.1 |
 | [regla-anti-acoplamiento.md](./regla-anti-acoplamiento.md) | Qué va al cuerpo vs al apéndice. Norma transversal | ✅ v1.0 |
 | [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📋 pendiente de revisión |
-| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash | ✅ v1.0 |
+| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash + clasificación regulatoria | ✅ v1.1 |
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | ✅ v1.0 |
 | [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📋 pendiente de revisión |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
@@ -85,6 +85,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 - **«Cómo sé si la federación está drifteando.»** → [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) + `templates/federation/playbook-deteccion-drift.md`.
 - **«Necesito cambiar de gateway / policy engine / stack.»** → [criterios-funcionales.md](./criterios-funcionales.md) (lo que el nuevo stack debe cumplir) + [appendix/stacks-referencia/](./appendix/stacks-referencia/). El cuerpo no cambia.
 - **«Cómo viaja el contexto cultural por MCP.»** → [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) (el qué) + [appendix/mapeo-transporte/](./appendix/mapeo-transporte/) (el cómo, por protocolo).
+- **«Necesito demostrar cumplimiento ISO/IEC 42001 o EU AI Act.»** → [área de cumplimiento](../compliance/README.md): puentes con ambas normas, clasificación regulatoria del agente ([esquema §4b](./esquema-identidad-agente.md)), y las plantillas de transparencia, evaluación de impacto, incidentes y monitorización post-comercialización.
 
 ---
 
@@ -93,6 +94,8 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 Federation es la segunda fase del trayecto cultural; la primera es [Myrmion Adoption](../adoption/manifesto.md), de donde viene la Constitución Corporativa que aquí se materializa programáticamente. La frontera es bidireccional: se puede volver a Adoption sin tirar el trabajo (manifiesto §10). El [manifiesto paraguas](../manifesto.md) sitúa los tres frameworks del ecosistema.
 
 La [Guía de protección de datos](../adoption/guia-proteccion-datos.md) de Adoption articula la capa técnica de des-identificación y la contractual de licenciamiento; Federation es donde la des-identificación inline en la ruta — que en Adoption no tenía punto de inserción — se vuelve nativa ([CF-06](./criterios-funcionales.md), §3.3 del manifiesto).
+
+El [área de cumplimiento](../compliance/README.md) es la capa transversal de evidencia frente a ISO/IEC 42001 y el EU AI Act: en Federation se materializa en la clasificación regulatoria del descriptor, la comprobación 7 del gate y las exportaciones de auditoría de CF-05; sus puentes mapean los artefactos de todo el ecosistema a ambas normas.
 
 ---
 

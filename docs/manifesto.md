@@ -70,6 +70,8 @@ Myrmion es complementario, no alternativo. NIST AI RMF, ISO/IEC 42001 y EU AI Ac
 
 Una organización seria sobre adopción de IA termina típicamente con NIST/ISO como referencia normativa, EU AI Act como obligación legal donde aplique, y un framework operativo como Myrmion para articular el cómo del día a día.
 
+Para la organización que además debe **demostrar** ese cumplimiento — certificarse en ISO/IEC 42001 o responder ante una autoridad del EU AI Act — el ecosistema mantiene un [área de cumplimiento](./compliance/README.md): los puentes que mapean los artefactos de Adoption y Federation a las cláusulas y obligaciones de ambas normas, y las plantillas que cubren lo que los frameworks no producían por sí solos (transparencia, alfabetización, evaluación de impacto, incidentes graves, monitorización post-comercialización, auditoría interna). La tesis del área es la del ecosistema entero: la evidencia debe generarse por construcción, no excavarse cuando el auditor llama.
+
 ## Licencia y contribuciones
 
 Myrmion se publica bajo licencia MIT. Las contribuciones más valiosas son: actualizaciones del apéndice de mapeo a productos comerciales conforme estos evolucionan, plantillas sectoriales (sanidad, financiero, sector público, manufacturing) y casos de uso anonimizados.

@@ -65,6 +65,8 @@ Framework para organizaciones que han superado la adopción ligera y necesitan q
 | Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación |
 | Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | 🚧 En preparación |
 | Myrmion Federation — Apéndice de stacks/policy-templates (comunidad) | 🚧 En preparación |
+| Área de cumplimiento — Puentes ISO/IEC 42001 y EU AI Act + plantillas (transparencia, alfabetización, evaluación de impacto/FRIA, incidentes, monitorización post-mercado, retención, SoA, auditoría interna) | ✅ v1.0 |
+| Área de cumplimiento — Apéndice de calendario regulatorio (comunidad) | 🔄 Documento vivo |
 
 ## Estructura del repositorio
 
@@ -79,6 +81,10 @@ myrmion/
 │   ├── adoption/
 │   │   ├── manifesto.md          ← manifiesto detallado de Adoption
 │   │   └── guia-proteccion-datos.md ← guía de protección de datos (capa técnica + contractual)
+│   ├── compliance/               ← área transversal de cumplimiento (ISO/IEC 42001 · EU AI Act)
+│   │   ├── README.md             ← ancla del área: qué es, mapa, por dónde empezar
+│   │   ├── puente-iso42001.md · puente-eu-ai-act.md   ← mapeos artefacto ↔ norma (estables)
+│   │   └── appendix/calendario-regulatorio.md ← fechas y estados legislativos (envejece rápido)
 │   └── federation/
 │       ├── manifesto.md          ← manifiesto detallado de Federation
 │       ├── indice-y-guia-de-navegacion.md  ← puerta de entrada al corpus
@@ -90,6 +96,7 @@ myrmion/
 │       └── appendix/             ← apéndice vivo (comunidad): stacks-referencia, policy-templates, mapeo-transporte, drift-recipes
 ├── templates/
 │   ├── adoption/                 ← plantillas y ejemplos de Marco Regulatorio, Constitución y capas departamentales
+│   ├── compliance/               ← plantillas de cumplimiento: transparencia, alfabetización, evaluación de impacto/FRIA, incidentes graves, monitorización post-mercado, retención, SoA ISO 42001, auditoría interna
 │   └── federation/               ← plantillas socráticas: descriptor, bloque, ficha-policy, charter, runbooks, checklist, perfil (+ ejemplos)
 └── examples/
     └── federation/               ← corredor Comercial→Legal end-to-end + diagramas (anonimizado)
@@ -101,7 +108,8 @@ myrmion/
 2. Si tu organización está adoptando IA mediante productos comerciales, sigue con el [manifiesto de Myrmion Adoption](./docs/adoption/manifesto.md).
 3. Si manejas datos personales, de salud o regulados (PII, RGPD, HIPAA, PCI-DSS…) o necesitas cumplimiento de proveedor (SOC 2, ISO 27001), lee la [Guía de protección de datos](./docs/adoption/guia-proteccion-datos.md): articula la capa técnica de des-identificación y la capa contractual de licenciamiento que el Marco Regulatorio necesita para no quedarse en prohibiciones sobre papel.
 4. Si tu organización ya tiene agentes departamentales y necesita que se inter-comuniquen con gobernanza, empieza por el [manifiesto de Myrmion Federation](./docs/federation/manifesto.md) y luego el [índice y guía de navegación](./docs/federation/indice-y-guia-de-navegacion.md), que te lleva al documento concreto según tu rol (dirección, plataforma, transformación digital, tech lead).
-5. Si necesitas construir productos de software con un SDLC gobernado, usa [Myrmion AI Factory](https://github.com/e2its/myrmion-AI-factory) — es un framework independiente y se adopta por sí solo.
+5. Si necesitas demostrar cumplimiento — prepararte para una certificación ISO/IEC 42001 o cubrir las obligaciones del EU AI Act (transparencia, alfabetización, clasificación de riesgo, evaluación de impacto, incidentes) — entra por el [área de cumplimiento](./docs/compliance/README.md): sus puentes mapean los artefactos del ecosistema a ambas normas y sus plantillas cubren lo que falta.
+6. Si necesitas construir productos de software con un SDLC gobernado, usa [Myrmion AI Factory](https://github.com/e2its/myrmion-AI-factory) — es un framework independiente y se adopta por sí solo.
 
 ## Cómo contribuir
 
@@ -109,6 +117,7 @@ Las contribuciones más valiosas, por framework:
 
 - **Adoption:** apéndice de mapeo a productos comerciales conforme evolucionan, plantillas sectoriales (sanidad, financiero, sector público, manufacturing), casos de uso anonimizados.
 - **Federation:** actualizaciones del [apéndice vivo](./docs/federation/appendix/) (stacks de referencia, policy-templates por dialecto, recetas de drift sectoriales, mapeo de transporte por protocolo), y casos de corredor anonimizados.
+- **Cumplimiento:** mantenimiento del [calendario regulatorio](./docs/compliance/appendix/calendario-regulatorio.md) (fechas y estados legislativos envejecen rápido — la lista de vigilancia del propio documento dice qué comprobar) y extensión de los puentes cuando se publiquen las normas armonizadas del AI Act.
 
 Antes de contribuir al **cuerpo** de Federation (`docs/federation/` y `templates/federation/`), lee la [regla anti-acoplamiento](./docs/federation/regla-anti-acoplamiento.md): el cuerpo se mantiene libre de marcas; los productos concretos viven solo en el apéndice. Ver [CONTRIBUTING.md](./CONTRIBUTING.md).
 
