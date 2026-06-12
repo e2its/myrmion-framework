@@ -1,6 +1,6 @@
 # Myrmion Federation — Gobernanza federada
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Materializa el §5 del [manifiesto](./manifesto.md). Parte de la gobernanza articulada en Adoption — custodia diferenciada, revisión de coherencia, detección de drift, gestión de excepciones, retirada — y especifica únicamente los **deltas** que Federation introduce cuando esas piezas, antes manuales, se ejecutan programáticamente.*
 
@@ -72,9 +72,9 @@ En Federation el ritmo deja de ser humano — un agente se da de alta, actualiza
 
 **El gate es bloqueante y atómico.** Si **cualquiera** de las comprobaciones falla, el alta **falla**: el agente no entra en la federación. No hay alta «con observaciones» ni alta parcial. Un agente que no pasa el gate no es invocable, porque la federación es exactamente la propiedad de que todo agente alcanzable cumple el contrato.
 
-### 2.1 Las seis comprobaciones
+### 2.1 Las siete comprobaciones
 
-El gate evalúa, en este orden, sobre el [descriptor de identidad](./esquema-identidad-agente.md) que el agente presenta y sobre el estado del stack en ese momento. Cada comprobación es una condición booleana; el alta procede solo si las seis devuelven verdadero.
+El gate evalúa, en este orden, sobre el [descriptor de identidad](./esquema-identidad-agente.md) que el agente presenta y sobre el estado del stack en ese momento. Cada comprobación es una condición booleana; el alta procede solo si las siete devuelven verdadero.
 
 1. **Descriptor válido contra el esquema.** El descriptor presentado valida contra el contrato de [esquema-identidad-agente.md](./esquema-identidad-agente.md): campos requeridos presentes, `agentId` con forma `urn:myrmion:agent:<org>:<dominio>:<nombre>` y no reutilizado, tipos correctos. *Falla si* el descriptor está incompleto, malformado o reusa un `agentId` archivado.
 
@@ -88,11 +88,13 @@ El gate evalúa, en este orden, sobre el [descriptor de identidad](./esquema-ide
 
 6. **`coherenceReview.status` reproducible.** El resultado del propio gate se sella en el descriptor como `coherenceReview` = `{status, reviewedAgainst, date}` — con el conjunto de policy templates aplicados y su versión en `reviewedAgainst`. El alta solo procede con `coherenceReview.status = aprobado` (el contrato lo exige: el alta falla si `status != aprobado`). La comprobación exige además que ese resultado sea **reproducible**: volver a ejecutar el gate sobre el mismo descriptor y el mismo estado de Constitución produce el mismo `status`. *Falla si* el resultado no es reproducible (p. ej. la evaluación depende de algo no versionado). La reproducibilidad es lo que convierte el gate en evidencia auditable y no en un sello opaco: cualquiera puede re-verificar por qué un agente entró.
 
-> **Por qué seis y en este orden.** Las dos primeras validan el contrato del agente consigo mismo (esquema, Constitución que dice seguir). Las dos siguientes lo validan contra la cultura y la ley (qué hace, qué datos toca). La quinta valida que es quien dice ser. La sexta valida que la decisión es auditable. El orden es de barato a caro y de estructural a operativo: las validaciones que descartan un descriptor manifiestamente inválido corren antes que las que exigen consultar el estado del stack.
+7. **Clasificación regulatoria presente y completa.** Si el Marco Regulatorio declara aplicable un régimen regulatorio de IA (p. ej. EU AI Act), el descriptor incluye `regulatoryClassification` ([esquema §4b](./esquema-identidad-agente.md)) coherente con la clasificación de casos de uso del Marco: régimen, clase de riesgo y rol, aprobados por el custodio del Marco. *Falla si* la clasificación falta siendo exigible, si está desfasada respecto a la versión vigente del Marco, o si un agente de `alto-riesgo` no referencia sus artefactos obligatorios — [evaluación de impacto](../../templates/compliance/evaluacion-impacto-ia.md) aprobada, [ficha de transparencia](../../templates/compliance/ficha-transparencia-ia.md) y [plan de monitorización post-comercialización](../../templates/compliance/plan-monitorizacion-post-mercado.md). Hay un caso que **no** es un fallo ordinario: un `riskClass` que el Marco considere **prohibido** no produce un rechazo silencioso del alta — genera una **alerta al custodio del Marco** y se trata como incidente (§3), porque alguien intentó federar un caso de uso que la regulación veta. Esta comprobación es la que convierte el gate en el punto de control de conformidad **por sistema** que la regulación de IA exige — la pieza que una certificación organizacional (un AIMS certificado) no cubre por sí sola.
+
+> **Por qué siete y en este orden.** Las dos primeras validan el contrato del agente consigo mismo (esquema, Constitución que dice seguir). Las dos siguientes lo validan contra la cultura y la ley (qué hace, qué datos toca). La quinta valida que es quien dice ser. La sexta valida que la decisión es auditable. La séptima valida que el agente tiene posición regulatoria declarada y los deberes de esa posición cubiertos — corre la última porque depende de artefactos del [área de cumplimiento](../compliance/README.md) cuya existencia y aprobación hay que consultar. El orden es de barato a caro y de estructural a operativo: las validaciones que descartan un descriptor manifiestamente inválido corren antes que las que exigen consultar el estado del stack.
 
 ### 2.2 Cuándo corre el gate
 
-El gate corre en el **alta** (`lifecycleStatus: propuesto → activo`) y en cada **actualización de descriptor** que toque `capabilities`, `dataClasses` o `constitutionRef` — exactamente los disparos que el [esquema de identidad](./esquema-identidad-agente.md) §8 declara. No corre en cada llamada: eso es trabajo del policy engine en la ruta, no del registry. La frontera es nítida: el gate decide **si un agente puede estar en la federación**; el policy engine decide **si una llamada concreta procede**. Un agente que pasó el gate puede aun así ver bloqueada una llamada por policy de runtime; son dos controles distintos en dos momentos distintos.
+El gate corre en el **alta** (`lifecycleStatus: propuesto → activo`) y en cada **actualización de descriptor** que toque `capabilities`, `dataClasses`, `constitutionRef` o `regulatoryClassification` — exactamente los disparos que el [esquema de identidad](./esquema-identidad-agente.md) §8 declara. No corre en cada llamada: eso es trabajo del policy engine en la ruta, no del registry. La frontera es nítida: el gate decide **si un agente puede estar en la federación**; el policy engine decide **si una llamada concreta procede**. Un agente que pasó el gate puede aun así ver bloqueada una llamada por policy de runtime; son dos controles distintos en dos momentos distintos.
 
 Cuando la Constitución se actualiza, los agentes cuyo `constitutionRef` queda obsoleto no se expulsan automáticamente, pero su próxima invocación cae en la *validación de compatibilidad* del [bloque cultural](./esquema-bloque-contexto-cultural.md) (comparación de `constitutionHash` contra `compatibleConstitutionHashes`) y, si no hay match, escala a humano. La re-ejecución del gate tras un cambio de Constitución es parte del runbook de propagación (§4). El detalle operativo del alta vive en el [runbook de onboarding de agente](../../templates/federation/runbook-onboarding-agente.md).
 
@@ -142,13 +144,13 @@ La diferencia con Adoption no es el qué — desmaterializar siempre fue desmate
 | Pieza de gobernanza | En Adoption (manual) | Delta en Federation (programático) |
 |---|---|---|
 | **Custodia** | Tres custodios (Marco, Constitución, capas) | + Cuarto custodio: plataforma de federación (`platformCustodian`) (§1) |
-| **Revisión de coherencia** | Lectura cruzada antes de producción | Gate de coherencia: seis comprobaciones, bloqueante y atómico, en el alta al registry (§2) |
+| **Revisión de coherencia** | Lectura cruzada antes de producción | Gate de coherencia: siete comprobaciones, bloqueante y atómico, en el alta al registry (§2) |
 | **Excepciones** | Trabajo manual de la custodia | Bloqueo automático en la ruta; rastro obligatorio; Marco = alerta, no excepción (§3) |
 | **Detección de drift** | Revisión humana periódica | Patrones A/B/C sobre la telemetría — ver [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) |
 | **Retirada** | *Deprecated* + desmaterializar a mano | Runbooks versionados; cada paso con control técnico verificable (§4) |
 
 ---
 
-*Gobernanza federada de Myrmion Federation — versión 1.0. Parte del corpus normativo.*
+*Gobernanza federada de Myrmion Federation — versión 1.1 (añade la comprobación 7 del gate: clasificación regulatoria). Parte del corpus normativo.*
 
 **Relacionados:** [manifiesto](./manifesto.md) §5 · [glosario](./glosario-federacion.md) · [criterios funcionales](./criterios-funcionales.md) · [esquema de identidad de agente](./esquema-identidad-agente.md) · [esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) · [patrones de detección de drift](./patrones-deteccion-drift.md) · [regla anti-acoplamiento](./regla-anti-acoplamiento.md) · charter: [charter de la plataforma de federación](../../templates/federation/charter-plataforma-federacion.md) · [registro de excepciones](../../templates/federation/registro-excepciones.md) · [runbook de onboarding](../../templates/federation/runbook-onboarding-agente.md) · [runbook de retirada](../../templates/federation/runbook-retirada-agente.md) · gobernanza de [Myrmion Adoption](../adoption/manifesto.md) §4

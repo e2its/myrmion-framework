@@ -7,7 +7,7 @@
 
 # Myrmion Adoption — Plantilla del Marco Regulatorio
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Plantilla para articular la Capa 1 del Marco de Modelado — el Marco Regulatorio — en una organización que adopta IA mediante productos comerciales.*
 
@@ -95,17 +95,32 @@ Esta plantilla guía a una organización en la articulación de su Marco Regulat
 *(p. ej. Reglamento (UE) 2024/1689 — EU AI Act; legislación nacional derivada; regulaciones sectoriales de IA. Listar todos los aplicables a la fecha de redacción.)*
 
 **Calendario de aplicabilidad relevante:**
-*(p. ej. para EU AI Act: prohibiciones desde febrero 2025, obligaciones GPAI desde agosto 2025, mayoría de obligaciones desde agosto 2026, alto riesgo embebido en productos regulados desde agosto 2027 — verificar fechas vigentes a la fecha de redacción del documento.)*
+*(las fechas de aplicación del EU AI Act han cambiado desde su publicación — no copiar fechas de memoria. Consultar el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md) del área de cumplimiento y verificar contra fuentes oficiales a la fecha de redacción del documento. Registrar aquí las fechas verificadas que condicionan a la organización.)*
 
-**Clasificación de los sistemas de IA usados por la organización:**
-*(según las categorías del marco aplicable. Para EU AI Act: prohibido, alto riesgo, riesgo limitado con obligaciones de transparencia, riesgo mínimo. La mayoría de adopciones mediante productos comerciales caen en riesgo limitado o mínimo, pero algunos casos de uso pueden escalar.)*
+**Clasificación de los casos de uso de IA de la organización:**
+
+*(Según las categorías del marco aplicable. Para EU AI Act: prohibido, alto riesgo (Anexo III o Anexo I), riesgo limitado con obligaciones de transparencia, riesgo mínimo. La mayoría de adopciones mediante productos comerciales caen en riesgo limitado o mínimo, pero algunos casos de uso escalan — típicamente los que tocan empleo y RR. HH., acceso a servicios esenciales, educación, scoring crediticio o decisiones con efectos jurídicos sobre personas. Notas para rellenar la tabla:*
+
+- *Se clasifica el **caso de uso**, no el producto: el mismo producto comercial puede ser riesgo mínimo redactando correos internos y alto riesgo filtrando candidaturas.*
+- *El **rol** importa tanto como la clase: la organización es típicamente deployer, pero poner el nombre propio sobre un sistema o modificarlo sustancialmente la convierte en proveedor con todas las obligaciones de los arts. 9–15 (art. 25). La decisión de rol se toma aquí, con criterio jurídico.*
+- *Un caso clasificado como **prohibido** no se mitiga: no se autoriza. Punto.*
+- *Para alto riesgo, los artefactos obligatorios mínimos son: [evaluación de impacto](../../templates/compliance/evaluacion-impacto-ia.md) aprobada (incluida la FRIA del art. 27 si la organización está obligada), [ficha de transparencia](../../templates/compliance/ficha-transparencia-ia.md), [plan de monitorización post-comercialización](../../templates/compliance/plan-monitorizacion-post-mercado.md) y conexión con el [runbook de incidentes graves](../../templates/compliance/runbook-incidentes-graves.md).*
+- *En Myrmion Federation, esta clasificación es la fuente de la `regulatoryClassification` del descriptor de cada agente, y el gate de coherencia (comprobación 7) la verifica en el alta.)*
+
+| Caso de uso | Clase de riesgo | Rol (proveedor / deployer) | Artefactos requeridos | Fecha de clasificación | Aprobada por |
+|---|---|---|---|---|---|
+| *(p. ej. asistente de redacción comercial)* | *(riesgo limitado)* | *(deployer)* | *(ficha de transparencia)* | *(YYYY-MM-DD)* | *(DPO)* |
+| *(p. ej. cribado de candidaturas)* | *(alto riesgo — Anexo III)* | | *(evaluación de impacto + ficha + plan PMM)* | | |
+| | | | | | |
 
 **Obligaciones operativas relevantes para asistentes de IA:**
 *(p. ej.:*
-- *Transparencia: el asistente debe identificarse como tal cuando interactúa con personas.*
-- *No usar IA para casos prohibidos por la regulación.*
+- *Transparencia: el asistente debe identificarse como tal cuando interactúa con personas, y el contenido sintético se marca — una [ficha de transparencia](../../templates/compliance/ficha-transparencia-ia.md) por asistente.*
+- *No usar IA para casos prohibidos por la regulación; un intento es un incidente, no una excepción.*
+- *Alfabetización: nadie opera un asistente sin la formación mínima de su colectivo — [plan de alfabetización](../../templates/compliance/plan-alfabetizacion-ia.md).*
 - *Documentar el propósito y límites de cada asistente desplegado.*
-- *Revisar clasificación de riesgo antes de cada caso de uso nuevo.)*
+- *Revisar clasificación de riesgo antes de cada caso de uso nuevo, y re-clasificar si cambia el flujo de supervisión humana.*
+- *Incidentes que afecten a personas o derechos: tratar según el [runbook de incidentes graves](../../templates/compliance/runbook-incidentes-graves.md), con sus plazos de notificación.)*
 
 **Custodio operativo:**
 
@@ -188,7 +203,7 @@ Esta plantilla guía a una organización en la articulación de su Marco Regulat
 **Adhesión: Sí / No / Parcial / En proceso de certificación**
 
 **Si Sí o En proceso — alcance:**
-*(p. ej. implementación de AIMS según norma; certificación formal pendiente o conseguida; integración con ISO 27001 y/o ISO 9001 si la organización ya las tiene.)*
+*(p. ej. implementación de AIMS según norma; certificación formal pendiente o conseguida; integración con ISO 27001 y/o ISO 9001 si la organización ya las tiene. El [puente Myrmion ↔ ISO 42001](../../docs/compliance/puente-iso42001.md) mapea los artefactos del ecosistema a las cláusulas y controles de la norma, y la [Declaración de Aplicabilidad pre-estructurada](../../templates/compliance/declaracion-aplicabilidad-iso42001.md) acelera la preparación de la certificación.)*
 
 **Organismo certificador (si aplica):**
 
@@ -262,7 +277,7 @@ Esta plantilla guía a una organización en la articulación de su Marco Regulat
 *(qué se registra para poder demostrar que los asistentes están respetando estas obligaciones. P. ej. logs de uso de los productos comerciales, revisiones periódicas de outputs muestreados, auditorías internas, evidencias para auditoría externa cuando aplique.)*
 
 **Plazo de retención de evidencias:**
-*(según el marco más exigente que aplique. Típicamente 5 años, pero puede variar por sector o por contrato.)*
+*(según el marco más exigente que aplique. Típicamente 5 años, pero puede variar por sector o por contrato. Atención a los plazos específicos de IA: el EU AI Act fija mínimos propios para logs y documentación según el rol. La [política de retención de evidencias](../../templates/compliance/politica-retencion-evidencias.md) del área de cumplimiento articula plazos, soportes y el tratamiento del derecho de supresión sobre la telemetría.)*
 
 ---
 

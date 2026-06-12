@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Ejemplo de Descriptor de Identidad de Agente
 
-**Versión 1.0**
+**Versión 1.1**
 
 *La [plantilla de descriptor de agente](./descriptor-agente.md) rellenada para el agente legal de Consultora Modelo S.L. Materializa, sobre un caso concreto, el contrato del [esquema de identidad de agente](../../docs/federation/esquema-identidad-agente.md).*
 
@@ -29,7 +29,7 @@ Consultora Modelo S.L. está federando sus agentes departamentales. Su caso de r
 |---|---|
 | Departamento al que pertenece el agente | Legal |
 | `agentId` del agente declarado | `urn:myrmion:agent:consultora-modelo:legal:dictamenes` |
-| `schemaVersion` (versión del esquema que cumple) | 1.0 |
+| `schemaVersion` (versión del esquema que cumple) | 1.1 |
 | `version` del descriptor | 1.0.0 |
 | Fecha de última revisión | 2026-05-01 |
 | Custodio de dominio (`owner`) | Dirección de Asesoría Jurídica (Riera) |
@@ -67,7 +67,7 @@ Gobierna exclusivamente el dominio legal, alineado con la Capa Departamental Leg
 *Pregunta guía: ¿cuál es la `version` del descriptor y qué `schemaVersion` cumple?*
 
 - `version`: `1.0.0`. Primera versión estable. Se incrementará `MINOR` al añadir capacidades compatibles, `MAJOR` ante un cambio de dominio o de identidad, y `PATCH` ante un cambio de la Constitución aplicada que no altere las capacidades (que además actualiza `constitutionRef`).
-- `schemaVersion`: `1.0`. Cumple la versión 1.0 del esquema de identidad de agente.
+- `schemaVersion`: `1.1`. Cumple la versión 1.1 del esquema de identidad de agente (la que añade la clasificación regulatoria, §4b del esquema).
 
 ### 1.5 `criticality`
 
@@ -121,6 +121,21 @@ compatibleConstitutionHashes: ["sha256:a3f5…", "sha256:b7e2…"]
 
 - `sha256:a3f5…` — la Constitución vigente (3.0).
 - `sha256:b7e2…` — la versión anterior (2.x), aún en uso por cadenas de decisión abiertas antes de la actualización a 3.0; se declara compatible para que esas cadenas sigan considerándose culturalmente coherentes hasta su cierre. Cuando una llamada de Fonseca llegue con cualquiera de estos dos hashes, la validación de compatibilidad da match y la llamada procede (sujeta a policy); con cualquier otro, se escala a humano con el bloque de contexto completo como evidencia.
+
+### 2.5 `regulatoryClassification`
+
+*Pregunta guía: si tu Marco Regulatorio declara aplicable un régimen regulatorio de IA, ¿cómo está clasificado este agente bajo ese régimen?*
+
+```yaml
+regulatoryClassification:
+  regime: "eu-ai-act"
+  riskClass: "riesgo-limitado"
+  role: "deployer"
+  assessedDate: "2026-02-01"
+  transparencyRef: "compliance/ficha-transparencia-legal-dictamenes@1.0"
+```
+
+El Marco Regulatorio 1.4 de Consultora Modelo declara aplicable el EU AI Act. El caso de uso «dictamen jurídico interno» está clasificado en el Marco (§2.2) como **riesgo limitado**: el dictamen lo emite el agente, pero lo firma y decide un humano (Riera) — no hay decisión automatizada con efectos jurídicos sobre personas sin supervisión, que es lo que lo escalaría a alto riesgo. El rol es **deployer**: el agente corre sobre un modelo comercial sin modificación sustancial ni marca propia (art. 25 revisado con el DPO). Como el dictamen llega a personas identificado como asistido por IA, se referencia la ficha de transparencia; al no ser alto riesgo, `impactAssessmentRef` y `pmmPlanRef` no son exigibles. La clasificación la aprobó el custodio del Marco el 2026-02-01; si el flujo de supervisión humana cambiara, la reclasificación re-dispararía el gate.
 
 ---
 
@@ -257,7 +272,7 @@ El gate de coherencia evaluó las capacidades declaradas contra los policy templ
 *Pregunta guía: ¿puedes componer el descriptor en su forma serializable y validarlo contra el contrato?*
 
 ```yaml
-schemaVersion: "1.0"
+schemaVersion: "1.1"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"
@@ -268,6 +283,12 @@ constitutionRef: { version: "3.0", approvalDate: "2026-01-15", hash: "sha256:a3f
 regulatoryFrameworkRef: { version: "1.4", hash: "sha256:f0a1…" }
 compatibleConstitutionHashes: ["sha256:a3f5…", "sha256:b7e2…"]
 dataClasses: ["C2", "C3"]
+regulatoryClassification:
+  regime: "eu-ai-act"
+  riskClass: "riesgo-limitado"
+  role: "deployer"
+  assessedDate: "2026-02-01"
+  transparencyRef: "compliance/ficha-transparencia-legal-dictamenes@1.0"
 capabilities:
   - toolName: "emitir_dictamen"
     sideEffectClass: "escritura"
@@ -285,8 +306,8 @@ lifecycleStatus: "activo"
 coherenceReview: { status: "aprobado", reviewedAgainst: "policies@2026-02", date: "2026-02-10" }
 ```
 
-Validación: el `agentId` sigue el formato URN canónico y es único; todos los campos requeridos están presentes y bien tipados; los `hash` siguen el contrato de hash; la capacidad `emitir_dictamen` declara `toolName`, `sideEffectClass`, `externalizes`, `canCommit` y `dataClassesTouched`; `version` y `schemaVersion` siguen semver; `coherenceReview.status` es `aprobado`, así que el agente puede estar `activo` en el registry. El descriptor es **válido**.
+Validación: el `agentId` sigue el formato URN canónico y es único; todos los campos requeridos están presentes y bien tipados; los `hash` siguen el contrato de hash; la capacidad `emitir_dictamen` declara `toolName`, `sideEffectClass`, `externalizes`, `canCommit` y `dataClassesTouched`; la `regulatoryClassification` está presente (el Marco declara el EU AI Act) y completa para `riesgo-limitado`; `version` y `schemaVersion` siguen semver; `coherenceReview.status` es `aprobado`, así que el agente puede estar `activo` en el registry. El descriptor es **válido**.
 
 ---
 
-*Ejemplo de descriptor de identidad de agente de Myrmion Federation — versión 1.0. Parte del corpus normativo. Acompaña a la [plantilla de descriptor de agente](./descriptor-agente.md) y materializa el [Esquema de Identidad de Agente](../../docs/federation/esquema-identidad-agente.md).*
+*Ejemplo de descriptor de identidad de agente de Myrmion Federation — versión 1.1. Parte del corpus normativo. Acompaña a la [plantilla de descriptor de agente](./descriptor-agente.md) y materializa el [Esquema de Identidad de Agente](../../docs/federation/esquema-identidad-agente.md).*

@@ -2,7 +2,7 @@
 # Organización ficticia del corpus: Consultora Modelo S.L. — <org> = consultora-modelo
 # Esta es una representación ilustrativa (no normativa): el contrato es la tabla del esquema, no este YAML.
 
-schemaVersion: "1.0"
+schemaVersion: "1.1"
 version: "1.0.0"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
@@ -33,6 +33,15 @@ compatibleConstitutionHashes:
 # Dominio jurídico: criticidad alta. Modula la cadencia de revisión de drift y la severidad del gate.
 criticality: "alta"
 dataClasses: ["C1", "C2", "C3"]
+
+# Clasificación bajo el régimen que el Marco v1.4 declara aplicable (EU AI Act). Riesgo limitado:
+# el dictamen lo firma y decide un humano. Aprobada por el custodio del Marco (comprobación 7 del gate).
+regulatoryClassification:
+  regime: "eu-ai-act"
+  riskClass: "riesgo-limitado"
+  role: "deployer"
+  assessedDate: "2026-02-01"
+  transparencyRef: "compliance/ficha-transparencia-legal-dictamenes@1.0"
 
 capabilities:
   - toolName: "validar_clausula"

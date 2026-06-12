@@ -9,7 +9,7 @@
 
 **Versión 1.0**
 
-*Plantilla operativa para dar de alta un agente departamental en la federación: del descriptor al registro, pasando por el gate de coherencia. Materializa la revisión de coherencia programática del [manifiesto](../../docs/federation/manifesto.md) §5, ejecuta las seis comprobaciones definidas en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2, y opera la transición de `lifecycleStatus` `propuesto → activo` del [esquema de identidad](../../docs/federation/esquema-identidad-agente.md) §8.*
+*Plantilla operativa para dar de alta un agente departamental en la federación: del descriptor al registro, pasando por el gate de coherencia. Materializa la revisión de coherencia programática del [manifiesto](../../docs/federation/manifesto.md) §5, ejecuta las siete comprobaciones definidas en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2, y opera la transición de `lifecycleStatus` `propuesto → activo` del [esquema de identidad](../../docs/federation/esquema-identidad-agente.md) §8.*
 
 </td>
 </tr>
@@ -21,13 +21,13 @@
 
 Este runbook documenta el alta de **un** agente departamental en la federación: la secuencia desde que existe un descriptor candidato hasta que el agente queda registrado en el service registry con `lifecycleStatus` en `activo`. No es una guía conceptual — es un procedimiento con checklist accionable que un operador de la plataforma de federación (el cuarto custodio) ejecuta paso a paso.
 
-**Qué fija el cuerpo y qué fija este runbook.** El gate de coherencia es **contrato normativo**: sus seis comprobaciones, su atomicidad y su carácter bloqueante están definidos en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2, y este runbook **no los renegocia** — los *ejecuta* sobre el stack concreto. Lo que el runbook aporta es la operacionalización paso a paso, la checklist y la tabla de remediación. Donde runbook y cuerpo discrepen, prevalece el cuerpo.
+**Qué fija el cuerpo y qué fija este runbook.** El gate de coherencia es **contrato normativo**: sus siete comprobaciones, su atomicidad y su carácter bloqueante están definidos en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2, y este runbook **no los renegocia** — los *ejecuta* sobre el stack concreto. Lo que el runbook aporta es la operacionalización paso a paso, la checklist y la tabla de remediación. Donde runbook y cuerpo discrepen, prevalece el cuerpo.
 
 **Quién lo instancia y quién lo ejecuta.** La plantilla la instancia el equipo de plataforma de federación una sola vez, adaptándola a su stack (ver [charter de la plataforma](./charter-plataforma-federacion.md)). A partir de ahí, **cada alta** produce una instancia rellena de las secciones de ejecución, que se archiva como evidencia del alta — igual que un descriptor o el registro de excepciones se versionan.
 
 **Por qué un runbook y no un script.** El alta cruza tres custodias: el departamento que modeló el agente (custodio de dominio, `owner`), la transformación digital que custodia la Constitución, y la plataforma que custodia el stack (`platformCustodian`). Partes del procedimiento se automatizan en el pipeline de alta; otras son decisiones humanas que no se delegan. El runbook marca cuáles son cuáles.
 
-**El principio que no se negocia.** El gate es **bloqueante y atómico**: o pasan las seis comprobaciones, o el agente **no se registra**. No hay alta «con observaciones» ni alta parcial (gobernanza-federada §2). Saltarse una comprobación «porque urge» es meter en la falange un agente cuyo comportamiento no está verificado contra la Constitución. La política por defecto ante cualquier fallo es **no registrar y devolver a la custodia responsable**, nunca registrar provisionalmente.
+**El principio que no se negocia.** El gate es **bloqueante y atómico**: o pasan las siete comprobaciones, o el agente **no se registra**. No hay alta «con observaciones» ni alta parcial (gobernanza-federada §2). Saltarse una comprobación «porque urge» es meter en la falange un agente cuyo comportamiento no está verificado contra la Constitución. La política por defecto ante cualquier fallo es **no registrar y devolver a la custodia responsable**, nunca registrar provisionalmente.
 
 **Cuánto tiempo lleva.** El primer alta de una organización lleva días, porque se está estrenando el pipeline. A partir del tercer o cuarto agente, un alta limpia es cuestión de horas: el descriptor ya viene bien formado, las comprobaciones están automatizadas, y el gate o pasa o señala exactamente qué falla.
 
@@ -108,9 +108,9 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 
 ---
 
-## 3. Gate de coherencia — las seis comprobaciones
+## 3. Gate de coherencia — las siete comprobaciones
 
-*Aquí está el corazón del alta. El gate de coherencia es la versión programática de la revisión de coherencia de Adoption (manifiesto §5): la revisión deja de ser un juicio humano en lectura cruzada y se convierte en seis comprobaciones programáticas reproducibles. Las seis están **definidas en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2.1** y este runbook las ejecuta en ese orden. El gate es **bloqueante y atómico**: el alta procede solo si las seis devuelven verdadero; si cualquiera falla, el alta falla y no hay registro parcial.*
+*Aquí está el corazón del alta. El gate de coherencia es la versión programática de la revisión de coherencia de Adoption (manifiesto §5): la revisión deja de ser un juicio humano en lectura cruzada y se convierte en siete comprobaciones programáticas reproducibles. Las siete están **definidas en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2.1** y este runbook las ejecuta en ese orden. El gate es **bloqueante y atómico**: el alta procede solo si las siete devuelven verdadero; si cualquiera falla, el alta falla y no hay registro parcial.*
 
 *Para cada comprobación: resultado (pasa / falla), evidencia, y — si falla — la acción de §4 que se dispara.*
 
@@ -170,9 +170,21 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 | Resultado reproducible (re-ejecución produce el mismo `status`) | ☐ pasa ☐ falla | |
 | `coherenceReview.status = aprobado` | ☐ pasa ☐ falla | |
 
-### 3.7 Veredicto del gate
+### 3.7 Comprobación 7 — Clasificación regulatoria presente y completa
 
-*Pregunta guía: ¿pasaron las seis comprobaciones? El gate es atómico. Anotar el veredicto global y, si es FALLA, qué comprobación(es) fallaron y qué acción de §4 se dispara. Solo con veredicto PASA se avanza a §5.*
+*Pregunta guía: si el Marco Regulatorio declara aplicable un régimen regulatorio de IA (p. ej. EU AI Act), ¿incluye el descriptor `regulatoryClassification` ([esquema §4b](../../docs/federation/esquema-identidad-agente.md)) coherente con la clasificación de casos de uso del Marco (§2.2 de su [plantilla](../adoption/marco-regulatorio.md)) y aprobada por su custodio? Si el agente es de `alto-riesgo`, ¿referencia su [evaluación de impacto](../compliance/evaluacion-impacto-ia.md) aprobada, su [ficha de transparencia](../compliance/ficha-transparencia-ia.md) y su [plan de monitorización post-comercialización](../compliance/plan-monitorizacion-post-mercado.md)? Atención: si la clase resultante es **prohibida** por el régimen, esto no es un fallo ordinario del gate — se genera alerta al custodio del Marco y se trata como incidente (gobernanza §3).*
+
+| Sub-comprobación | Resultado | Evidencia |
+|---|---|---|
+| `regulatoryClassification` presente si el Marco declara un régimen | ☐ pasa ☐ falla ☐ n/a | |
+| Clase y rol coherentes con el Marco vigente y aprobados por su custodio | ☐ pasa ☐ falla ☐ n/a | |
+| Si `alto-riesgo`: evaluación de impacto aprobada referenciada | ☐ pasa ☐ falla ☐ n/a | |
+| Si `alto-riesgo` o interactúa con personas: ficha de transparencia referenciada | ☐ pasa ☐ falla ☐ n/a | |
+| Si `alto-riesgo`: plan de monitorización post-comercialización referenciado | ☐ pasa ☐ falla ☐ n/a | |
+
+### 3.8 Veredicto del gate
+
+*Pregunta guía: ¿pasaron las siete comprobaciones? El gate es atómico. Anotar el veredicto global y, si es FALLA, qué comprobación(es) fallaron y qué acción de §4 se dispara. Solo con veredicto PASA se avanza a §5.*
 
 | Resultado global del gate | Comprobaciones fallidas | Acción disparada |
 |---|---|---|
@@ -259,7 +271,7 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 
 - [ ] Agente identificado con corredor y caso de negocio que lo justifican (§1)
 - [ ] Descriptor candidato completo, con `lifecycleStatus: propuesto`, `coherenceReview.status: pendiente` y hashes recalculados (§2)
-- [ ] Gate de coherencia: las seis comprobaciones en PASA, veredicto atómico (§3)
+- [ ] Gate de coherencia: las siete comprobaciones en PASA, veredicto atómico (§3)
 - [ ] Si hubo fallo: remediado y gate re-ejecutado completo — o, solo para la comprobación 3, excepción registrada (§4)
 - [ ] Descriptor registrado en el service registry con `identityRef` vinculada al `agentId` (§5.1)
 - [ ] `lifecycleStatus` cambiado de `propuesto` a `activo` (§5.2)
