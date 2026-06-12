@@ -57,8 +57,9 @@ Cada criterio se considera **cubierto** cuando el stack satisface todos los punt
 
 **Checklist de verificación.**
 
-- [ ] Almacena y consulta agentes por su [descriptor de identidad](./esquema-identidad-agente.md) **extendido**: no solo nombre y endpoint, sino dominio, criticidad, clases de dato y versión de Constitución aplicada.
+- [ ] Almacena y consulta agentes por su [descriptor de identidad](./esquema-identidad-agente.md) **extendido**: no solo nombre y endpoint, sino dominio, criticidad, clases de dato, versión de Constitución aplicada y clasificación regulatoria.
 - [ ] El alta de un agente puede condicionarse al resultado del *gate de coherencia* (ver [gobernanza-federada.md](./gobernanza-federada.md)): si el descriptor entra en conflicto con la Constitución, el alta falla.
+- [ ] Las comprobaciones del gate que dependen de referencias externas al registry — la clasificación regulatoria y sus artefactos (`impactAssessmentRef`, `transparencyRef`, `pmmPlanRef`, comprobación 7) — pueden resolverse y verificarse (existencia y estado de aprobación) de forma programática y reproducible, no por inspección manual.
 - [ ] Soporta el ciclo de vida completo: alta, actualización de descriptor, marcado como deprecated y baja (deregister) sin liberar el `agentId`.
 - [ ] Permite notificar a los agentes dependientes (`dependsOn`) cuando un agente del que dependen se retira.
 

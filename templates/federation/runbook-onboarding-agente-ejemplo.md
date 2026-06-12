@@ -149,10 +149,10 @@ Recalculados el 2026-02-10 según el contrato de hash (UTF-8 NFC, saltos LF, sin
 | `regulatoryClassification` presente si el Marco declara un régimen | ☑ pasa | El Marco v1.4 declara aplicable el EU AI Act; el descriptor incluye `{regime: eu-ai-act, riskClass: riesgo-limitado, role: deployer, assessedDate: 2026-02-01}` |
 | Clase y rol coherentes con el Marco vigente y aprobados por su custodio | ☑ pasa | Coincide con la clasificación del caso de uso «dictamen jurídico interno» en el Marco v1.4 §2.2; aprobación del DPO registrada |
 | Si `alto-riesgo`: evaluación de impacto aprobada referenciada | ☑ n/a | `riskClass = riesgo-limitado` |
-| Si `alto-riesgo` o interactúa con personas: ficha de transparencia referenciada | ☑ pasa | `transparencyRef: compliance/ficha-transparencia-legal-dictamenes@1.0` — el dictamen llega a personas (Riera y Fonseca) identificado como asistido por IA |
+| Si `alto-riesgo` o el Marco lo exige para el caso de uso: ficha de transparencia referenciada | ☑ pasa | El Marco §2.2 exige ficha para este caso de uso (genera contenido que llega a personas); `transparencyRef: compliance/ficha-transparencia-legal-dictamenes@1.0` |
 | Si `alto-riesgo`: plan de monitorización post-comercialización referenciado | ☑ n/a | `riskClass = riesgo-limitado` |
 
-*Nota del operador: la clasificación como `riesgo-limitado` se revisó con el custodio del Marco precisamente porque el dictamen condiciona compromisos contractuales. Conclusión registrada: el dictamen lo emite el agente pero lo firma y decide un humano (Riera) — no hay decisión automatizada con efectos jurídicos sin supervisión. Si ese flujo cambiara, la reclasificación re-dispararía este gate.*
+*Nota del operador: la clasificación como `riesgo-limitado` se revisó con el custodio del Marco precisamente porque el dictamen condiciona compromisos contractuales. Conclusión registrada: el caso de uso «dictamen jurídico interno» no figura en las áreas del Anexo III — ese es el criterio de clasificación; que el dictamen lo firme y decida un humano (Riera) es una salvaguarda del diseño, no lo que lo desclasifica. Si el caso de uso cambiara (p. ej. pasara a afectar a empleo o a acceso a servicios), la reclasificación re-dispararía este gate.*
 
 ### 3.8 Veredicto del gate
 

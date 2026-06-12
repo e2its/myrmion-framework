@@ -19,7 +19,7 @@
 
 ## Cómo usar esta plantilla
 
-La rellena el custodio del Marco Regulatorio (los plazos son obligaciones de Capa 1) con la plataforma de federación (que opera el almacenamiento). Los plazos concretos del EU AI Act dependen del rol y de la clase de riesgo — verificar vigencia en el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md). La tensión central que esta política resuelve por escrito: **la trazabilidad pide conservar; la minimización pide borrar**. La respuesta de Myrmion ya está medio construida — el bloque de contexto cultural nunca transporta PII en claro (`originatingUserRef` es un seudónimo opaco; los `deidTokens` son punteros a vault, no valores) — pero la política debe declarar el resto.
+La rellena el custodio del Marco Regulatorio (los plazos son obligaciones de Capa 1) con la plataforma de federación (que opera el almacenamiento). Los plazos concretos del EU AI Act dependen del rol y de la clase de riesgo — los mínimos citados abajo se verifican contra el texto vigente del Reglamento; la [lista de vigilancia del calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md) registra los actos que los modifiquen y avisa de alinear esta plantilla. La tensión central que esta política resuelve por escrito: **la trazabilidad pide conservar; la minimización pide borrar**. La respuesta de Myrmion ya está medio construida — el bloque de contexto cultural nunca transporta PII en claro (`originatingUserRef` es un seudónimo opaco; los `deidTokens` son punteros a vault, no valores) — pero la política debe declarar el resto.
 
 ---
 
@@ -67,4 +67,4 @@ La rellena el custodio del Marco Regulatorio (los plazos son obligaciones de Cap
 
 *Plantilla del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
-*Parte del [área de cumplimiento](../../docs/compliance/README.md). Cubre los plazos de los arts. 12/18/19/26.6 del EU AI Act y la conciliación con RGPD arts. 5(1)(e) y 17; en ISO/IEC 42001, materializa el control de información documentada (cl. 7.5) sobre la evidencia operativa. Complementa la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md).*
+*Parte del [área de cumplimiento](../../docs/compliance/README.md). Cubre la conservación de los logs del art. 12 (arts. 19 y 26.6) y de la documentación (art. 18) del EU AI Act, y la conciliación con RGPD arts. 5(1)(e) y 17; en ISO/IEC 42001, materializa el control de información documentada (cl. 7.5) sobre la evidencia operativa. Complementa la [Guía de protección de datos](../../docs/adoption/guia-proteccion-datos.md).*

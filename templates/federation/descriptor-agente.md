@@ -123,7 +123,7 @@ No es un formulario que rellenar a ciegas. Cada pregunta busca que **expliciten*
 
 ### 2.5 `regulatoryClassification`
 
-*Pregunta guía: si tu Marco Regulatorio declara aplicable un régimen regulatorio de IA (p. ej. EU AI Act), ¿cómo está clasificado este agente bajo ese régimen? Declara `{regime, riskClass, role, assessedDate}` según el [esquema §4b](../../docs/federation/esquema-identidad-agente.md): la clase de riesgo del caso de uso (coherente con la clasificación del Marco §2.2, aprobada por su custodio — no es una autoevaluación departamental) y el rol de tu organización respecto al sistema (¿proveedor o deployer? — cuidado con el art. 25: poner vuestro nombre o modificar sustancialmente os convierte en proveedor). Si es `alto-riesgo`, referencia además la [evaluación de impacto](../compliance/evaluacion-impacto-ia.md) aprobada (`impactAssessmentRef`), la [ficha de transparencia](../compliance/ficha-transparencia-ia.md) (`transparencyRef`) y el [plan de monitorización post-comercialización](../compliance/plan-monitorizacion-post-mercado.md) (`pmmPlanRef`). Si interactúa con personas o genera contenido, la ficha de transparencia es exigible aunque no sea alto riesgo. La comprobación 7 del gate verifica todo esto en el alta.*
+*Pregunta guía: si tu Marco Regulatorio declara aplicable un régimen regulatorio de IA (p. ej. EU AI Act), ¿cómo está clasificado este agente bajo ese régimen? Declara `{regime, riskClass, role, assessedDate}` según el [esquema §4b](../../docs/federation/esquema-identidad-agente.md): la clase de riesgo del caso de uso (coherente con la clasificación del Marco §2.2, aprobada por su custodio — no es una autoevaluación departamental) y el rol de tu organización respecto al sistema (¿proveedor o deployer? — cuidado con el art. 25: poner vuestro nombre o modificar sustancialmente os convierte en proveedor). Si es `alto-riesgo`, referencia además la [evaluación de impacto](../compliance/evaluacion-impacto-ia.md) aprobada (`impactAssessmentRef`), la [ficha de transparencia](../compliance/ficha-transparencia-ia.md) (`transparencyRef`) y el [plan de monitorización post-comercialización](../compliance/plan-monitorizacion-post-mercado.md) (`pmmPlanRef`). La ficha de transparencia es exigible también fuera del alto riesgo cuando la clasificación del caso de uso en el Marco la declara como artefacto requerido — su criterio típico: el agente interactúa con personas o genera contenido. La comprobación 7 del gate verifica todo esto en el alta.*
 
 [Espacio para rellenar]
 
@@ -245,7 +245,7 @@ regulatoryClassification:
   role: "[proveedor | deployer]"
   assessedDate: "[YYYY-MM-DD]"
   impactAssessmentRef: "[requerido si alto-riesgo]"
-  transparencyRef: "[requerido si alto-riesgo o interactúa con personas]"
+  transparencyRef: "[requerido si alto-riesgo o si el Marco lo exige para el caso de uso — típicamente: interactúa con personas o genera contenido]"
   pmmPlanRef: "[requerido si alto-riesgo]"
 capabilities:
   - toolName: "[Espacio para rellenar]"

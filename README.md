@@ -51,18 +51,21 @@ Framework para organizaciones que han superado la adopción ligera y necesitan q
 
 **Myrmion AI Factory es independiente de ese par.** No modela cultura corporativa ni federa agentes: construye productos de software con un SDLC gobernado. Se adopta por sí solo y resuelve un problema distinto — la disciplina de desarrollo — aunque comparta con el resto del ecosistema el principio de gobernanza explícita y auditable.
 
+**Sobre los tres frameworks, una capa transversal: el [área de cumplimiento](./docs/compliance/README.md).** No es un cuarto framework — es el puente entre los artefactos que Adoption y Federation ya producen y lo que un certificador ISO/IEC 42001 o una autoridad del EU AI Act van a pedir: mapeos obligación ↔ artefacto y las plantillas de evidencia que faltaban (transparencia, alfabetización, evaluación de impacto, incidentes, monitorización post-mercado).
+
 ## Estado del proyecto
 
 | Componente | Estado |
 |---|---|
 | Manifiesto Myrmion (paraguas) | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | Myrmion Adoption — Manifiesto | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
-| Myrmion Adoption — Plantillas (Capa 1, 2 y 3) | 📝 v1.1 — draft (Capa 1 ampliada con clasificación de casos de uso de IA; re-revisión pendiente) |
+| Myrmion Adoption — Plantillas: Capa 1 (Marco Regulatorio) | 📝 v1.1 — draft (ampliada con clasificación de casos de uso de IA; re-revisión pendiente) |
+| Myrmion Adoption — Plantillas: Capas 2 y 3 (Constitución, departamentales) | ✅ v1.0 |
 | Myrmion Adoption — Guía de protección de datos (PII/PHI + licenciamiento) | ✅ v1.0 |
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
 | Myrmion AI Factory — Framework (repositorio propio) | ✅ Activo |
 | Myrmion Federation — Manifiesto | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
-| Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación |
+| Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación — estado por documento en el [índice](./docs/federation/indice-y-guia-de-navegacion.md) §2, que es la fuente de verdad |
 | Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | 🚧 En preparación |
 | Myrmion Federation — Apéndice de stacks/policy-templates (comunidad) | 🚧 En preparación |
 | Área de cumplimiento — Puentes ISO/IEC 42001 y EU AI Act + plantillas (transparencia, alfabetización, evaluación de impacto/FRIA, incidentes, monitorización post-mercado, retención, SoA, auditoría interna) | 📝 v1.0 — draft (nuevo, en revisión) |

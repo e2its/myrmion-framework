@@ -23,7 +23,7 @@ Myrmion ya genera las **señales** de incidente: el intento de excepción a una 
 
 **Quién la rellena.** El custodio del Marco Regulatorio (legal/DPO) es la autoridad del procedimiento; la plataforma de federación (si existe) opera la detección y aporta la evidencia técnica; cada custodio de dominio responde por la contención en su dominio.
 
-**El principio que no se negocia.** Los plazos de notificación a la autoridad son **regulatorios, no internos**: el reloj corre desde que la organización establece el vínculo entre el sistema de IA y el incidente, no desde que termina la investigación. Notificar con información incompleta y completar después es el comportamiento correcto; callar mientras se investiga no lo es.
+**El principio que no se negocia.** Los plazos de notificación a la autoridad son **regulatorios, no internos**: la obligación de notificar nace **inmediatamente** al establecer el vínculo causal — o su probabilidad razonable — entre el sistema de IA y el incidente, y los plazos máximos de la tabla de §2 corren desde que la organización **tiene conocimiento** del incidente, no desde que confirma el vínculo ni desde que termina la investigación. Notificar con información incompleta y completar después es el comportamiento correcto; callar mientras se investiga no lo es.
 
 ---
 
@@ -52,13 +52,13 @@ Myrmion ya genera las **señales** de incidente: el intento de excepción a una 
 
 | Severidad | Definición | Plazo de notificación a la autoridad | Notifica |
 |---|---|---|---|
-| **Crítica** | Infracción generalizada o incidente grave en infraestructura crítica | **≤ 2 días** desde el vínculo IA–incidente | *(rol)* |
+| **Crítica** | Infracción generalizada o incidente grave en infraestructura crítica | **≤ 2 días** desde el conocimiento del incidente (e inmediato al establecer el vínculo) | *(rol)* |
 | **Mayor — fallecimiento** | Incidente grave con fallecimiento de una persona | **≤ 10 días** | |
 | **Mayor** | Resto de incidentes graves del art. 73 | **≤ 15 días** | |
 | **Brecha de datos** | Violación de seguridad con datos personales | **≤ 72 h** a la autoridad de protección de datos (RGPD art. 33); a los interesados sin dilación indebida si alto riesgo para sus derechos (art. 34) | |
 | **Interna** | Violación de Marco sin daño externo; señal de drift grave | *(plazo interno — sin notificación externa salvo escalada)* | |
 
-*Nota: como deployer, el deber típico es informar **al proveedor** del sistema sin demora (y a la autoridad si el proveedor no es localizable o el deployer causó el incidente); como proveedor, la notificación a la autoridad es propia. El rol viene de la `regulatoryClassification` del descriptor o de la clasificación del Marco §2.2.*
+*Nota: como deployer, al identificar un incidente grave se informa **sin demora primero al proveedor, y después al importador o distribuidor y a las autoridades de vigilancia del mercado** (art. 26.5) — la notificación a la autoridad no es opcional ni subsidiaria; si el proveedor no es localizable, las obligaciones de notificación del art. 73 aplican mutatis mutandis al propio deployer. Como proveedor, la notificación a la autoridad es propia. El rol viene de la `regulatoryClassification` del descriptor o de la clasificación del Marco §2.2.*
 
 ## 3. Procedimiento
 

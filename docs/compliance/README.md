@@ -22,7 +22,9 @@
 
 ## 2. Mapa del área
 
-### Documentos puente (`docs/compliance/`) — estables, sin fechas
+**Fuente de verdad del mapeo obligación ↔ artefacto: los puentes.** Las tablas de este README y las cabeceras/pies de las plantillas son orientativas y remiten a ellos; ante cualquier discrepancia, el puente corrige al resto.
+
+### Documentos puente (`docs/compliance/`) — estables, sin fechas de calendario legislativo
 
 | Documento | Qué resuelve |
 |---|---|
@@ -38,7 +40,7 @@
 | [evaluacion-impacto-ia.md](../../templates/compliance/evaluacion-impacto-ia.md) | Evaluación de impacto del sistema de IA (ISO 42001 cl. 6 / control A.5, en línea con ISO/IEC 42005) con salida FRIA (EU AI Act art. 27) |
 | [runbook-incidentes-graves.md](../../templates/compliance/runbook-incidentes-graves.md) | EU AI Act art. 73 (incidentes graves) + conexión con arts. 33–34 RGPD |
 | [plan-monitorizacion-post-mercado.md](../../templates/compliance/plan-monitorizacion-post-mercado.md) | EU AI Act art. 72 (monitorización post-comercialización), formalizando los [patrones de drift](../federation/patrones-deteccion-drift.md) y las [métricas](../federation/metricas-federacion.md) |
-| [politica-retencion-evidencias.md](../../templates/compliance/politica-retencion-evidencias.md) | Retención de logs y documentación (arts. 12, 18, 19, 26.6) y derecho de supresión RGPD sobre la telemetría |
+| [politica-retencion-evidencias.md](../../templates/compliance/politica-retencion-evidencias.md) | Conservación de los logs del art. 12 (arts. 19, 26.6) y de la documentación (art. 18), y derecho de supresión RGPD sobre la telemetría |
 | [declaracion-aplicabilidad-iso42001.md](../../templates/compliance/declaracion-aplicabilidad-iso42001.md) | Declaración de Aplicabilidad (SoA) del Anexo A, pre-estructurada con el mapeo a artefactos Myrmion |
 | [programa-auditoria-interna-aims.md](../../templates/compliance/programa-auditoria-interna-aims.md) | ISO 42001 cl. 9.2 (auditoría interna) y cl. 9.3 (revisión por la dirección) |
 

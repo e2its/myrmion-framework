@@ -36,7 +36,7 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | ✅ v1.0 |
 | [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📋 pendiente de revisión |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
-| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia, ciclo de vida (§5) | 📋 pendiente de revisión |
+| [gobernanza-federada.md](./gobernanza-federada.md) | 4º custodio, gate de coherencia (7 comprobaciones), ciclo de vida (§5) | 📝 v1.1 — draft (modificado, re-revisión pendiente) |
 | [guia-adopcion-por-fases.md](./guia-adopcion-por-fases.md) | Fases 0–5 con entradas, salidas y criterio de parada (§6) | 📝 draft |
 | [metricas-federacion.md](./metricas-federacion.md) | Las métricas que importan (§7) | 📝 draft |
 | [perfil-adopcion-federacion.md](./perfil-adopcion-federacion.md) | Variables VF que modifican decisiones según contexto | 📝 draft |
@@ -101,7 +101,7 @@ El [área de cumplimiento](../compliance/README.md) es la capa transversal de ev
 
 ## 6. Estado del corpus
 
-A fecha de esta versión, la [regla anti-acoplamiento](./regla-anti-acoplamiento.md) y el [esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) permanecen cerrados en v1.0. El manifiesto, este índice, el glosario, los criterios funcionales y el esquema de identidad — antes cerrados — fueron modificados en la integración del [área de cumplimiento](../compliance/README.md) (clasificación regulatoria, comprobación 7 del gate, exportaciones de auditoría): por la regla de gobernanza documental del corpus, suben a v1.1 y **vuelven a draft hasta superar la re-revisión**. El resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
+A fecha de esta versión, la [regla anti-acoplamiento](./regla-anti-acoplamiento.md) y el [esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) permanecen cerrados en v1.0. El manifiesto, este índice, el glosario, los criterios funcionales, el esquema de identidad y la gobernanza federada fueron modificados en la integración del [área de cumplimiento](../compliance/README.md) (clasificación regulatoria, comprobación 7 del gate, exportaciones de auditoría): por la regla de gobernanza documental del corpus, suben a v1.1 y **quedan en draft hasta superar la re-revisión**. El resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
 
 ---
 

@@ -58,13 +58,13 @@ Se rellena **una ficha por asistente** (Myrmion Adoption) **o por agente** (Myrm
 
 ## 3. Marcado de contenido sintético
 
-*Pregunta guía: ¿qué tipos de contenido genera este sistema (texto, imagen, audio, vídeo) y cómo se marca como generado o manipulado artificialmente, en formato legible por máquina? Si el contenido pasa por revisión y responsabilidad editorial humana antes de publicarse — la excepción típica en asistentes corporativos — declara aquí ese flujo: quién revisa, cómo queda registrado que revisó, y qué pasa con el contenido que se publica sin pasar por ese flujo. Los formatos técnicos de marcado aceptados evolucionan: verificar el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md).*
+*Pregunta guía: ¿qué tipos de contenido genera este sistema (texto, imagen, audio, vídeo) y cómo se marca como generado o manipulado artificialmente, en formato legible por máquina? Atención a una confusión frecuente: la revisión editorial humana **no exime del marcado legible por máquina** — las excepciones de esta obligación son otras (función de asistencia o edición estándar que no altera sustancialmente la entrada); la excepción de revisión humana con responsabilidad editorial pertenece a la divulgación de texto publicado, que se declara en §4. Aquí declara el mecanismo de marcado, sus excepciones aplicables justificadas, y quién verifica que opera. Los formatos técnicos de marcado aceptados evolucionan: verificar el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md).*
 
 [Espacio para rellenar]
 
 ## 4. Contenido publicado al exterior
 
-*Pregunta guía: ¿puede el contenido de este asistente llegar a publicarse hacia fuera de la organización (web, redes, comunicaciones a clientes)? Si genera o manipula contenido que podría constituir ultrafalsificación (deep fake) o texto publicado con fines de información al público, ¿cómo se divulga visiblemente su origen artificial? En Federation, relaciona esta sección con las capabilities que declaran `externalizes: true` en el descriptor.*
+*Pregunta guía: ¿puede el contenido de este asistente llegar a publicarse hacia fuera de la organización (web, redes, comunicaciones a clientes)? Si genera o manipula contenido que podría constituir ultrafalsificación (deep fake) o texto publicado con fines de información al público, ¿cómo se divulga visiblemente su origen artificial? Es **aquí** — y solo aquí — donde aplica la excepción de revisión humana con responsabilidad editorial sobre el texto publicado: si la organización la invoca, declara el flujo (quién revisa, quién asume la responsabilidad editorial, cómo queda registrado) y qué pasa con el contenido que se publica sin pasar por él. En Federation, relaciona esta sección con las capabilities que declaran `externalizes: true` en el descriptor.*
 
 [Espacio para rellenar]
 

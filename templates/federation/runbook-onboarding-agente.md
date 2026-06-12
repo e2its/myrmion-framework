@@ -179,7 +179,7 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 | `regulatoryClassification` presente si el Marco declara un régimen | ☐ pasa ☐ falla ☐ n/a | |
 | Clase y rol coherentes con el Marco vigente y aprobados por su custodio | ☐ pasa ☐ falla ☐ n/a | |
 | Si `alto-riesgo`: evaluación de impacto aprobada referenciada | ☐ pasa ☐ falla ☐ n/a | |
-| Si `alto-riesgo` o interactúa con personas: ficha de transparencia referenciada | ☐ pasa ☐ falla ☐ n/a | |
+| Si `alto-riesgo` o el Marco lo exige para el caso de uso (típicamente: interactúa con personas o genera contenido): ficha de transparencia referenciada | ☐ pasa ☐ falla ☐ n/a | |
 | Si `alto-riesgo`: plan de monitorización post-comercialización referenciado | ☐ pasa ☐ falla ☐ n/a | |
 
 ### 3.8 Veredicto del gate
@@ -208,6 +208,7 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 | 4 — `dataClasses` vs Marco | DPO / legal + plataforma | Reducir las `dataClasses` declaradas a las autorizadas, o añadir des-identificación en la ruta del corredor. **No excepcionable**: es materia del Marco |
 | 5 — `mutualAuthVerified` | Plataforma de federación | Provisionar credenciales con las tres propiedades de CF-04 y verificarlas antes de reintentar |
 | 6 — `coherenceReview` reproducible | Plataforma de federación | Eliminar la dependencia no versionada que rompe la reproducibilidad; re-sellar `coherenceReview` |
+| 7 — Clasificación regulatoria | DPO / legal (custodio del Marco) + departamento | Clasificar (o re-clasificar) el caso de uso en el Marco §2.2 y completar los artefactos requeridos antes de reintentar. **No excepcionable**: es materia del Marco. Caso especial: si la clase resultante es **prohibida**, no hay remediación — se genera alerta al custodio del Marco y se trata como incidente (gobernanza §3), nunca como fallo remediable |
 
 ### 4.2 La excepción no es atajo
 

@@ -2,7 +2,7 @@
 
 **Documento vivo · Estado verificado a junio de 2026**
 
-*Parte del apéndice del [área de cumplimiento](../README.md). Este documento concentra **todo lo que envejece rápido**: fechas de aplicación, estados legislativos y el panorama de certificación. Los [puentes](../puente-iso42001.md) y las [plantillas](../../../templates/compliance/) se mantienen deliberadamente libres de fechas para no envejecer con cada cambio legislativo; cuando necesites una fecha, viene aquí — y **se verifica contra fuentes oficiales antes de usarla en un documento de gobernanza**.*
+*Parte del apéndice del [área de cumplimiento](../README.md). Este documento concentra **todo lo que envejece rápido**: fechas de aplicación, estados legislativos y el panorama de certificación. Los [puentes](../puente-iso42001.md) y las [plantillas](../../../templates/compliance/) se mantienen deliberadamente libres de **fechas de calendario legislativo** (entradas en aplicación, estados de tramitación); los **plazos fijados en el articulado** (notificación, retención) sí se citan en las plantillas junto a su artículo, y la lista de vigilancia de §5 cubre sus modificaciones. Cuando necesites una fecha de calendario, viene aquí — y **se verifica contra fuentes oficiales antes de usarla en un documento de gobernanza**.*
 
 ---
 
@@ -20,7 +20,7 @@ Estado a junio de 2026, incorporando el acuerdo político provisional del **Digi
 | Alto riesgo del Anexo III (arts. 6 y 8–27) | ~~2-ago-2026~~ → **2 de diciembre de 2027** | **Acuerdo provisional Omnibus — pendiente de adopción formal** |
 | Alto riesgo del Anexo I (IA embebida en productos regulados) | ~~2-ago-2027~~ → **2 de agosto de 2028** | **Acuerdo provisional Omnibus — pendiente de adopción formal** |
 
-> **Atención — estado del Digital Omnibus.** La Comisión propuso el paquete en noviembre de 2025; Parlamento y Consejo alcanzaron acuerdo político provisional en mayo de 2026 (fechas fijas, abandonando el mecanismo condicionado a normas armonizadas de la propuesta original). A la fecha de este documento **no está adoptado formalmente ni publicado en el DOUE**: hasta entonces, la fecha jurídicamente vigente para alto riesgo sigue siendo el 2 de agosto de 2026. Una organización prudente planifica con las fechas nuevas pero verifica la publicación en el DOUE antes de relajar ningún plan. Otros cambios del acuerdo: prohibiciones adicionales, registro simplificado para sistemas exentos vía art. 6(3) y flexibilidades para pymes.
+> **Atención — estado del Digital Omnibus.** La Comisión propuso el paquete en noviembre de 2025; Parlamento y Consejo alcanzaron acuerdo político provisional en mayo de 2026 (fechas fijas, abandonando el mecanismo condicionado a normas armonizadas de la propuesta original). A la fecha de este documento **no está adoptado formalmente ni publicado en el DOUE**: hasta entonces, la fecha jurídicamente vigente para alto riesgo sigue siendo el 2 de agosto de 2026. Una organización prudente planifica con las fechas nuevas pero verifica la publicación en el DOUE antes de relajar ningún plan. Otros cambios del acuerdo: prohibiciones adicionales y flexibilidades para pymes; el alcance final de otros ajustes (p. ej. el tratamiento del registro de sistemas exentos vía art. 6(3), donde las crónicas del trílogo divergen) debe verificarse contra el texto que se publique en el DOUE.
 
 **Sanciones (art. 99):** hasta 35 M€ o 7 % del volumen de negocio mundial (prohibiciones del art. 5); 15 M€ o 3 % (resto de obligaciones); 7,5 M€ o 1 % (información engañosa a autoridades). Para pymes, el menor de los dos importes.
 
@@ -48,7 +48,7 @@ Qué debe comprobar quien mantenga este apéndice (cadencia recomendada: trimest
 2. **Publicación de EN 18286 y su citación en el DOUE** → extender el [puente ISO 42001](../puente-iso42001.md) y revisar la [SoA](../../../templates/compliance/declaracion-aplicabilidad-iso42001.md).
 3. **Actos de ejecución del art. 50** (formatos de marcado de contenido sintético) → actualizar la [ficha de transparencia](../../../templates/compliance/ficha-transparencia-ia.md).
 4. **Plantilla oficial de FRIA** que publique la AI Office (art. 27.5) → alinear la [evaluación de impacto](../../../templates/compliance/evaluacion-impacto-ia.md).
-5. **Guías de la Comisión sobre el art. 73** (incidentes graves) → alinear el [runbook de incidentes](../../../templates/compliance/runbook-incidentes-graves.md).
+5. **Guías de la Comisión sobre el art. 73 y cualquier modificación de los plazos procedimentales del articulado** (notificación de incidentes, retención de logs y documentación de los arts. 18–19/26.6) → alinear el [runbook de incidentes](../../../templates/compliance/runbook-incidentes-graves.md) y la [política de retención de evidencias](../../../templates/compliance/politica-retencion-evidencias.md).
 
 ---
 
