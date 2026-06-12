@@ -23,9 +23,9 @@
 
 | Campo | Valor |
 |---|---|
-| Versión del documento | 1.4 |
-| Fecha de aprobación | 2026-01-20 |
-| Próxima revisión programada | 2027-01-20 |
+| Versión del documento | 1.0 |
+| Fecha de aprobación | 2026-04-15 |
+| Próxima revisión programada | 2027-04-15 |
 | Custodio principal | DPO interno (Manuel Riera) |
 | Custodios contribuidores | Asesoría Jurídica externa (Despacho Garrido Abogados), CISO interno, Director de Operaciones |
 | Aprobación formal | Comité de Dirección, acta nº 2026-04 |
@@ -107,7 +107,7 @@ Sin tratamiento de datos especialmente protegidos (salud, biometría, ideología
 **Marcos aplicables:**
 
 - **Reglamento (UE) 2024/1689 — EU AI Act** — base normativa principal.
-- Calendario de aplicabilidad relevante (verificado a la fecha de aprobación contra el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md)): prohibiciones y alfabetización aplicables desde febrero 2025; obligaciones GPAI desde agosto 2025; transparencia (art. 50) desde agosto 2026; alto riesgo del Anexo III previsto para diciembre 2027 y del Anexo I para agosto 2028 según el acuerdo del Digital Omnibus, pendiente de publicación en el DOUE a la fecha de este documento. Verificar fechas vigentes en cada revisión anual del documento.
+- Calendario de aplicabilidad relevante (verificado a la fecha de aprobación contra el [calendario regulatorio](../../docs/compliance/appendix/calendario-regulatorio.md)): prohibiciones y alfabetización aplicables desde febrero 2025; obligaciones GPAI desde agosto 2025; transparencia (art. 50) desde agosto 2026; alto riesgo con propuesta legislativa de aplazamiento (Digital Omnibus: Anexo III a diciembre 2027, Anexo I a agosto 2028) pendiente de acuerdo a la fecha de este documento. Verificar fechas vigentes en cada revisión anual del documento.
 - **Real Decreto 817/2023** (España) — regulación de un entorno de pruebas de inteligencia artificial; aplicable solo si la organización participa en sandbox.
 
 **Clasificación de los sistemas de IA usados por la organización:**
@@ -351,7 +351,7 @@ Cualquier persona de la organización puede notificar al DPO una posible necesid
 
 ---
 
-*Marco Regulatorio de Consultora Modelo S.L. — versión 1.4, aprobado el 2026-01-20. Documento ficticio orientativo.*
+*Marco Regulatorio de Consultora Modelo S.L. — versión 1.0, aprobado el 2026-04-15. Documento ficticio orientativo.*
 
 *Plantilla del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
