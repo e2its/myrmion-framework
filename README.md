@@ -55,17 +55,17 @@ Framework para organizaciones que han superado la adopción ligera y necesitan q
 
 | Componente | Estado |
 |---|---|
-| Manifiesto Myrmion (paraguas) | ✅ v1.0 |
-| Myrmion Adoption — Manifiesto | ✅ v1.0 |
-| Myrmion Adoption — Plantillas (Capa 1, 2 y 3) | ✅ v1.0 |
+| Manifiesto Myrmion (paraguas) | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| Myrmion Adoption — Manifiesto | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| Myrmion Adoption — Plantillas (Capa 1, 2 y 3) | 📝 v1.1 — draft (Capa 1 ampliada con clasificación de casos de uso de IA; re-revisión pendiente) |
 | Myrmion Adoption — Guía de protección de datos (PII/PHI + licenciamiento) | ✅ v1.0 |
 | Myrmion Adoption — Apéndice de mapeo a productos comerciales | 🚧 En preparación |
 | Myrmion AI Factory — Framework (repositorio propio) | ✅ Activo |
-| Myrmion Federation — Manifiesto | ✅ v1.0 |
+| Myrmion Federation — Manifiesto | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | Myrmion Federation — Cuerpo normativo (índice, glosario, criterios funcionales, esquemas, mapping, drift, gobernanza, fases, métricas, perfil) | 🚧 En preparación |
 | Myrmion Federation — Plantillas socráticas + ejemplo de corredor E2E | 🚧 En preparación |
 | Myrmion Federation — Apéndice de stacks/policy-templates (comunidad) | 🚧 En preparación |
-| Área de cumplimiento — Puentes ISO/IEC 42001 y EU AI Act + plantillas (transparencia, alfabetización, evaluación de impacto/FRIA, incidentes, monitorización post-mercado, retención, SoA, auditoría interna) | ✅ v1.0 |
+| Área de cumplimiento — Puentes ISO/IEC 42001 y EU AI Act + plantillas (transparencia, alfabetización, evaluación de impacto/FRIA, incidentes, monitorización post-mercado, retención, SoA, auditoría interna) | 📝 v1.0 — draft (nuevo, en revisión) |
 | Área de cumplimiento — Apéndice de calendario regulatorio (comunidad) | 🔄 Documento vivo |
 
 ## Estructura del repositorio

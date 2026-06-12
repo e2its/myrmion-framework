@@ -1,6 +1,6 @@
 # Myrmion — Manifiesto
 
-**Versión 1.0**
+**Versión 1.1**
 
 *El ecosistema opensource para la adopción corporativa de IA con cultura propia: tres frameworks — la modelización cultural mediante productos comerciales (Myrmion Adoption), la federación programática de agentes corporativos (Myrmion Federation) y el desarrollo gobernado de producto (Myrmion AI Factory).*
 
@@ -78,4 +78,4 @@ Myrmion se publica bajo licencia MIT. Las contribuciones más valiosas son: actu
 
 ---
 
-*Myrmion — Manifiesto paraguas, versión 1.0.*
+*Myrmion — Manifiesto paraguas, versión 1.1.*

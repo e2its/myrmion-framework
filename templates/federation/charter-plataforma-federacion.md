@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Charter de la Plataforma de Federación
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Plantilla para constituir el **cuarto custodio** descrito en el §5 del [manifiesto](../../docs/federation/manifesto.md) y especificado en la [gobernanza federada](../../docs/federation/gobernanza-federada.md) §1 — la plataforma de federación. Articula su misión, sus responsabilidades, su RACI y sus fronteras con los otros tres custodios, para una organización concreta.*
 

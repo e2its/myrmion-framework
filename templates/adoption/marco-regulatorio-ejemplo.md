@@ -23,9 +23,9 @@
 
 | Campo | Valor |
 |---|---|
-| Versión del documento | 1.0 |
-| Fecha de aprobación | 2026-04-15 |
-| Próxima revisión programada | 2027-04-15 |
+| Versión del documento | 1.4 |
+| Fecha de aprobación | 2026-01-20 |
+| Próxima revisión programada | 2027-01-20 |
 | Custodio principal | DPO interno (Manuel Riera) |
 | Custodios contribuidores | Asesoría Jurídica externa (Despacho Garrido Abogados), CISO interno, Director de Operaciones |
 | Aprobación formal | Comité de Dirección, acta nº 2026-04 |
@@ -351,7 +351,7 @@ Cualquier persona de la organización puede notificar al DPO una posible necesid
 
 ---
 
-*Marco Regulatorio de Consultora Modelo S.L. — versión 1.0, aprobado el 2026-04-15. Documento ficticio orientativo.*
+*Marco Regulatorio de Consultora Modelo S.L. — versión 1.4, aprobado el 2026-01-20. Documento ficticio orientativo.*
 
 *Plantilla del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 

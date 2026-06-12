@@ -100,7 +100,7 @@ El contrato es la tabla de §3–§4. Este YAML solo ilustra la forma:
 
 ```yaml
 schemaVersion: "1.1"
-version: "1.0.0"
+version: "1.1.0"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"

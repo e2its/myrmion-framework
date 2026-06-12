@@ -1,6 +1,6 @@
 # Myrmion Federation — Diagrama: alta de agente y gate de coherencia del registro
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Materializa el §4 (criterios) y §5 (gobernanza) del [manifiesto](../../../docs/federation/manifesto.md): un agente solo entra en la federación si su descriptor pasa el gate de coherencia del registro, que verifica las **siete comprobaciones** de [gobernanza §2.1](../../../docs/federation/gobernanza-federada.md) antes de hacerlo descubrible.*
 

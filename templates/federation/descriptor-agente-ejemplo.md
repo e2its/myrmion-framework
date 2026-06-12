@@ -30,7 +30,7 @@ Consultora Modelo S.L. está federando sus agentes departamentales. Su caso de r
 | Departamento al que pertenece el agente | Legal |
 | `agentId` del agente declarado | `urn:myrmion:agent:consultora-modelo:legal:dictamenes` |
 | `schemaVersion` (versión del esquema que cumple) | 1.1 |
-| `version` del descriptor | 1.0.0 |
+| `version` del descriptor | 1.1.0 |
 | Fecha de última revisión | 2026-05-01 |
 | Custodio de dominio (`owner`) | Dirección de Asesoría Jurídica (Riera) |
 | Custodio de plataforma (`platformCustodian`) | Plataforma de Federación |
@@ -66,7 +66,7 @@ Gobierna exclusivamente el dominio legal, alineado con la Capa Departamental Leg
 
 *Pregunta guía: ¿cuál es la `version` del descriptor y qué `schemaVersion` cumple?*
 
-- `version`: `1.0.0`. Primera versión estable. Se incrementará `MINOR` al añadir capacidades compatibles, `MAJOR` ante un cambio de dominio o de identidad, y `PATCH` ante un cambio de la Constitución aplicada que no altere las capacidades (que además actualiza `constitutionRef`).
+- `version`: `1.1.0`. Incremento MINOR sobre la 1.0.0 por la incorporación de la clasificación regulatoria (§2.5), sin cambio de dominio ni de identidad. Se incrementará `MINOR` al añadir capacidades compatibles, `MAJOR` ante un cambio de dominio o de identidad, y `PATCH` ante un cambio de la Constitución aplicada que no altere las capacidades (que además actualiza `constitutionRef`).
 - `schemaVersion`: `1.1`. Cumple la versión 1.1 del esquema de identidad de agente (la que añade la clasificación regulatoria, §4b del esquema).
 
 ### 1.5 `criticality`
@@ -276,7 +276,7 @@ schemaVersion: "1.1"
 agentId: "urn:myrmion:agent:consultora-modelo:legal:dictamenes"
 displayName: "Agente Legal — Dictámenes"
 domain: "legal"
-version: "1.0.0"
+version: "1.1.0"
 criticality: "alta"
 departmentLayerRef: { docId: "capa-legal", version: "2.1", hash: "sha256:c1d2…" }
 constitutionRef: { version: "3.0", approvalDate: "2026-01-15", hash: "sha256:a3f5…" }

@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Runbook de alta de un agente (ejemplo)
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Ejemplo rellenado de la [plantilla de runbook de alta](./runbook-onboarding-agente.md), instanciado para Consultora Modelo S.L. Documenta el alta del agente Legal (`...:legal:dictamenes`) que va a servir el corredor comercial→legal. Es referencia orientativa, no normativa: la organización real rellena su propia instancia.*
 
@@ -63,7 +63,7 @@ Corredor **comercial→legal**. El agente Comercial (`urn:myrmion:agent:consulto
 
 ### 2.1 Descriptor candidato
 
-Descriptor candidato: instancia de la [plantilla de descriptor](./descriptor-agente.md), `schemaVersion` 1.1, `version` 1.0.0, conforme al [esquema de identidad](../../docs/federation/esquema-identidad-agente.md). Es el mismo artefacto que ilustra el [ejemplo de descriptor](./descriptor-agente-ejemplo.md). Al proponer el alta, su `lifecycleStatus` es `propuesto` y su `coherenceReview.status` es `pendiente`.
+Descriptor candidato: instancia de la [plantilla de descriptor](./descriptor-agente.md), `schemaVersion` 1.1, `version` 1.1.0, conforme al [esquema de identidad](../../docs/federation/esquema-identidad-agente.md). Es el mismo artefacto que ilustra el [ejemplo de descriptor](./descriptor-agente-ejemplo.md). Al proponer el alta, su `lifecycleStatus` es `propuesto` y su `coherenceReview.status` es `pendiente`.
 
 ### 2.2 Verificación de campos requeridos
 
@@ -235,4 +235,4 @@ Se notificó el alta a:
 
 *Ejemplo del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
-*Ejemplo orientativo de la [plantilla de runbook de alta de un agente](./runbook-onboarding-agente.md), versión 1.0. Consultora Modelo S.L., Fonseca, Riera y los hashes son ficticios. El gate de coherencia que se ejecuta está definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2; el descriptor de este mismo agente está en el [ejemplo de descriptor](./descriptor-agente-ejemplo.md).*
+*Ejemplo orientativo de la [plantilla de runbook de alta de un agente](./runbook-onboarding-agente.md), versión 1.1. Consultora Modelo S.L., Fonseca, Riera y los hashes son ficticios. El gate de coherencia que se ejecuta está definido en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2; el descriptor de este mismo agente está en el [ejemplo de descriptor](./descriptor-agente-ejemplo.md).*

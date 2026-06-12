@@ -1,6 +1,6 @@
 # Myrmion Federation — Índice y guía de navegación
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Puerta de entrada al corpus de Federation. Léelo primero. El [manifiesto](./manifesto.md) explica el porqué y el qué; este índice te lleva al documento concreto según lo que necesites hacer.*
 
@@ -26,13 +26,13 @@ La frontera entre cuerpo y apéndice la fija la [regla anti-acoplamiento](./regl
 
 | Documento | Qué resuelve | Estado |
 |---|---|---|
-| [manifesto.md](./manifesto.md) | Porqué, principios, arquitectura, fases, métricas | ✅ v1.0 |
-| [indice-y-guia-de-navegacion.md](./indice-y-guia-de-navegacion.md) | Este documento: puerta de entrada y rutas por rol | ✅ v1.0 |
-| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | ✅ v1.1 |
-| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | ✅ v1.1 |
+| [manifesto.md](./manifesto.md) | Porqué, principios, arquitectura, fases, métricas | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [indice-y-guia-de-navegacion.md](./indice-y-guia-de-navegacion.md) | Este documento: puerta de entrada y rutas por rol | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [glosario-federacion.md](./glosario-federacion.md) | Vocabulario normativo del corpus | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
+| [criterios-funcionales.md](./criterios-funcionales.md) | Los 6 criterios del stack (CF-01..CF-06). Espina dorsal | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | [regla-anti-acoplamiento.md](./regla-anti-acoplamiento.md) | Qué va al cuerpo vs al apéndice. Norma transversal | ✅ v1.0 |
 | [guia-arquitectura-funcional.md](./guia-arquitectura-funcional.md) | Las 4 capas funcionales (§3) + diagramas | 📋 pendiente de revisión |
-| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash + clasificación regulatoria | ✅ v1.1 |
+| [esquema-identidad-agente.md](./esquema-identidad-agente.md) | Contrato del descriptor de agente (§3.1) + contrato de hash + clasificación regulatoria | 📝 v1.1 — draft (modificado tras aprobación, re-revisión pendiente) |
 | [esquema-bloque-contexto-cultural.md](./esquema-bloque-contexto-cultural.md) | Contrato del bloque que viaja en cada llamada (§3.2) | ✅ v1.0 |
 | [convenciones-mapping-constitucion-policy.md](./convenciones-mapping-constitucion-policy.md) | Cómo traducir la Constitución a policy (§3.3) | 📋 pendiente de revisión |
 | [patrones-deteccion-drift.md](./patrones-deteccion-drift.md) | Los 3 patrones de detección de drift (§3.4) | 📝 draft |
@@ -101,8 +101,8 @@ El [área de cumplimiento](../compliance/README.md) es la capa transversal de ev
 
 ## 6. Estado del corpus
 
-A fecha de esta versión, el manifiesto y los cimientos normativos (índice, glosario, criterios funcionales, regla anti-acoplamiento) están cerrados; el resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. Los documentos marcados 📝 draft arriba indican lo pendiente. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
+A fecha de esta versión, la [regla anti-acoplamiento](./regla-anti-acoplamiento.md) y el [esquema del bloque de contexto cultural](./esquema-bloque-contexto-cultural.md) permanecen cerrados en v1.0. El manifiesto, este índice, el glosario, los criterios funcionales y el esquema de identidad — antes cerrados — fueron modificados en la integración del [área de cumplimiento](../compliance/README.md) (clasificación regulatoria, comprobación 7 del gate, exportaciones de auditoría): por la regla de gobernanza documental del corpus, suben a v1.1 y **vuelven a draft hasta superar la re-revisión**. El resto del cuerpo, las plantillas, el apéndice y los ejemplos se están redactando. La matriz de cobertura del manifiesto (qué sección del manifiesto materializa cada documento) se mantiene como artefacto de verificación.
 
 ---
 
-*Índice de Myrmion Federation — versión 1.0. Parte del corpus normativo.*
+*Índice de Myrmion Federation — versión 1.1. Parte del corpus normativo.*

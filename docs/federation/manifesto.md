@@ -1,6 +1,6 @@
 # Myrmion Federation
 
-**Manifiesto — versión 1.0**
+**Manifiesto — versión 1.1**
 
 *Una capa de gobernanza federada culturalmente consciente para sistemas de agentes corporativos sobre el protocolo MCP.*
 
@@ -203,4 +203,4 @@ Empiezas por la colonia. Evolucionas a la falange cuando tu organización lo nec
 
 ---
 
-*Manifiesto de Myrmion Federation — versión 1.0.*
+*Manifiesto de Myrmion Federation — versión 1.1.*

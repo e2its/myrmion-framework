@@ -7,7 +7,7 @@
 
 # Myrmion Federation — Runbook de alta de un agente
 
-**Versión 1.0**
+**Versión 1.1**
 
 *Plantilla operativa para dar de alta un agente departamental en la federación: del descriptor al registro, pasando por el gate de coherencia. Materializa la revisión de coherencia programática del [manifiesto](../../docs/federation/manifesto.md) §5, ejecuta las siete comprobaciones definidas en [gobernanza-federada.md](../../docs/federation/gobernanza-federada.md) §2, y opera la transición de `lifecycleStatus` `propuesto → activo` del [esquema de identidad](../../docs/federation/esquema-identidad-agente.md) §8.*
 
@@ -283,7 +283,7 @@ Este runbook documenta el alta de **un** agente departamental en la federación:
 
 *Plantilla del ecosistema **Myrmion**. Autor original: Jose Luis Sanchez del Coso. Licencia MIT.*
 
-*Runbook de alta de un agente — parte del corpus normativo de Myrmion Federation, versión 1.0. Operacionaliza el [gate de coherencia](../../docs/federation/gobernanza-federada.md) §2 (cuya definición normativa no renegocia) y la transición de `lifecycleStatus` del [esquema de identidad](../../docs/federation/esquema-identidad-agente.md) §8. Toma de entrada el descriptor de la [plantilla de descriptor](./descriptor-agente.md); el alta en el service registry responde a [CF-02](../../docs/federation/criterios-funcionales.md). Donde runbook y cuerpo discrepen, prevalece el cuerpo.*
+*Runbook de alta de un agente — parte del corpus normativo de Myrmion Federation, versión 1.1. Operacionaliza el [gate de coherencia](../../docs/federation/gobernanza-federada.md) §2 (cuya definición normativa no renegocia) y la transición de `lifecycleStatus` del [esquema de identidad](../../docs/federation/esquema-identidad-agente.md) §8. Toma de entrada el descriptor de la [plantilla de descriptor](./descriptor-agente.md); el alta en el service registry responde a [CF-02](../../docs/federation/criterios-funcionales.md). Donde runbook y cuerpo discrepen, prevalece el cuerpo.*
 
 *Para ver un alta completa rellenada como referencia orientativa, consultar el [ejemplo](./runbook-onboarding-agente-ejemplo.md).*
 

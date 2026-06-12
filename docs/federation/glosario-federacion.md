@@ -100,4 +100,4 @@ Los tres patrones se desarrollan en [patrones-deteccion-drift.md](./patrones-det
 
 ---
 
-*Glosario de Myrmion Federation — versión 1.0. Parte del corpus normativo. Términos heredados de [Myrmion Adoption](../adoption/manifesto.md) se definen allí.*
+*Glosario de Myrmion Federation — versión 1.1. Parte del corpus normativo. Términos heredados de [Myrmion Adoption](../adoption/manifesto.md) se definen allí.*

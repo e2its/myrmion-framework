@@ -1,6 +1,6 @@
 # Framework de Adopción Corporativa de IA
 
-**Manifiesto — versión 1.0**
+**Manifiesto — versión 1.1**
 
 *Un framework opensource para empresas que adoptan IA mediante productos comerciales y necesitan que esa adopción refleje su cultura, no la del proveedor.*
 
@@ -258,4 +258,4 @@ La frontera con **Myrmion Federation**, la siguiente fase del ecosistema que cub
 
 ---
 
-*Manifiesto del Framework de Adopción Corporativa de IA — versión 1.0.*
+*Manifiesto del Framework de Adopción Corporativa de IA — versión 1.1.*
