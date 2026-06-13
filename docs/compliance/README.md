@@ -44,7 +44,7 @@
 | [declaracion-aplicabilidad-iso42001.md](../../templates/compliance/declaracion-aplicabilidad-iso42001.md) | Declaración de Aplicabilidad (SoA) del Anexo A, pre-estructurada con el mapeo a artefactos Myrmion |
 | [programa-auditoria-interna-aims.md](../../templates/compliance/programa-auditoria-interna-aims.md) | ISO 42001 cl. 9.2 (auditoría interna) y cl. 9.3 (revisión por la dirección) |
 
-### Apéndice (`docs/compliance/appendix/`) — fechado, envejece rápido
+### Apéndice (`docs/compliance/appendix/`) — 06.2026 envejece rápido
 
 | Recurso | Qué contiene |
 |---|---|
